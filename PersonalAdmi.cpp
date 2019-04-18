@@ -41,7 +41,8 @@ void PersonalAdmi::CrearPersonal(PersonalAdmi* Personal) {
 	Telefono = common::ValidarEntero("Ingrese su numero de telefono: \n") ;
 	Personal->setTelefono(Telefono) ;
 	
-	cout << "\n\nRegistro Exitoso !!! \n\n" ;
+	cout << "\nPor favor espere ! \n" ;
+	cout <<  "Estamos Revisando si los datos ingresados estan correctamente \n\n" ;
 	system("pause") ;
 }
  

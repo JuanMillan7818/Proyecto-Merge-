@@ -46,6 +46,31 @@ float ArticuloComputo::getDespreciacion() {
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+Fecha* ArticuloComputo::getFecha() {
+	return this->FechaDeRegistro ; 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void ArticuloComputo::AsignarFecha(Fecha* FechaRegistro) {
+	this->FechaDeRegistro = FechaRegistro ; 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void ArticuloComputo::RegistrarFecha(int Dia, int Mes, int Anio) {
+	this->FechaDeRegistro->setAnio(Anio) ;
+	this->FechaDeRegistro->setMes(Mes) ;
+	this->FechaDeRegistro->setDia(Dia) ;
+	
+	cout << "\nRegistro de fecha exitoso !!! \n" ;
+	system("pause") ;
+}
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -67,16 +92,11 @@ float ArticuloComputo::Despreciacion () {
 
 
 void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
-
-	time_t FechaActual ; 
-	time(&FechaActual) ;
-	ctime(&FechaActual) ;
-	
-	struct tm* MiFecha = localtime(&FechaActual) ;
 	
 	string Nombre, Marca ;
-	int Codigo, Cantidad ;
-	float ValorArticulo ;
+	int Codigo, Cantidad, DatosFecha ;
+	float ValorArticulo ; 
+	Fecha FechaActual ;
 
 	system("cls") ;
 
@@ -94,6 +114,15 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	
 	Cantidad = common::ValidarEntero("\nIngrese la cantidad del articulo que van a estar disponibles \n") ;
 	
+//	DatosFecha = common::ValidarEntero("\nIngrese el anio de entrada \n") ;
+//	FechaActual.setAnio(DatosFecha) ; 
+//	
+//	DatosFecha = common::ValidarEntero("\nIngrese el mes de entrada \n") ;
+//	FechaActual.setMes(DatosFecha) ;
+//	
+//	DatosFecha = common::ValidarEntero("\nIngrese el dia de entrada \n") ;
+//	FechaActual.setDia(DatosFecha) ;
+	
 	ComputoACrear->setIDNombre(Nombre) ;
 	ComputoACrear->setIDMarca(Marca) ; 
 	ComputoACrear->setCodigoArticulo(Codigo) ;
@@ -104,11 +133,10 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	ComputoACrear->setEstadoArticuloDeActivo(0) ;
 	ComputoACrear->setEstadoDeLimiteDeArticulos(0) ;
 	ComputoACrear->setEstadoDeAsignadoAProfesor(0) ;
-	MiFecha->tm_year += 1900 ;
-	ComputoACrear->AsignarFecha(MiFecha) ; 
+	//ComputoACrear->AsignarFecha(&FechaActual) ;
 	
-	cout << "\nRegistro Exitoso !!! \n\n" ;
-	system("pause") ;
+//	cout << "\nRegistro Exitoso !!! \n\n" ;
+//	system("pause") ;
 
 }
 

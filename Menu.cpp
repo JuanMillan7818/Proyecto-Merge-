@@ -12,10 +12,10 @@ void Menu::MenuIngreso() {
 	
 	UsoDelLaboratorio->CargarTodoslosArchivos() ; // Cargar los archivos a los vecotres
 	
-//	UsoDelLaboratorio->getProfesores() ;
-//	system("pause") ; 
+	UsoDelLaboratorio->getComputo() ;
+	system("pause") ; 
 
-//	UsoDelLaboratorio->getPrestamos() ;
+//	UsoDelLaboratorio->getEstudianteYPrestados() ;
 //	system("pause") ; 
 	
 	
@@ -89,29 +89,29 @@ void Menu::RegistroIDPersona() {
 		
 		switch (this->Opcion) { // Registrarse como estudiante
 			case 1 : {
-				UsoDelLaboratorio->AgregarAlVectorEstudiantes(Cantidad) ;
-		
-				MenuParaEstudiantes (UsoDelLaboratorio->MandarPosicionActual(0)) ;
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(Cantidad) ;
+				
+				if (Estado == true) {
+					MenuParaEstudiantes(UsoDelLaboratorio->MandarPosicionActual(0)) ;
+				}
 				break;
 			}
 			
 			case 2 : { // Registrarse como Profesor
-				UsoDelLaboratorio->AgregarAlVectorProfesores(Cantidad) ;
-				UsoDelLaboratorio->getProfesores() ;
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(Cantidad) ;
 				
-				system("pause") ;
-				MenuParaProfesores(UsoDelLaboratorio->MandarPosicionActual(1)) ;
+				if (Estado == true) {
+					MenuParaProfesores(UsoDelLaboratorio->MandarPosicionActual(1)) ;
+				}
 				break;
 			}
 			
 			case 3 : { // Registrarse como Personal Administrativo
-				UsoDelLaboratorio->AgregarAlVectorPersonalAdmin(Cantidad) ;
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorPersonalAdmin(Cantidad) ;
 				
-				UsoDelLaboratorio->getPersonalAdmin() ;
-				
-				system("pause") ;
-				MenuParaPersonalAdmi(UsoDelLaboratorio->MandarPosicionActual(3)) ;
-				
+				if (Estado == true) {
+					MenuParaPersonalAdmi(UsoDelLaboratorio->MandarPosicionActual(3)) ;
+				}
 				break;
 			}
 			
@@ -127,8 +127,8 @@ void Menu::RegistroIDPersona() {
 			}
 			
 			case 6 : { // Atras
-				*Salir = true ;
 				MenuIngreso () ;
+				*Salir = true ;
 				break;
 			}
 			
@@ -167,7 +167,7 @@ void Menu::MenuDatosExistentes() {
 				if(UsoDelLaboratorio->VerificarVectorEstudiantes() == false) {
 					UsoDelLaboratorio->getEstudiantes() ;
 				
-					this->Opcion = common::ValidarEntero("Elija con que informacion desea ingresar \n") ; 
+					this->Opcion = common::ValidarEntero("\n\nElija con que informacion desea ingresar \n") ; 
 				
 					MenuParaEstudiantes(this->Opcion) ;	
 				}else {
@@ -509,13 +509,15 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 		
 		cout << "\n\t\tMenu Exclusivo para estudiantes \n\n" ;
 		cout << "1. Ver mi informacion personal \n" ;
-		cout << "2. Ver estudian3tes registrados en el Laboratorio \n" ;
-		cout << "3. Ver articulos de prestamo disponibles \n" ;
-		cout << "4. Diligenciar prestamos \n" ;
-		cout << "5. Diligenciar devolucion \n" ;
-		cout << "6. Consultar mi estado y valor de multa \n" ;
-		cout << "7. Atras \n" ;
-		cout << "8. Salir \n\n" ;
+		cout << "2. Ver estudiantes registrados en el Laboratorio \n" ;
+		cout << "3. Ver articulos de prestamo disponibles para prestamos \n" ;
+		cout << "4. Ver mis articulos prestados \n" ; 
+		cout << "5. Diligenciar prestamos \n" ;
+		cout << "6. Diligenciar devolucion \n" ;
+		cout << "7. Diligenciar Pago de multa \n" ; 
+		cout << "8. Consultar mi estado y valor de multa \n" ;
+		cout << "9. Atras \n" ;
+		cout << "10. Salir \n\n" ;
 		
 		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
 		
@@ -540,39 +542,72 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 				break;
 			}
 			
-			case 4 : {//diligenciar prestamos
-				UsoDelLaboratorio->AccederArticulosPrestamo(this->Opcion) ;
-				//cout << "HOla";
+			case 4 : { // Ver mis articulos prestados
+				system("cls") ; 
+				UsoDelLaboratorio->VerMisPrestados(Posicion) ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 5 : { //diligenciar prestamos
+				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
+					UsoDelLaboratorio->getPrestamos() ;
+					
+					cout << "\n\tEsta Opcion esclusiva del estudiante perrmite acceder a un prestamo de un articulo \n\n" ;
+					this->Opcion = common::ValidarEntero("Por favor seleccione que articulo desea prestar \n") ;
+					
+					UsoDelLaboratorio->ServicioPrestamo(Posicion, this->Opcion) ;	
+				}else {
+					cout << "\n\tNo han registrados articulos de tipo prestamo \n" ;
+					cout << "Por este motivo seras devuelto al menu principal \n\n" ;
+					system("pause") ;
+					*Salir = true ; 
+					RegistroIDPersona() ; 
+				}
 				system("pause") ;
 				break;
 			}
 			
-			case 5 : {// diligenciar devolucion
+			case 6 : { // diligenciar devolucion
+				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
+					
+					UsoDelLaboratorio->ServicioDevolucion(Posicion) ;
+					
+				}else {
+					cout << "\n\tERROR !!! \n" ;
+					cout << "\tNo puedes ejecutar la funcion de devolucion por razones de no haber registro de articulos de Prestamo \n\n" ; 									
+				}				
+				system("pause") ; 	
 				break;
 			}
 			
-			case 6 : {//consultar estado y valor de multa
+			case 7 : { // Diligenciar pago de multa
+				UsoDelLaboratorio->RealizarPagoMulta(Posicion) ; 
+				system("pause") ;
+				break;
+			}
+			
+			case 8 : { //consultar estado y valor de multa
 				UsoDelLaboratorio->AccederEStadoMultaEstudiante(this->Opcion) ;
 				system("pause") ;
 				break;
 			}
 			
-			case 7 : {// Atras
+			case 9 : { // Atras
 				*Salir = true ;
 				RegistroIDPersona () ;
 				
 				break;
 			}
 			
-			case 8 : { // Salir
+			case 10 : { // Salir
 				cout << "\nEsperamos su regreso \n\n" ;
 				system("pause") ;
 				exit(1) ; // sale del ejecutable directamente
 				break;
 			}
-			
-			
-			default : {
+						
+			default : { // Opcion Incorrecta
 				cout << "\nHas elegido una opcion incorrecta \n" ;
 				cout << "Por favor intente de nuevo \n" ;
 				system("pause") ;
@@ -633,7 +668,11 @@ void Menu::MenuExclusivoEstudiante(){
 				cout << "Cuantos estudiantes quiere registrar \n";
 				this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ;
 				
-				UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion);
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion);
+				
+				if (Estado == false) {
+					MenuExclusivoEstudiante() ; 
+				}
 				break;
 			}
 			
@@ -984,7 +1023,12 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					
 					cout << "\nPor favor registre algun estudiante \n\n" ;				
 					this->Opcion = common::ValidarEntero("\n\nCuantos Estudiantes desea registrar? \n") ;
-					UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion) ;
+					
+					bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion) ;
+					
+					if (Estado == false) {
+						MenuParaPersonalAdmi(Posicion) ;
+					}
 				}
 				break;
 			}
@@ -1003,7 +1047,11 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					
 					cout << "\nPor favor registre algun profesor \n\n" ;				
 					this->Opcion = common::ValidarEntero("\n\nCuantos Profesores desea registrar? \n") ;
-					UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+					bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+					
+					if (Estado == false) {
+						MenuParaPersonalAdmi(Posicion) ;
+					}
 				}
 				break;
 			}
@@ -1029,9 +1077,12 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
-						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
-					}
-					
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+						
+						if (Estado == false) {
+							MenuParaPersonalAdmi(Posicion) ;
+						}
+					}					
 				}
 				
 				break;
@@ -1057,7 +1108,11 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
-						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+						
+						if (Estado == false) {
+							MenuParaPersonalAdmi(Posicion) ;
+						}
 					}
 				}
 				break;
@@ -1083,7 +1138,11 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
-						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+						
+						if (Estado == false ){
+							MenuParaPersonalAdmi(Posicion) ;
+						}
 					}
 				}
 				break;

@@ -23,36 +23,48 @@ class Laboratorio {
 		vector <Estudiante> Estudiantes ;
 		vector <Informacion> Informaciones ;
 		vector <PersonalAdmi> PersonalAdmin ;
-		vector <ArticuloDePrestamo> ArticulosDisponibles ; 
-		vector <ArticuloComputo> ArticulosComp ; 
+		vector <ArticuloDePrestamo> ArticulosDisponibles ;
+		vector <ArticuloComputo> ArticulosComp ;
 		vector <ArticuloMueble> ArticulosMuebles ;
-		vector <int> Fechas  ; // desde 1-3 es Dia, Mes, Anio
-	
+		vector <int> AsignarFecha  ; // desde 1-4 es CodigoDelArticulo, Anio, Mes, Dia
+		vector <int*> CodigosDeEstudiantes ;
+
 	public :
 		Laboratorio () ;
 		// Mostrar todo lo que tiene cada vector
 		void getProfesores () ;
-		void getEstudiantes () ; 
+		void getEstudiantes () ;
+		void getEstudianteYPrestados () ;
 		void getPersonalAdmin () ;
 		void getInformaciones () ;
-		void getComputo () ; 
+		void getComputo () ;
 		void getMuebles () ;
 		void getPrestamos () ;
 		//void getArticulosPrestamo() ;
 
- 		// Reglas
+		// Reglas
 		void Reglas () ;
 		void CargarTodoslosArchivos () ;
-		
+
 		// Mandar tamaño del vector y posicion del ultimo dato
 		int MandarPosicionActual (int ClaseVector) ;
 		
+		//  Diligenciar Prestamo a estudiantes
+		void ServicioPrestamo(int PosiEstudiante, int PosiArticulo) ;
+		void VerMisPrestados (int Posicion) ; 
+		
+		// Diligenciar devolucion de prestamos 
+		void ServicioDevolucion (int PosiEstudiante) ; 
+		
+		// Diligenciar pago de multa 
+		void RealizarPagoMulta(int Posicion) ;
+		
 		// Pedir datos y agregarlos al vector correspondiente
-		void AgregarAlVectorProfesores (int Cantidad) ;
-		void AgregarAlVectorEstudiantes (int Cantidad) ;
+		bool AgregarAlVectorProfesores (int Cantidad) ;
+		bool AgregarAlVectorEstudiantes (int Cantidad) ;
 		void AgregarAlVectorInformaciones (int Cantidad) ;
-		void AgregarAlVectorPersonalAdmin (int Cantidad) ;
-		void AgregarAlVectorComputo (int Cantidad) ; 
+		bool AgregarAlVectorPersonalAdmin (int Cantidad) ;
+		void AgregarAlVectorComputo (int Cantidad) ;
 		void AgregarAlVectorMueble (int Cantidad) ;
 		void AgregarAlVectorDisponibles (int Cantidad) ;
 		void AgregarFecha(int Posicion, int Dia, int Mes, int Anio) ;
@@ -61,7 +73,7 @@ class Laboratorio {
 		// Acceder a alguna posicion
 		void AccederProfesor (int Codigo, int CodigoArticulo) ; // Para acceder mediante el codigo y agregarlo al articulo
 		void AccederProfesorPosicion (int Posicion) ;
-		void AccederArticulosProfe(int Posicion) ; 
+		void AccederArticulosProfe(int Posicion) ;
 		void AccederAUnEstudiante (int Posicion) ;
 		void AccederPersonalAdmi(int Posicion) ;
 		Informacion* AccederAUnaInformacion (int Posicion) ;
@@ -73,39 +85,42 @@ class Laboratorio {
 		void AccederEStadoMultaEstudiante(int Posicion);
 //		void AccederArticulosprestamo (int Posicion);
 
-		// Modificar datos de los vectores 
+		// Modificar datos de los vectores
 		void ModificarDatosDelVectorInformaciones() ;
 		void ModificarDatosBasicosProfe(int Posicion) ;
-		void ModificarDatosProfe(int Posicion) ; 
+		void ModificarDatosProfe(int Posicion) ;
 		void ModificarDatosEstudiante(int Posicion) ;
 		void ModificarDatosDelVectorComputo() ;
 		void ModificarDatosMueble(int Posicion) ;
 		void ModificarDatosArticulosPrestamos(int Posicion) ;
-		
-		// Eliminar datos de los vectores 
+
+		// Eliminar datos de los vectores
 		void EliminarDatosDelVectorInformaciones() ;
 		void EliminarDatosDelVectorComputo() ;
 		void EliminarDatosDelVectorProfesor(int Opcion) ;
 		void EliminarDatosDelVectorEstudiante(int Opcion) ;
 		void EliminarDatosDelVectorMueble() ;
 		void EliminarDatosDelVectorArticuloPrestamos() ;
-		
+
 
 		// Asignar Profesor a Articulo
-		void AsignarProfesorArticulo (int Posicion) ; //ArticuloComputo* ArticulosParaAsignar) ; //int CantidadACrear, bool PrimeraVez) ;
+		void AsignarCodigosEstudiantes () ; 
+		void AsignarProfesorComputo (int Posicion) ;
 		void AsignarProfeMueble (int Posicion) ;
-//		void AsignarProfePrestamos (int Posicion) ;
 		void AsignarProfePrestamo (int Posicion) ;
-		
-		
+
+		// Asignar Fechas 
+		void AsignarFechaComputo (int Posicion) ;
+		void AsignarAlCargarFecha (vector <Fecha*> FechasAux3) ;
+	
 		// Para verificar si el vector esta vacio o no
 		bool VerificarVectorProfesores () ;
 		bool VerificarVectorAdmin () ;
-		bool VerificarVectorEstudiantes () ; 
+		bool VerificarVectorEstudiantes () ;
 		bool VerificarVectorInformaciones () ;
 		bool VerificarArticulosCompu () ;
-		bool VerificarArticulosMueble() ;  
-		bool VerificarArticulosPrestamo() ;  
+		bool VerificarArticulosMueble() ;
+		bool VerificarArticulosPrestamo() ;
 
 		~Laboratorio () ;
 };

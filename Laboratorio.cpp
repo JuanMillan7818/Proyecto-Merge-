@@ -25,11 +25,14 @@ void Laboratorio::getProfesores(){
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 // Mostrar todo el vector de estudiantes
 void Laboratorio::getEstudiantes() {
 	system("cls") ;
 	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		cout << "\n\tEstudiante " << i+1 << "\n\n" ;
 		cout << "Nombre :" << Estudiantes[i].getNombre() << "\n" ;
 		cout << "Apellido :" << Estudiantes[i].getApellido() << "\n" ;
@@ -42,12 +45,55 @@ void Laboratorio::getEstudiantes() {
 		cout << "Semestre: " << Estudiantes[i].getSemestre() << "\n" ;
 		cout << "Valor la multa acomulada: " << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
 		cout << "Estado de multa :" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
-		cout << "Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		cout << "Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n" ;
+		if (this->Estudiantes[i].MisArticulos().empty()) {
+			cout << "Articulos Prestados:" << 0 << "\n\n" ;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		}else {
+			for (int j=0 ; j<this->Estudiantes[i].MisArticulos().size() ; j++) {
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+				cout << "Codigo del Articulo Prestado #"<< j+1 << ":" << this->Estudiantes[i].MisArticulos()[j]->getCodigoArticulo() << "\n\n" ;
+			}
+		}
 	} 
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::getEstudianteYPrestados() {
+	system("cls") ;
+	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
+		cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		cout << "\n\tEstudiante " << i+1 << "\n\n" ;
+		cout << "Nombre :" << Estudiantes[i].getNombre() << "\n" ;
+		cout << "Apellido :" << Estudiantes[i].getApellido() << "\n" ;
+		cout << "Email: " << Estudiantes[i].getEmail() << "\n" ;
+		cout << "Edad: " << Estudiantes[i].getEdad() << "\n" ;
+		cout << "Cedula: " << Estudiantes[i].getCedula() << "\n" ;
+		cout << "Telefono: " << Estudiantes[i].getTelefono() << "\n" ;
+		cout << "Carrera: " << Estudiantes[i].getCarrera() << "\n" ;
+		cout << "Codigo: " << Estudiantes[i].getCodigo() << "\n" ;
+		cout << "Semestre: " << Estudiantes[i].getSemestre() << "\n" ;
+		cout << "Valor la multa acomulada: " << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
+		cout << "Estado de multa :" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
+		cout << "Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n" ;
+		if (this->Estudiantes[i].MisArticulos().empty()) {
+			cout << "Articulos Prestados:" << 0 << "\n\n" ;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		}else {
+			//for (int j=0 ; j<this->Estudiantes[i].MisArticulos().size() ; j++) {
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+				this->Estudiantes[i].MostrarTodosLosArticulos() ;
+			//}
+		}
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // Mostrar todo el vector de personal administrativo
 void Laboratorio::getPersonalAdmin(){
@@ -95,7 +141,8 @@ void Laboratorio::getComputo() {
 		cout << "9. Valor de despreciacion: " << ArticulosComp[i].getDespreciacion() << "\n" ;
 		cout << "10. Asignado al Profesor: " << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
 		cout << "    Codigo del Profesor: " << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
-		cout << "11. Anio:" << ArticulosComp[i].getFecha()->tm_year << "\n" ;
+		cout << "11. Anio:" << ArticulosComp[i].getFecha()->getAnio() << "\n" ;
+		cout << "12. Mes:" << ArticulosComp[i].getFecha()->getMes() << "\n" ; 
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}	
@@ -186,38 +233,39 @@ void Laboratorio::CargarTodoslosArchivos() {
 	CargarArchivos.CargarArchivoEstudianteCSV(Estudiantes) ;
 	CargarArchivos.CargarArchivoInformacionCSV(&Informaciones) ;
 	CargarArchivos.CargarArchivoProfesorCSV(&Profesores) ; 
-	CargarArchivos.CargarArchivoAdminisCSV(&PersonalAdmin) ;
-	
+	CargarArchivos.CargarArchivoAdminisCSV(&PersonalAdmin) ;	
 	
 	//////////////////////////////////////////////////////////////////////////////////
 //	// Cargar y Asignarle los Profesores que tienen los articulos de Computo
-//	vector <int> Tamanio ;  // Traspaso de codigos 
-//	for (int i=0 ; i<CargarArchivos.CargarArchivoArticuloComputoCSV(&ArticulosComp).size() ; i++) {
-//		Tamanio.push_back(CargarArchivos.CargarArchivoArticuloComputoCSV(&ArticulosComp)[i]) ;
-//	}
-//	
-//	if(!this->ArticulosComp.empty()) {
-//		cout << "Hola Hola Hola " << endl ; 
-//		system("pause") ; 
-//		for (int i=0 ; i<Tamanio.size() ;i+=2) {
-//			int a = Tamanio[i] ;
-//			int b = Tamanio[i+1] ; 
-//			AccederProfesor(a, b) ;
-//		}
-//	}
-//
-//	CargarArchivos.CargarArticuloComputoCSV(this->ArticulosComp) ; 
-//	system("pause") ; 
-//	
-
+	vector <int> Tamanio ;  // Traspaso de codigos 
+	for (int i=0 ; i<CargarArchivos.CargarArchivoArticuloComputoCSV(&ArticulosComp).size() ; i++) {
+		Tamanio.push_back(CargarArchivos.CargarArchivoArticuloComputoCSV(&ArticulosComp)[i]) ;
+	}
+	
+	if(!this->ArticulosComp.empty()) {
+		for (int i=0 ; i<Tamanio.size() ;i+=2) {
+			int a = Tamanio[i] ;
+			int b = Tamanio[i+1] ; 
+			AccederProfesor(a, b) ;
+		}
+	}
+	
+	vector <Fecha> FechasAux ; 
+	CargarArchivos.CargarArticuloComputoCSV(&FechasAux) ;
+	cout << FechasAux.size() << endl ;
+	cout << FechasAux[0].getAnio() << endl ;
+	system("pause") ;
+	for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
+		this->ArticulosComp[i].AsignarFecha(&FechasAux[i]) ; 
+	}
+	
 	//////////////////////////////////////////////////////////////////////////////////
 	// Cargar y Asignarle los Profesores que tienen los articulos de Mueble
 	vector <int> TamanioMueble ;  // Traspaso de codigos 
 	for (int i=0 ; i<CargarArchivos.CargarArchivoArticuloMuebleCSV(&ArticulosMuebles).size() ; i++) {
 		TamanioMueble.push_back(CargarArchivos.CargarArchivoArticuloMuebleCSV(&ArticulosMuebles)[i]) ;
 	}
-//	cout << "Despues Muebles:" << this->ArticulosMuebles.size() << endl ;
-//	system("pause") ; 
+
 	if(!this->ArticulosMuebles.empty()) {
 		for (int i=0 ; i<TamanioMueble.size() ;i+=2) {
 			int a = TamanioMueble[i] ;
@@ -226,6 +274,7 @@ void Laboratorio::CargarTodoslosArchivos() {
 		}
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////////
 	// Cargar y Asignarle los Profesores que tienen los articulos de Mueble
 	vector <int> TamanioPrestamo ;  // Traspaso de codigos 
 	for (int i=0 ; i<CargarArchivos.CargarArchivoArticuloDePrestamoCSV(&this->ArticulosDisponibles).size() ; i++) {
@@ -239,6 +288,20 @@ void Laboratorio::CargarTodoslosArchivos() {
 			AccederProfesorArtPrestamo(a, b) ;
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	// Traspaso a un vector de direcciones para trabajar las asignaciones correctamente
+	vector <Estudiante*> TraspasoEstudiantes ;
+	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
+		TraspasoEstudiantes.push_back(&this->Estudiantes[i]) ;
+	}
+	
+	// Traspaso a un vector de direcciones para trabajar las asignaciones correctamente
+	vector <ArticuloDePrestamo*> TraspasoArticulos ;
+	for (int i=0 ; i<this->ArticulosDisponibles.size() ; i++) {
+		TraspasoArticulos.push_back(&this->ArticulosDisponibles[i]) ;
+	}
+	CargarArchivos.CargarPrestados(TraspasoEstudiantes, TraspasoArticulos) ;
 }
 
 
@@ -282,35 +345,323 @@ int Laboratorio::MandarPosicionActual(int ClaseVector) { // ClaseVector = es el 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-// Crear objetos profesores y agregarlos al vector de profesores 
-void Laboratorio::AgregarAlVectorProfesores(int Cantidad) {
-	Profesor* ProfesoresParaCrear = new Profesor ;
-	for (int i=0 ; i<Cantidad ; i++) {
-		ProfesoresParaCrear->CrearDatosDeProfesor(ProfesoresParaCrear) ;
-		this->Profesores.push_back(*ProfesoresParaCrear) ;
+void Laboratorio::ServicioPrestamo(int PosiEstudiante, int PosiArticulo) {
+	bool* Salir = new bool (false) ;
+	bool* Confirmar = new bool (true) ; 
+	int Opcion ; 
+	system("cls") ;
+	
+	cout << "\n\nVerificando Autorizacion para reaiizar prestamos \n\n" ;
+	
+	if (PosiArticulo > this->ArticulosDisponibles.size()) {
+		system("cls") ; 
+		cout << "\n\tNo existe ese indicador del articulo ingresado \n\n" ;
+	}else if (this->Estudiantes[PosiEstudiante-1].getEstadoDeMulta() == true) {
+		system("cls") ;
+		cout << "\n\n\tERRO DE PRESTAMO \n" ;
+		cout << "No puedes accerder al prestamo ya que cuentas con una multa por retraso de entrega de un articulo \n\n" ;
+		cout << "Por favor primero cancele la totalidad de su Multa \n\n" ;
+		RealizarPagoMulta(PosiEstudiante) ; 
+	}else {
+		system("pause") ;
+		system("cls") ;
+		cout << "\n\tEl articulo que desea prestar es el siguiemte \n\n" ;
+		system("pause") ;
+		
+		AccederArticulosPrestamo(PosiArticulo) ;
+		
+		do {
+			cout << "\n\tConfirmar el proceso \n\n" ;
+			cout << "1. Continuar proceso \n" ;
+			cout << "2. Cancelar proceso \n\n" ;
+			
+			Opcion = common::ValidarEntero("Elige una opcion \n") ;
+			
+			switch(Opcion) {
+				case 1 : { // Continuar
+					cout << "\nPor favor espera \n\n" ;
+					system("pause") ;
+					for (int i=0 ; i<this->Estudiantes[PosiEstudiante-1].MisArticulos().size() ; i++) {
+						if (this->ArticulosDisponibles[PosiArticulo-1].getCodigoArticulo() == this->Estudiantes[PosiEstudiante-1].MisArticulos()[i]->getCodigoArticulo()) {
+							cout << "\n\n\tERROR DE PRESTAMO !!! \n" ;
+							cout << "\tYa tienes este articulo prestado \n" ;
+							cout << "\tIntenta de nuevo con otro artculo \n\n" ; 	
+							*Confirmar = false ;
+						}
+					}
+					if (*Confirmar == true) {
+						this->Estudiantes[PosiEstudiante-1].ArticuloParaPrestar(&this->ArticulosDisponibles[PosiArticulo-1]) ;
+						system("cls") ;
+						cout << "Prestamo Exitoso !!! \n\n" ;
+						*Salir = true ; 
+					}else {
+						*Salir = true ;
+					}
+					break;
+				}
+				
+				case 2 : { // Cancelar
+					system("cls") ;
+					cout << "\nAcabas de cancelar el servicio de prestamo \n" ;
+					cout << "Por favor espera un momento mientras te redirigimos \n\n" ;
+					*Salir = true ;
+					*Confirmar = false ; 
+					break;
+				}
+				
+				default : { // Opcion Incorrecta
+					cout << "\nHas elegido una opcion incorrecta \n" ;
+					cout << "Por favor intente de nuevo \n" ;
+					system("pause") ;
+					system("cls") ; 
+					break;
+				}
+			}
+		}while(!*Salir) ; 
+		
+		if (*Confirmar == true) {
+			ManejoDeArchivo ManejoParaPrestados ;
+			ManejoParaPrestados.CrearArchivoPrestados(this->Estudiantes) ;
+		}
 	}
 	
-	ManejoDeArchivo ParaProfesores ;
-	ParaProfesores.CrearArchivoProfesorCSV(Profesores) ;
+	delete Salir ;	
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::VerMisPrestados(int Posicion) {
+	if (this->Estudiantes[Posicion-1].MisArticulos().empty()) {
+		cout << "\n\n\tNo tienes ningun articulo en prestamo \n\n" ;
+		system("pause") ; 
+	}else {
+		this->Estudiantes[Posicion-1].MostrarTodosLosArticulos() ;
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::ServicioDevolucion(int PosiEstudiante) {
+	bool* Salir = new bool(false) ; 
+	bool* Confirmar = new bool(true) ;
+	int PosiArticulo ; 
+	int Opcion ; 
+	system("cls") ;
+	
+	if (this->Estudiantes[PosiEstudiante-1].MisArticulos().empty()) {
+		cout << "\n\tERROR DE DEVOLUCION \n" ;
+		cout << "No tienes ningun articulo prestado que requiera devolucion \n\n" ; 				
+	}else {
+		VerMisPrestados(PosiEstudiante) ; 
+	
+		PosiArticulo = common::ValidarEntero("\n\nPor favor seleccione que articulo desea devolver \n") ;
+		
+		if (PosiArticulo > this->ArticulosDisponibles.size()) {
+			system("cls") ; 
+			cout << "\n\tNo existe ese indicador del articulo ingresado \n\n" ;
+		}else {
+			system("pause") ;
+			system("cls") ;
+			cout << "\n\tEl articulo que desea devolver es el siguiemte \n\n" ;
+			system("pause") ;
+				
+			AccederArticulosPrestamo(PosiArticulo) ;
+			
+			do {	
+				cout << "\n\tConfirmar el proceso \n\n" ;
+				cout << "1. Continuar proceso \n" ;
+				cout << "2. Cancelar proceso \n\n" ;
+				
+				Opcion = common::ValidarEntero("Elige una opcion \n") ;
+				
+				switch(Opcion) {
+					case 1 : { // Confirmar
+						cout << "\nPor favor espera \n\n" ;
+						system("pause") ;
+						cout << PosiArticulo << endl ; 
+						this->Estudiantes[PosiEstudiante-1].Devolucion(PosiArticulo) ; 					
+						*Salir = true ;
+						break;
+					}
+					
+					case 2 : { // Cancelar
+						system("cls") ;
+						cout << "\nAcabas de cancelar el servicio de Devolucion \n" ;
+						cout << "Por favor espera un momento mientras te redirigimos \n\n" ;
+						*Salir = true ;
+						*Confirmar = false ; 
+						break;
+					}
+					
+					default : { // Opcion Incorrecta
+						cout << "\nHas elegido una opcion incorrecta \n" ;
+						cout << "Por favor intente de nuevo \n\n" ;
+						system("pause") ;
+						system("cls") ;
+						break;
+					}
+				}	
+			}while(!*Salir) ;
+		}
+		
+		
+		if (*Confirmar == true) {
+			ManejoDeArchivo ManejoParaPrestados ;
+			ManejoParaPrestados.CrearArchivoPrestados(this->Estudiantes) ;
+		}
+	}
+	
+	delete Salir ;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::RealizarPagoMulta(int Posicion) {
+	bool* Salir = new bool (false) ; 
+	bool* Confirmar = new bool (true) ; 
+	int OpcionMultiple ;
+	
+	if (this->Estudiantes[Posicion-1].getValorMultaAcomulada() == 0) {
+		system("cls") ; 
+		cout << "\n\tNo tienes deuda por retraso de un prestamo diligenciado \n\n" ;
+	}else {
+		do {
+			system("cls") ;
+			cout << "\n\nPor favor pague la totalidad de multa \n" ;
+			cout << "Su saldo de multa es: $" << this->Estudiantes[Posicion-1].getValorMultaAcomulada() << "\n" ;
+			cout << "\n\n\ttPor favor confirma la peticion \n\n" ; 
+			cout << "1. Confirmar proceso \n" ;
+			cout << "2. Cancelar proceso \n\n" ; 
+			
+			OpcionMultiple = common::ValidarEntero("Elige una opcion \n") ;
+			
+			switch(OpcionMultiple) {
+				case 1 : { // Continuar proceso
+					cout << "Su saldo de multa es: $" << this->Estudiantes[Posicion-1].getValorMultaAcomulada() << "\n" ;
+			
+					OpcionMultiple = common::ValidarEntero("Por favor ingresa la cantidad necesaria para el pago: $ ") ;
+					
+					cout << "\nEstamos realizando tu pago \n\n" ;
+					system("pause") ;
+					
+					if (OpcionMultiple < this->Estudiantes[Posicion-1].getValorMultaAcomulada()) {
+						system("cls") ;
+						cout << "\n\nERROR \n" ;
+						cout << "Su saldo es insuficiente para realizar el pago \n" ;
+						cout << "Por favor confirma de nuevo el pago a realizar \n\n" ;
+						system("pause") ;
+						RealizarPagoMulta(Posicion) ;					
+					}else {
+						system("cls") ;
+						int Saldo = this->Estudiantes[Posicion-1].getValorMultaAcomulada() - OpcionMultiple ; 
+						if (Saldo == 0) {
+							this->Estudiantes[Posicion-1].CorrerValorMulta(0) ;
+						}else {
+							cout << "Su cambio es: $" << Saldo ;
+							this->Estudiantes[Posicion-1].CorrerValorMulta(0) ;						
+						}					
+						cout << "\n\nTu pago ha sido exitoso !!! \n\n" ;	
+					}				
+					*Salir = true ;
+					break;
+				}
+				
+				case 2 : { // Cancelar proceso
+					system("cls") ;
+					cout << "\nAcabas de cancelar el servicio de pago de multa \n" ;
+					cout << "Por favor espera un momento mientras te redirigimos \n\n" ;
+					*Salir = true ;
+					*Confirmar = false ; 
+					break;
+				}
+				
+				default : { // Opcion Incorrecta
+					cout << "\nHas elegido una opcion incorrecta \n" ;
+					cout << "Por favor intente de nuevo \n" ;
+					system("pause") ;
+					break;
+				}
+			}
+			
+		}while(!*Salir) ;
+	}
+	
+	
+	if (*Confirmar == true) {
+		ManejoDeArchivo ActualizarPago ;
+		ActualizarPago.ActualizarArchivoEstudianteCSV(this->Estudiantes) ; 
+	}
+	
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+// Crear objetos profesores y agregarlos al vector de profesores 
+bool Laboratorio::AgregarAlVectorProfesores(int Cantidad) {
+	bool DatosCorrectos = true ;
+	Profesor* ProfesoresParaCrear = new Profesor ;
+	
+	for (int i=0 ; i<Cantidad ; i++) {
+		ProfesoresParaCrear->CrearDatosDeProfesor(ProfesoresParaCrear) ;
+		
+		for (int j=0 ; j<this->Profesores.size() ; j++) {
+			if (this->Profesores[j].getCodigo() == ProfesoresParaCrear->getCodigo()) {
+				system("cls") ; 
+				cout << "\nNo puedes Crear un Profesor con un codigo ya existente \n" ; 
+				cout << "Registro Fallido \n\n" ;
+				system("pause") ; 
+				DatosCorrectos = false ; 
+			}
+		}
+		
+		if (DatosCorrectos == true) {
+			cout << "\nRegistro Exitoso \n\n" ;  
+			this->Profesores.push_back(*ProfesoresParaCrear) ;	
+		}
+	}
+	
+	if (DatosCorrectos == true) {
+		ManejoDeArchivo ParaProfesores ;
+		ParaProfesores.CrearArchivoProfesorCSV(Profesores) ;
+	}
 	
 	delete ProfesoresParaCrear ;
+	return DatosCorrectos ; 
 }
 
 // Funcion para crear estudiantes, agregar al vector de estudiantes y crear archivo
-void Laboratorio::AgregarAlVectorEstudiantes(int Cantidad) {
+bool Laboratorio::AgregarAlVectorEstudiantes(int Cantidad) {
+	bool DatosCorrectos = true ; 
 	Estudiante* EstudiantesParaCrear = new Estudiante ;
+	
 	for (int i=0 ; i<Cantidad ; i++) {
 		EstudiantesParaCrear->CrearDatosDeObjetoEstudiante(EstudiantesParaCrear, Cantidad) ;
-		this->Estudiantes.push_back(*EstudiantesParaCrear) ;
+		for (int j=0 ; j<this->Estudiantes.size() ; j++) {
+			if (this->Estudiantes[j].getCodigo() == EstudiantesParaCrear->getCodigo()) {
+				system("cls") ; 
+				cout << "\nNo puedes Crear un Estudiante con un codigo ya existente \n" ; 
+				cout << "Registro Fallido \n\n" ;
+				system("pause") ; 
+				DatosCorrectos = false ; 
+			}
+		}
+		
+		if (DatosCorrectos == true) {
+			cout << "\nRegistro Exitoso \n\n" ;  
+			this->Estudiantes.push_back(*EstudiantesParaCrear) ;
+			AsignarCodigosEstudiantes() ; 
+		}
 	}
-	
-	ManejoDeArchivo ParaEstudiantes ;
-	ParaEstudiantes.CrearArchivoEstudianteCSV(Estudiantes) ;
-	if (this->Estudiantes.size() != 1) {
-		ParaEstudiantes.ActualizarArchivoEstudianteCSV(Estudiantes) ; 	
+	if (DatosCorrectos == true) {
+		ManejoDeArchivo ParaEstudiantes ;
+		ParaEstudiantes.CrearArchivoEstudianteCSV(Estudiantes) ;
 	}
-	
+
 	delete EstudiantesParaCrear ;
+	return DatosCorrectos ; 
 }
 
 
@@ -340,36 +691,54 @@ void Laboratorio::AgregarAlVectorInformaciones(int Cantidad) {
 
 
 // Crear objetos de personal administrativo y agregarlos al vector de personal
-void Laboratorio::AgregarAlVectorPersonalAdmin(int Cantidad) {
+bool Laboratorio::AgregarAlVectorPersonalAdmin(int Cantidad) {
+	bool DatosCorrectos = false ;
 	PersonalAdmi* PersonalParaCrear = new PersonalAdmi ;
+	
 	for (int i=0 ; i<Cantidad ; i++) {
 		PersonalParaCrear->CrearPersonal(PersonalParaCrear) ;
-		this->PersonalAdmin.push_back(*PersonalParaCrear) ;
+		
+		for (int j=0 ; j<this->PersonalAdmin.size() ; j++) {
+			if (this->PersonalAdmin[j].getCedula() == PersonalParaCrear->getCedula()) {
+				system("cls") ; 
+				cout << "\nNo puedes Crear un Personal Administrativo con una cedula ya existente \n" ; 
+				cout << "Registro Fallido \n\n" ;
+				system("pause") ; 
+				DatosCorrectos = false ; 
+			}
+		}
+		if (DatosCorrectos == true) {
+			cout << "\nRegistro Exitoso \n\n" ;  
+			this->PersonalAdmin.push_back(*PersonalParaCrear) ;
+		}	
 	}
 	
-	ManejoDeArchivo ManejoAdministra ;
-	cout << "Datos" << endl ;
-	cout << this->PersonalAdmin[0].getNombre() << endl ;
-	system("pause") ; 
-	ManejoAdministra.CrearArchivoAdminisCSV(this->PersonalAdmin) ;
-	 
+	if (DatosCorrectos == true) {
+		ManejoDeArchivo ManejoAdministra ;
+		ManejoAdministra.CrearArchivoAdminisCSV(this->PersonalAdmin) ;
+	}
+	
 	delete PersonalParaCrear ;
+	return DatosCorrectos ;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 void Laboratorio::AgregarAlVectorComputo(int Cantidad) {
 	ArticuloComputo* ComputoACrear = new ArticuloComputo ;
+	
 	for (int i=0 ; i<Cantidad ; i++) {
 		ComputoACrear->CrearComputo(ComputoACrear) ;
 		this->ArticulosComp.push_back(*ComputoACrear) ;  // Agregar al vector
-			
-		AsignarProfesorArticulo(MandarPosicionActual(4)) ; // Funcion de asignar
+		
+		AsignarProfesorComputo(MandarPosicionActual(4)) ; // Funcion de asignar
+		this->AsignarFechaComputo(MandarPosicionActual(4)) ;
 	}
-	cout << "Hola" << endl ; 
+
 	ManejoDeArchivo ManejoDeComputo ;
 	ManejoDeComputo.CrearArchivoArticuloComputoCSV(ArticulosComp) ; 
-		
+//	ManejoDeComputo.CrearArchivoFechas(ArticulosComp) ;
+
 	delete ComputoACrear ; 
 }
 
@@ -424,10 +793,10 @@ void Laboratorio::AgregarAlVectorPrestamo(int Cantidad){
 ////////////////////////////////////////////////////////////////////////////////////
 
 void Laboratorio::AgregarFecha(int Posicion, int Dia, int Mes, int Anio) {
-	this->Fechas.push_back(Posicion) ;
-	this->Fechas.push_back(Dia) ; // 0=Dia
-	this->Fechas.push_back(Mes) ; // 1=Mes
-	this->Fechas.push_back(Anio) ; // 2=Anio
+//	this->Fechas.push_back(Posicion) ;
+//	this->Fechas.push_back(Dia) ; // 0=Dia
+//	this->Fechas.push_back(Mes) ; // 1=Mes
+//	this->Fechas.push_back(Anio) ; // 2=Anio
 	
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -978,7 +1347,7 @@ void Laboratorio::ModificarDatosDelVectorComputo() {
 					cout << "Por favor asigne otro por favor \n" ; 
 					system("pause") ;
 					
-					AsignarProfesorArticulo(i) ;
+					AsignarProfesorComputo(i) ;
 						
 					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
 						
@@ -1003,7 +1372,7 @@ void Laboratorio::ModificarDatosDelVectorComputo() {
 					cout << "Por favor asigne otro por favor \n" ; 
 					system("pause") ;
 					
-					AsignarProfesorArticulo(i) ;
+					AsignarProfesorComputo(i) ;
 						
 					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
 					
@@ -1758,8 +2127,16 @@ void Laboratorio::AccederAUnEstudiante(int Posicion) {
 			cout << "10. Valor la multa acomulada: " << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
 			cout << "11. Estado de multa :" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
 			cout << "12. Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
-			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+			if (this->Estudiantes[i].MisArticulos().empty()) {
+				cout << "Articulos Prestados:" << 0 << "\n\n" ;
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+			}else {
+				//for (int j=0 ; j<this->Estudiantes[i].MisArticulos().size() ; j++) {
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+					this->Estudiantes[i].MostrarTodosLosArticulos() ;
+				//}
+			}
 		}
 	}
 }
@@ -1919,7 +2296,20 @@ void Laboratorio::AccederEStadoMultaEstudiante(int Posicion) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-void Laboratorio::AsignarProfesorArticulo(int Posicion) {//ArticuloComputo* ArticulosParaAsignar) { //int CantidadACrear, bool PrimerVez) { // true si es primera vez de ejecucion
+void Laboratorio::AsignarCodigosEstudiantes() {
+	this->CodigosDeEstudiantes.clear() ; 
+	
+	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
+		int Codigo = this->Estudiantes[i].getCodigo() ;
+		int* CodigoAux = &Codigo ;
+		this->CodigosDeEstudiantes.push_back(CodigoAux) ; 
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::AsignarProfesorComputo(int Posicion) {
 	int Asignar ;
 	
 	if (VerificarVectorProfesores() == false) {
@@ -1945,6 +2335,41 @@ void Laboratorio::AsignarProfesorArticulo(int Posicion) {//ArticuloComputo* Arti
 		system("pause") ;
 	}
 	
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void Laboratorio::AsignarFechaComputo(int Posicion) {
+	system("cls") ;
+	int DatosFecha ;
+	Fecha* FechaActual = new Fecha ; 
+	
+	cout << "\nAsignele una fecha \n\n" ;
+	DatosFecha = common::ValidarEntero("\nIngrese el anio de entrada \n") ;
+	FechaActual->setAnio(DatosFecha) ; 
+		
+	DatosFecha = common::ValidarEntero("\nIngrese el mes de entrada \n") ;
+	FechaActual->setMes(DatosFecha) ;
+		
+	DatosFecha = common::ValidarEntero("\nIngrese el dia de entrada \n") ;
+	FechaActual->setDia(DatosFecha) ;
+
+	this->ArticulosComp[Posicion-1].AsignarFecha(FechaActual) ; 
+	
+	cout << "\n\nRegistro exitoso !!! \n\n" ;
+	system("pause ") ; 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void Laboratorio::AsignarAlCargarFecha(vector <Fecha*> FechasAux3) {
+	for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
+		this->ArticulosComp[i].AsignarFecha(FechasAux3[i]) ; 
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

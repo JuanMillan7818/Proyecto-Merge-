@@ -14,29 +14,27 @@ using namespace std ;
 
 class ManejoDeArchivo {
 	private :
-		int PosicionDelVector ;  //
+		int PosicionDelVector ;  
 
 	public :
 		ManejoDeArchivo () ;
 		// Manejo de Archivos Para Informacion del laboratorio
 		void CrearArchivoInformacionCSV (vector <Informacion> Informaciones) ;
-		void ModificarArchivoInformacionCSV (vector <Informacion> Informaciones) ;
-		void ActualizarArchivoInformacionCSV (vector <Informacion>* Informaciones) ;
-		void MostrarArchivoInformacionCSV (vector <Informacion>* Informaciones) ;
 		void CargarArchivoInformacionCSV (vector <Informacion>* Informaciones) ;
 
 		// Manejo de Archivos Para Estudiante del laboratorio
 		void CrearArchivoEstudianteCSV (vector <Estudiante> Estudiantes) ;
-		void ModificarArchivoEstudianteCSV (vector <Estudiante>* Estudiantes) ;
 		void ActualizarArchivoEstudianteCSV (vector <Estudiante> Estudiantes) ;
-		void MostrarArchivoEstudianteCSV (vector <Estudiante>* Estudiantes) ;
 		void CargarArchivoEstudianteCSV (vector <Estudiante>& Estudiantes) ;
+		
+		// Manejo De Archivos Para Los Articulos Prestados Por Un Estudiante
+		void CrearArchivoPrestados (vector <Estudiante> Prestamos) ;
+		void ActualizarPrestados (vector <Estudiante> Prestamos) ;
+		void CargarPrestados (vector <Estudiante*> Prestamos, vector <ArticuloDePrestamo*> Articulos) ; 
 
 		// Manejo de Archivos Para Profesor del laboratorio
 		void CrearArchivoProfesorCSV (vector <Profesor> Profesores) ;
-		void ModificarArchivoProfesorCSV (vector <Profesor>* Profesores) ;
 		void ActualizarArchivoProfesorCSV (vector <Profesor> Profesores) ;
-		void MostrarArchivoProfesorCSV (vector <Profesor>* Profesores) ;
 		void CargarArchivoProfesorCSV (vector <Profesor>* Profesores) ;
 		
 		// Manejo de Archivos Para Articulo de Personal Administrativo del laboratorio
@@ -45,16 +43,13 @@ class ManejoDeArchivo {
 		
 		// Manejo de Archivos Para Articulo de prestamo del laboratorio
 		void CrearArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
-		void ModificarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
 		void ActualizarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
-		void MostrarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
-		//vector <int> CargarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
 		vector <int> CargarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo>* ArticulosParaPrestar) ;
 		
 		// Manejo de Archivos para Articulos de Computo del Laboratorio 
 		void CrearArchivoArticuloComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ; 
 		vector <int> CargarArchivoArticuloComputoCSV (vector <ArticuloComputo>* ArticulosParaComputo) ;
-		void CargarArticuloComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ;
+		void CargarArticuloComputoCSV (vector <Fecha>* FechasRegistradas) ;
 		void ActualizarComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ;
 
 		// Manejo de Archivos para Articulos de Mueble del Laboratorio
@@ -63,11 +58,11 @@ class ManejoDeArchivo {
 		void ActualizarMuebleCSV (vector <ArticuloMueble> ArticulosParaMueble) ;
 
 		
-		//Crear archivo Fechas y manejo de archivos fechas
-		
+		//Crear archivo Fechas y manejo de archivos fechas		
 		void CrearArchivoFechas (vector <ArticuloComputo> ArticulosComp) ;
-		void CargarArchivoFechasCSV(vector <ArticuloComputo>* FechasDeUso) ;
 		void ActualizarArchivoFechas (vector <ArticuloComputo> ArticulosComp) ;
+		void CargarArchivoFechasCSV(vector <int>* FechasDeUso) ;
+		
 		
 		// Funcion para Cambiar de string -> int
 		long CambioStringALong (string Temporal) ;

@@ -20,7 +20,6 @@ class Fecha {
 		int getMes () ;
 		int getAnio () ;
 		bool ValidarFormatoDeFecha (int Dia, int Mes, int Anio) ;
-		void RegistrarFecha (int Dia, int Mes, int Anio) ;
 		~Fecha () ;
 };
 #endif

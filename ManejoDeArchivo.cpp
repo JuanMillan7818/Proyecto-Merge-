@@ -80,12 +80,39 @@ void ManejoDeArchivo::CrearArchivoEstudianteCSV(vector <Estudiante> Estudiantes)
 			Archivo << Estudiantes[i].getEstadoDeMulta() << ';' << Estudiantes[i].getEstadoDeEstudiante() << '\n'  ;
 		}
 		Archivo.close() ;
-	}//else {
-	// Agregar otro registro de persona
-	//	ActualizarArchivoEstudianteCSV(Estudiantes) ;
-	//}
+	}else { // Agregar otro registro de persona
+		ActualizarArchivoEstudianteCSV(Estudiantes) ;
+	}
 	Archivo.close() ;
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Actualizar Archivo de Estudiantes
+void ManejoDeArchivo::ActualizarArchivoEstudianteCSV(vector <Estudiante> Estudiantes) {
+	ofstream Archivo ("Estudiantes-Laboratorio.csv", ios::out) ;
+	// Cabezeras
+	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
+	Archivo << "Carrera" << ';' << "Edad" << ';' << "Cedula" << ';'   ;
+	Archivo << "Telefono" << ';'<< "Codigo" << ';' << "Semestre" << ';' ;
+	Archivo << "Valor de multa Acomulada" << ';' << "Estado de multa" << ';' << "Estado del estudiante" << '\n' ;
+
+	for (int i=0 ; i<Estudiantes.size() ; i++) {
+		Archivo << Estudiantes[i].getNombre() << ';' << Estudiantes[i].getApellido() << ';'  ;
+		Archivo << Estudiantes[i].getEmail() << ';' << Estudiantes[i].getCarrera() << ';'       ;
+		Archivo << Estudiantes[i].getEdad() << ';' << Estudiantes[i].getCedula() << ';'  ;
+		Archivo << Estudiantes[i].getTelefono() << ';' << Estudiantes[i].getCodigo() << ';'   ;
+		Archivo << Estudiantes[i].getSemestre() << ';' << Estudiantes[i].getValorMultaAcomulada() << ';'      ;
+		Archivo << Estudiantes[i].getEstadoDeMulta() << ';' << Estudiantes[i].getEstadoDeEstudiante() << '\n'  ;
+	}
+	Archivo.close() ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 void ManejoDeArchivo::CargarArchivoEstudianteCSV(vector <Estudiante>& Estudiantes) {
 	Estudiantes.clear() ; // Eliminar por si existe algo ya en el vector
@@ -139,25 +166,81 @@ void ManejoDeArchivo::CargarArchivoEstudianteCSV(vector <Estudiante>& Estudiante
 	delete EstudianteAuxiliar ;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Actualizar Archivo de Estudiantes
-void ManejoDeArchivo::ActualizarArchivoEstudianteCSV(vector <Estudiante> Estudiantes) {
-	ofstream Archivo ("Estudiantes-Laboratorio.csv", ios::out) ;
-	// Cabezeras
-	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
-	Archivo << "Carrera" << ';' << "Edad" << ';' << "Cedula" << ';'   ;
-	Archivo << "Telefono" << ';'<< "Codigo" << ';' << "Semestre" << ';' ;
-	Archivo << "Valor de multa Acomulada" << ';' << "Estado de multa" << ';' << "Estado del estudiante" << '\n' ;
 
-	for (int i=0 ; i<Estudiantes.size() ; i++) {
-		Archivo << Estudiantes[i].getNombre() << ';' << Estudiantes[i].getApellido() << ';'  ;
-		Archivo << Estudiantes[i].getEmail() << ';' << Estudiantes[i].getCarrera() << ';'       ;
-		Archivo << Estudiantes[i].getEdad() << ';' << Estudiantes[i].getCedula() << ';'  ;
-		Archivo << Estudiantes[i].getTelefono() << ';' << Estudiantes[i].getCodigo() << ';'   ;
-		Archivo << Estudiantes[i].getSemestre() << ';' << Estudiantes[i].getValorMultaAcomulada() << ';'      ;
-		Archivo << Estudiantes[i].getEstadoDeMulta() << ';' << Estudiantes[i].getEstadoDeEstudiante() << '\n'  ;
+void ManejoDeArchivo::CrearArchivoPrestados(vector <Estudiante> Prestamos) {
+	
+	ifstream Archivo ("Articulos-De-Estudiantes.csv") ;
+	
+	if(!Archivo.is_open()) {
+		ofstream Archivo ;
+		Archivo.open("Articulos-De-Estudiantes.csv", ios::app) ;
+		
+		Archivo << "Codigo del Estudiante" << ';' << "Codigo del articulo Prestado" << '\n' ; 
+	
+		for (int i=0 ; i<Prestamos.size() ; i++) {
+			for (int j=0 ; j<Prestamos[i].MisArticulos().size() ; j++) {
+				Archivo << Prestamos[i].getCodigo() << ';' <<  Prestamos[i].MisArticulos()[j]->getCodigoArticulo() << '\n' ; 
+			}
+		}
+	}else {
+		ActualizarPrestados(Prestamos) ;
 	}
 	Archivo.close() ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ManejoDeArchivo::ActualizarPrestados(vector <Estudiante> Prestamos) {
+	ofstream Archivo ;
+	Archivo.open("Articulos-De-Estudiantes.csv", ios::out) ;
+		
+	Archivo << "Codigo del Estudiante" << ';' << "Codigo del articulo Prestado" << '\n' ; 
+		
+	for (int i=0 ; i<Prestamos.size() ; i++) {
+		for (int j=0 ; j<Prestamos[i].MisArticulos().size() ; j++) {
+			Archivo << Prestamos[i].getCodigo() << ';' <<  Prestamos[i].MisArticulos()[j]->getCodigoArticulo() << '\n' ; 
+		}
+	}
+	Archivo.close() ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ManejoDeArchivo::CargarPrestados(vector <Estudiante*> Prestamos, vector <ArticuloDePrestamo*> Articulos) {
+	
+	ifstream Archivo ("Articulos-De-Estudiantes.csv") ;
+
+	string CodigoEstudiante, CodigoArticulo ;
+	int CodigoEstAux, CodigoArtAux ;
+
+	if (Archivo.is_open()) {
+		char texto[512]  ;
+		// Copiar todo a variables temporales
+		Archivo.getline(texto,512, '\n') ; // Cabeceras
+		while (!Archivo.eof()) {
+			
+			for (int i=0 ; i<Prestamos.size() ; i++) {
+				getline(Archivo, CodigoEstudiante, ';') ;
+				CodigoEstAux = CambioStringALong (CodigoEstudiante) ;
+				
+				getline(Archivo, CodigoArticulo, '\n') ;
+				CodigoArtAux = CambioStringALong (CodigoArticulo) ;
+				
+				if (CodigoEstAux == Prestamos[i]->getCodigo()) {
+					for (int j=0 ; j<Articulos.size() ; j++) {
+						if (CodigoArtAux == Articulos[j]->getCodigoArticulo()) {							
+							Prestamos[i]->ArticuloParaPrestar(Articulos[j]) ; 
+						}
+					} 
+ 				}
+			}
+		}
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,7 +315,7 @@ void ManejoDeArchivo::CargarArchivoProfesorCSV(vector <Profesor>* Profesores) {
 
 void ManejoDeArchivo::ActualizarArchivoProfesorCSV(vector <Profesor> Profesores) {
 	ofstream Archivo ;
-	Archivo.open("Profesores-Laboratorio.csv", ios::in) ;
+	Archivo.open("Profesores-Laboratorio.csv", ios::out) ;
 
 	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
 	Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << ';'   ;
@@ -254,7 +337,7 @@ void ManejoDeArchivo::ActualizarArchivoProfesorCSV(vector <Profesor> Profesores)
 
 void ManejoDeArchivo::CrearArchivoAdminisCSV(vector <PersonalAdmi> PersonalAdm) {
 	ofstream Archivo ;
-	Archivo.open("PersonalAdmi-Laboratorio.csv", ios::app) ;
+	Archivo.open("PersonalAdmi-Laboratorio.csv", ios::out) ;
 
 	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
 	Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << '\n'   ;
@@ -306,36 +389,6 @@ void ManejoDeArchivo::CargarArchivoAdminisCSV(vector <PersonalAdmi>* PersonalAdm
 	delete PersonalAuxiliar ;
 }
 
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Crear Archivo para articulos de prestamos
-//void ManejoDeArchivo::CrearArchivoArticuloDePrestamoCSV(vector <ArticuloDePrestamo> ArticulosParaPrestar) {
-//	ifstream Archivo ("Articulo-De-Prestamo-Laboratorio.csv") ;
-//
-//	if (!Archivo.is_open()) {
-//		ofstream Archivo ;
-//		Archivo.open("Articulo-De-Prestamo-Laboratorio.csv", ios::app) ;
-//		Archivo << "Nombre" << ';' << "Marca" << ';' << "Cantidad De Articulos" << ';' << "Codigo" << ';' ;
-//		Archivo << "Valor De Articulo" << ';' << "Estado Del Articulo" << ';' << "Estado De Disponibilidad" << ';' ;
-//		Archivo << "Estado De Asignacion a Profesor" << ';' << "Asignado a" << '\n' ;
-//		for (int i=0 ; i<ArticulosParaPrestar.size() ; i++) {
-//			Archivo << ArticulosParaPrestar[i].getIDNombre() << ';' << ArticulosParaPrestar[i].getIDMarca() << ';' ;
-//			Archivo << ArticulosParaPrestar[i].getCantidadDeTipoDeArticulo() << ';' << ArticulosParaPrestar[i].getCodigoArticulo() << ';' ;
-//			Archivo << ArticulosParaPrestar[i].getValorArticuloInicial() << ';' << ArticulosParaPrestar[i].getEstadoArticuloDeActivo() << ';' ;
-//			Archivo << ArticulosParaPrestar[i].getEstadoDeLimiteDeArticulos() << ';' << ArticulosParaPrestar[i].getEstadoDeAsignadoAProfesor() << '\n' ;
-//		}
-//		Archivo.close() ;
-//	}
-//	Archivo.close() ;
-//
-//}
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -357,7 +410,7 @@ void ManejoDeArchivo::CrearArchivoArticuloComputoCSV(vector <ArticuloComputo> Ar
 			Archivo << ArticulosComputo[i].getValorArticuloInicial() << ';' << ArticulosComputo[i].getValorActualArticulo() << ';' << ArticulosComputo[i].getEstadoArticuloDeActivo() << ';' ;
 			Archivo << ArticulosComputo[i].getEstadoDeLimiteDeArticulos() << ';' << ArticulosComputo[i].getEstadoDeAsignadoAProfesor() << ';' ; 
 			Archivo << ArticulosComputo[i].getDespreciacion() << ';' << ArticulosComputo[i].getProfesor()->getCodigo() << ';' ;
-			Archivo << ArticulosComputo[i].getFecha()->tm_year << ';' << ArticulosComputo[i].getFecha()->tm_mon << ';' << ArticulosComputo[i].getFecha()->tm_mday << '\n' ;
+			Archivo << ArticulosComputo[i].getFecha()->getAnio() << ';' << ArticulosComputo[i].getFecha()->getMes() << ';' << ArticulosComputo[i].getFecha()->getDia() << '\n' ;
 		}
 		Archivo.close() ;
 	}else {
@@ -366,17 +419,35 @@ void ManejoDeArchivo::CrearArchivoArticuloComputoCSV(vector <ArticuloComputo> Ar
 	Archivo.close() ;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ManejoDeArchivo::ActualizarComputoCSV(vector <ArticuloComputo> ArticulosComputo) {
+	ofstream Archivo ;
+	Archivo.open("Articulo-De-Computo-Laboratorio.csv", ios::out) ;
+	
+	Archivo << "Nombre" << ';' << "Marca" << ';' << "Cantidad De Articulos" << ';' << "Codigo" << ';' ;
+	Archivo << "Valor De Articulo" << ';' << "Valor Actual Del Articulo" << ';' << "Estado Del Articulo" << ';' << "Estado De Disponibilidad" << ';' ;
+	Archivo << "Estado De Asignacion a Profesor" << ';' << "Valor De Despreciacion" << ';' <<  "Asignado a" << ';' ;
+	Archivo << "Anio" << ';' << "Mes" << ';' << "Dia" << '\n' ; 
+	
+	for (int i=0 ; i<ArticulosComputo.size() ; i++) {
+		Archivo << ArticulosComputo[i].getIDNombre() << ';' << ArticulosComputo[i].getIDMarca() << ';' ;
+		Archivo << ArticulosComputo[i].getCantidad() << ';' << ArticulosComputo[i].getCodigoArticulo() << ';' ;
+		Archivo << ArticulosComputo[i].getValorArticuloInicial() << ';' << ArticulosComputo[i].getValorActualArticulo() << ';' << ArticulosComputo[i].getEstadoArticuloDeActivo() << ';' ;
+		Archivo << ArticulosComputo[i].getEstadoDeLimiteDeArticulos() << ';' << ArticulosComputo[i].getEstadoDeAsignadoAProfesor() << ';' ; 
+		Archivo << ArticulosComputo[i].getDespreciacion() << ';' << ArticulosComputo[i].getProfesor()->getCodigo() << ';' ;
+		Archivo << ArticulosComputo[i].getFecha()->getAnio() << ';' << ArticulosComputo[i].getFecha()->getMes() << ';' << ArticulosComputo[i].getFecha()->getDia() << '\n' ;
+	}
+	Archivo.close() ;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 vector <int> ManejoDeArchivo::CargarArchivoArticuloComputoCSV(vector <ArticuloComputo>* ArticulosComputo) {
 	ArticuloComputo* ArticuloAux = new ArticuloComputo ;
-	Laboratorio* Asignarle = new Laboratorio ;
-	
-	time_t FechaAux ;
-	time(&FechaAux) ;
-	ctime(&FechaAux) ;
-	struct tm* FechaAsignar = localtime(&FechaAux) ;  
 	
 	ArticulosComputo->clear() ; 
 	
@@ -421,11 +492,11 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloComputoCSV(vector <ArticuloCo
 			ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
 			
 			getline(Archivo, CodigoProfe, ';') ;
-			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, '\n') ;
 
+			getline(Archivo, Datos, ';') ; 			
+			getline(Archivo, Datos, ';') ;			
+			getline(Archivo, Datos, '\n') ;
+			
 			
 			Codigos.push_back(CambioStringALong (CodigoProfe)) ; 
 			Codigos.push_back(CambioStringALong (Codigo)) ;
@@ -436,51 +507,21 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloComputoCSV(vector <ArticuloCo
 		Codigos.pop_back() ;
 		Codigos.pop_back() ;
 	}
-	delete ArticuloAux, Asignarle ;
+	delete ArticuloAux ;
 	return Codigos ;
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void ManejoDeArchivo::ActualizarComputoCSV(vector <ArticuloComputo> ArticulosComputo) {
-	ofstream Archivo ;
-	Archivo.open("Articulo-De-Computo-Laboratorio.csv", ios::in) ;
-	
-	Archivo << "Nombre" << ';' << "Marca" << ';' << "Cantidad De Articulos" << ';' << "Codigo" << ';' ;
-	Archivo << "Valor De Articulo" << ';' << "Valor Actual Del Articulo" << ';' << "Estado Del Articulo" << ';' << "Estado De Disponibilidad" << ';' ;
-	Archivo << "Estado De Asignacion a Profesor" << ';' << "Valor De Despreciacion" << ';' <<  "Asignado a" << ';' ;
-	Archivo << "Anio" << ';' << "Mes" << ';' << "Dia" << '\n' ; 
-	
-	for (int i=0 ; i<ArticulosComputo.size() ; i++) {
-		Archivo << ArticulosComputo[i].getIDNombre() << ';' << ArticulosComputo[i].getIDMarca() << ';' ;
-		Archivo << ArticulosComputo[i].getCantidad() << ';' << ArticulosComputo[i].getCodigoArticulo() << ';' ;
-		Archivo << ArticulosComputo[i].getValorArticuloInicial() << ';' << ArticulosComputo[i].getValorActualArticulo() << ';' << ArticulosComputo[i].getEstadoArticuloDeActivo() << ';' ;
-		Archivo << ArticulosComputo[i].getEstadoDeLimiteDeArticulos() << ';' << ArticulosComputo[i].getEstadoDeAsignadoAProfesor() << ';' ; 
-		Archivo << ArticulosComputo[i].getDespreciacion() << ';' << ArticulosComputo[i].getProfesor()->getCodigo() << ';' ;
-		Archivo << ArticulosComputo[i].getFecha()->tm_year << ';' << ArticulosComputo[i].getFecha()->tm_mon << ';' << ArticulosComputo[i].getFecha()->tm_mday << '\n' ;
-	}
-	Archivo.close() ;
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-void ManejoDeArchivo::CargarArticuloComputoCSV(vector <ArticuloComputo> ArticulosParaComputo) {
-	ArticuloComputo* ArticuloAux = new ArticuloComputo ;
-	
-	time_t FechaAux ;
-	time(&FechaAux) ;
-	ctime(&FechaAux) ;
-	struct tm* FechaAsignar = localtime(&FechaAux) ;  
-	
-	vector <int> Fechas ;
+void ManejoDeArchivo::CargarArticuloComputoCSV(vector <Fecha>* FechasRegistradas) {
+	Fecha* Fechas = new Fecha ;
 	
 	ifstream Archivo ("Articulo-De-Computo-Laboratorio.csv") ;
 	
-	string Datos, CodigoProfe, Codigo ;
+	string Datos ;
 	 
 	if (Archivo.is_open()) {
 		char Cabezeras[512] ; // Esto es Para cabezeras
@@ -489,36 +530,30 @@ void ManejoDeArchivo::CargarArticuloComputoCSV(vector <ArticuloComputo> Articulo
 			getline(Archivo, Datos, ';') ;
 			getline(Archivo, Datos, ';') ;			
 			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Codigo, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
 			getline(Archivo, Datos, ';') ;			
 			getline(Archivo, Datos, ';') ;			
 			getline(Archivo, Datos, ';') ;
-			getline(Archivo, CodigoProfe, ';') ;
+			getline(Archivo, Datos, ';') ;			
+			getline(Archivo, Datos, ';') ;			
+			getline(Archivo, Datos, ';') ;			
+			getline(Archivo, Datos, ';') ;
+			getline(Archivo, Datos, ';') ;
 			
 			getline(Archivo, Datos, ';') ;
-			Fechas.push_back(CambioStringALong (Datos)) ; 
+			Fechas->setAnio(CambioStringALong (Datos)) ;
 			
 			getline(Archivo, Datos, ';') ;
-			Fechas.push_back(CambioStringALong (Datos)) ; 
+			Fechas->setMes(CambioStringALong (Datos)) ;
 			
 			getline(Archivo, Datos, '\n') ;
-			Fechas.push_back(CambioStringALong (Datos)) ; 
+			Fechas->setDia(CambioStringALong (Datos)) ;
+			
+			FechasRegistradas->push_back(*Fechas) ;
 		} 
-		Fechas.pop_back() ;
-		Fechas.pop_back() ;
-		Fechas.pop_back() ;
-		int itera = 0 ; 
-		for (int i=0 ; i<Fechas.size() ; i+=3) {
-			FechaAsignar->tm_year = Fechas[i] ; 
-			FechaAsignar->tm_mon = Fechas [i+1] ;
-			FechaAsignar->tm_mday = Fechas[i+2] ;  
-			ArticulosParaComputo[itera].AsignarFecha(FechaAsignar) ;
-			itera++ ;
-		}
+		FechasRegistradas->pop_back() ; 
 	}
+	
+	delete Fechas ; 
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -738,7 +773,7 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloMuebleCSV(vector <ArticuloMue
 
 void ManejoDeArchivo::ActualizarMuebleCSV(vector <ArticuloMueble> ArticulosParaMueble) {
 	ofstream Archivo ;
-	Archivo.open("Articulo-De-Mueble-Laboratorio.csv", ios::in) ;
+	Archivo.open("Articulo-De-Mueble-Laboratorio.csv", ios::out) ;
 	Archivo << "Nombre" << ';' << "Material" << ';' << "Cantidad De Articulos" << ';' << "Codigo" << ';' ;
 	Archivo << "Valor De Articulo" << ';' << "Valor Actual Del Articulo" << ';' << "Estado Del Articulo" << ';' << "Estado De Disponibilidad" << ';' ;
 	Archivo << "Estado De Asignacion a Profesor" << ';' << "Valor De Despreciacion" << ';' <<  "Asignado a" << '\n' ;
@@ -769,16 +804,16 @@ long ManejoDeArchivo::CambioStringALong(string Temporal) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void ManejoDeArchivo::CrearArchivoFechas(vector <ArticuloComputo> ArticulosComp){
-	ifstream Archivo ("Fechas-Articulos.csv") ;
+	ifstream Archivo ("Fechas-Articulos-Computo.csv") ;
 	
 	if(!Archivo.is_open()) {
 		ofstream Archivo ;
-		Archivo.open("Fechas-Articulos.csv" , ios::app) ;
+		Archivo.open("Fechas-Articulos-Computo.csv" , ios::app) ;
 	
-		Archivo << "Posicion" << ';' << "Dia" << ';' << "Mes" << ';' << "Anio" << '\n' ;
+		Archivo << "Codigo del Articulo" << ';' << "Dia" << ';' << "Mes" << ';' << "Anio" << '\n' ;
 		
 		for(int i=0 ; i<ArticulosComp.size() ; i++){
-			Archivo << i << ';' << ArticulosComp[i].getFecha()->tm_mday << ';' << ArticulosComp[i].getFecha()->tm_mon << ';' << ArticulosComp[i].getFecha()->tm_year+1900 << '\n' ;
+//			Archivo << ArticulosComp[i].getCodigoArticulo() << ';' << ArticulosComp[i].getFecha()->tm_year << ';' << ArticulosComp[i].getFecha()->tm_mon << ';' << ArticulosComp[i].getFecha()->tm_mday << '\n' ;
 		}
 	}else {
 		ActualizarArchivoFechas(ArticulosComp) ; 	
@@ -789,72 +824,52 @@ void ManejoDeArchivo::CrearArchivoFechas(vector <ArticuloComputo> ArticulosComp)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void ManejoDeArchivo::CargarArchivoFechasCSV(vector <ArticuloComputo>* FechasDeUso){
+void ManejoDeArchivo::ActualizarArchivoFechas(vector <ArticuloComputo> ArticulosComp) {
+	ofstream Archivo ;
+	Archivo.open("Fechas-Articulos-Computo.csv" , ios::out) ;
+	
+	Archivo << "Codigo del Articulo" << ';' << "Dia" << ';' << "Mes" << ';' << "Anio" << '\n' ;
+		
+	for(int i=0 ; i<ArticulosComp.size() ; i++){
+		//Archivo << ArticulosComp[i].getCodigoArticulo() << ';' << ArticulosComp[i].getFecha()->tm_year << ';' << ArticulosComp[i].getFecha()->tm_mon << ';' << ArticulosComp[i].getFecha()->tm_mday << '\n' ;
+	}
+	Archivo.close() ; 
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ManejoDeArchivo::CargarArchivoFechasCSV(vector <int>* FechasDeUso){
 	
 	FechasDeUso->clear() ; // Eliminar por si existe algo ya en el vector
 	
-	time_t FechaAux ;
-	time(&FechaAux) ;
-	ctime(&FechaAux) ;
-	struct tm* FechaAsignar = localtime(&FechaAux) ;  
-	
-	ArticuloComputo* ArticuloAux = new ArticuloComputo ;
-	string Dato, Dia, Mes, Anio ; 
+	string Codigo, Dia, Mes, Anio ; 
 	int AuxPaso ;
 	char Cabeceras[512] ;
 	
-	ifstream Archivo ("Fechas-Articulos.csv") ;
+	ifstream Archivo ("Fechas-Articulos-Computo.csv") ;
 	
 	if(Archivo.is_open()){
 		Archivo.getline(Cabeceras,512, '\n') ; 	// Para copiar cabezeras y desacerlas
 		while(!Archivo.eof()){
 			
-			getline(Archivo , Dato , ';') ;  	// Posicion
-			getline(Archivo , Dia , ';') ;
-			getline(Archivo , Mes , ';') ;
-			getline(Archivo , Anio , '\n') ;
-			cout << "Posicion:" << Dato << endl ;  
-			int AuxPaso = CambioStringALong(Dato) ;
-			cout << "a:" << AuxPaso << endl ;
-			cout << "Tamanio:" << FechasDeUso->size() << endl ; 
-			//for (int i=0 ; i<FechasDeUso->size() ; i++) {
-			//	if (AuxPaso == i) {
-					//getline(Archivo , Dato , ';') ;  	// Dia
-					FechaAsignar->tm_mday = CambioStringALong(Dia) ;
-					//getline(Archivo , Dato , ';') ; 	// Mes
-					FechaAsignar->tm_mon = CambioStringALong(Mes) ;
-					//getline(Archivo , Dato , '\n') ;    // Año
-					FechaAsignar->tm_year = CambioStringALong(Anio) ;
-					cout << FechaAsignar->tm_year << endl ;
-					system("pause") ;  
-					ArticuloAux->AsignarFecha(FechaAsignar) ;
-					FechasDeUso->push_back(*ArticuloAux) ; 
-			//	}else {
-			//		cout << "\nNo se ha encontrado nada \n\n" ;
-			//		system("pause") ;
-			//	}
-			//}	
+			getline(Archivo , Codigo, ';') ;  	// Codigo Del Articulo
+			getline(Archivo , Anio , ';') ;		// Anio
+			getline(Archivo , Mes , ';') ;		// Mes
+			getline(Archivo , Dia , '\n') ;		// Dia
+			
+			// Agregarlos al Vector
+			FechasDeUso->push_back(CambioStringALong (Codigo)) ;
+			FechasDeUso->push_back(CambioStringALong (Anio)) ;
+			FechasDeUso->push_back(CambioStringALong (Mes)) ;
+			FechasDeUso->push_back(CambioStringALong (Dia)) ;
 		}
 		FechasDeUso->pop_back() ;
-		FechasDeUso->pop_back() ;
-		 
 	}
 	Archivo.close() ;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void ManejoDeArchivo::ActualizarArchivoFechas(vector <ArticuloComputo> ArticulosComp) {
-	ofstream Archivo ;
-	Archivo.open("Fechas-Articulos.csv" , ios::in) ;
-	
-	Archivo << "Posicion" << ';' << "Dia" << ';' << "Mes" << ';' << "Anio" << '\n' ;
-		
-	for(int i=0 ; i<ArticulosComp.size() ; i++){
-		Archivo << i << ';' << ArticulosComp[i].getFecha()->tm_mday << ';' << ArticulosComp[i].getFecha()->tm_mon << ';' << ArticulosComp[i].getFecha()->tm_year+1900 << '\n' ;
-	}
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

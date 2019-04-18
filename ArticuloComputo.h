@@ -12,7 +12,8 @@ class ArticuloComputo : public Articulo {
 		int CantidadDisponibles ;
 		float ValorDespreciacionAnual ;
 		
-		Profesor* ProfesorAsignado ;		
+		Profesor* ProfesorAsignado ;
+		Fecha* FechaDeRegistro ;		
 
 	public :
 		ArticuloComputo () ;
@@ -25,6 +26,9 @@ class ArticuloComputo : public Articulo {
 		float getDespreciacion() ;
 		int getCantidad () ; 
 		float Despreciacion ()  ; // Polimorfismo
+		Fecha* getFecha () ; 
+		void AsignarFecha (Fecha* FechaRegistro) ; 
+		void RegistrarFecha (int Dia, int Mes, int Anio) ;
 		void CrearComputo (ArticuloComputo* ComputoACrear) ; 
 		void CrearArchivoInventario () ;
 		~ArticuloComputo () ;

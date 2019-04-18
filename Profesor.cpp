@@ -76,7 +76,8 @@ void Profesor::CrearDatosDeProfesor(Profesor* Profesor) {
 	*Codigo = common::ValidarEntero("Ingrese su nuevo numero de codigo: \n") ;
 	Profesor->setCodigo(*Codigo) ;
 	
-	cout << "\nRegistro Exitoso \n\n" ;
+	cout << "\nPor favor espere ! \n" ;
+	cout <<  "Estamos Revisando si los datos ingresados estan correctamente \n\n" ;
 	system("pause") ;
 	
    	delete Nombre, Apellido, Email, TituloProfesional ;

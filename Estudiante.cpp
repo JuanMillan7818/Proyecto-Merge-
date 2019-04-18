@@ -33,6 +33,10 @@ void Estudiante::setEstadoDeEstudiante(bool EstadoDeEstudiante) {
 	this->EstadoDeEstudiante = EstadoDeEstudiante ;
 }
 
+void Estudiante::ArticuloParaPrestar(ArticuloDePrestamo* Articulo) {
+	this->ArticulosPrestados.push_back(Articulo) ;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,13 +65,40 @@ bool Estudiante::getEstadoDeEstudiante() {
 	return this->EstadoDeEstudiante ;
 }
 
-
+vector <ArticuloDePrestamo*> Estudiante::MisArticulos() {
+	return this->ArticulosPrestados ;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
 // Mostrar
 void Estudiante::MostrarTodosLosArticulos() {
+	cout << "\n\tMis Articulos Prestados \n\n" ;
+	for (int i=0 ; i<this->ArticulosPrestados.size() ; i++) {
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		cout << "\n\t Articulo #" << i+1 << "\n\n" ;
+		cout << "1. Nombre: " << this->ArticulosPrestados[i]->getIDNombre() << "\n" ;
+	 	cout << "2. Codigo: " << this->ArticulosPrestados[i]->getCodigoArticulo() << "\n" ;
+	 	cout << "3. Marca: "  << this->ArticulosPrestados[i]->getIDMarca() << "\n" ;
+	 	cout << "4. Cantidad: " << this->ArticulosPrestados[i]->getCantidadDeTipoDeArticulo() << "\n" ;
+	 	cout << "5. Valor Articulo: " << this->ArticulosPrestados[i]->getValorArticuloInicial() << "\n" ;
+	 	cout << "6. Valor Actual: " << this->ArticulosPrestados[i]->getValorActualArticulo() << "\n" ;
+	 	cout << "7. Estado: " << this->ArticulosPrestados[i]->getEstadoArticuloDeActivo() << "\n" ;
+	 	cout << "8. Estado Limite: " << this->ArticulosPrestados[i]->getEstadoDeLimiteDeArticulos() << "\n" ;
+	 	cout << "9. Asignado al profesor: " << this->ArticulosPrestados[i]->getEstadoDeAsignadoAProfesor() << "\n" ;
+	 	cout << "10.Valor de despreciacion: " << this->ArticulosPrestados[i]->getDespreciacion() << "\n" ;
+	 	cout << "11. Asignado al Profesor: " << this->ArticulosPrestados[i]->getProfesor()->getNombre() << "\n" ;  
+		cout << "    Codigo del Profesor: " << this->ArticulosPrestados[i]->getProfesor()->getCodigo() << "\n" ;  
+ 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+void Estudiante::MostrarArticulo(int Posicion) {
 	
 	
 }
@@ -124,20 +155,33 @@ void Estudiante::CrearDatosDeObjetoEstudiante(Estudiante* EstudianteParaCrear, i
 		EstudianteParaCrear->setEstadoDeMulta(EstadoDeMulta) ;
 		EstudianteParaCrear->setEstadoDeEstudiante(EstadoDeEstudiante) ;
 		EstudianteParaCrear->CorrerValorMulta(ValorMultaAcomulada) ;
-		cout << "\nRegistro Exitoso \n\n" ;
+		cout << "\nPor favor espere ! \n" ;
+		cout <<  "Estamos Revisando si los datos ingresados estan correctamente \n\n" ;
 		system("pause") ; 
 	}
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// Asignar Al vector
-void Estudiante::AsignarAlVector(ArticuloDePrestamo* ArticuloParaPrestar) {
-	this->ArticulosPrestados.push_back(ArticuloParaPrestar) ;
+
+void Estudiante::Devolucion(int Posicion) {
+	
+	vector <ArticuloDePrestamo> Paso ; 
+	for (int i=0 ; i<this->ArticulosPrestados.size() ; i++) {
+		Paso.push_back(*this->ArticulosPrestados[i]) ; 
+	}
+	
+	Paso.erase(Paso.begin()+Posicion, Paso.begin()+(Posicion+1)) ; 
+	
+	///////////////////////////////////////////////////////////////////////
+	vector <ArticuloDePrestamo> PasoAOriginal ; 
+	this->ArticulosPrestados.clear() ;
+	for (int i=0 ; i<Paso.size() ; i++) {
+		this->ArticulosPrestados.push_back(&Paso[i]) ; 
+	}
 }
-
-
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 // DESTRUCTOR

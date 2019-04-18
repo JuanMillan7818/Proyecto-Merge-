@@ -29,16 +29,18 @@ class Estudiante : public Persona {
 		void CorrerValorMulta (int ValorMultaAcomulada) ;
 		void setEstadoDeMulta (bool EstadoDeMulta) ;
 		void setEstadoDeEstudiante (bool EstadoDeEstudiante) ;
+		void ArticuloParaPrestar (ArticuloDePrestamo* Articulo) ;
 		string getCarrera () ;
 		int getCodigo () ;
 		int getSemestre ()  ;
 		int getValorMultaAcomulada () ;
 		bool getEstadoDeMulta () ;
 		bool getEstadoDeEstudiante () ;
+		vector <ArticuloDePrestamo*> MisArticulos () ;
 		void MostrarTodosLosArticulos () ;
+		void MostrarArticulo (int Posicion) ;
 		void CrearDatosDeObjetoEstudiante (Estudiante* EstudianteParaCrear, int Cantidad) ;
-		void AsignarAlVector (ArticuloDePrestamo* ArticuloParaPrestar) ; 
-		void Devolucion (ArticuloDePrestamo* ArticuloDeDevolucion) ;
+		void Devolucion (int Posicion) ;
 		~Estudiante () ;
 };
 #endif

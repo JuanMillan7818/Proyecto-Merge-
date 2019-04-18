@@ -3,12 +3,12 @@
 #define ARTICULO_H_
 #include <iostream>
 #include <string>
-#include <time.h>
 #include "common.h"
+#include "Fecha.h"
 
 using namespace std ; 
 
-class Articulo {
+class Articulo  {
 	protected :
 		string IDNombre ;
 		int CodigoArticulo ;
@@ -16,9 +16,7 @@ class Articulo {
 		float ValorActualArticulo ;
 		bool EstadoArticuloDeActivo ;
 		bool EstadoDeLimiteDeArticulos ;
-		bool EstadoDeAsignadoAProfesor ;
-		
-		struct tm* Fecha ;
+		bool EstadoDeAsignadoAProfesor ; 
 		
 	public :
 		Articulo () ;
@@ -38,8 +36,6 @@ class Articulo {
 		bool getEstadoArticuloDeActivo () ;
 		bool getEstadoDeLimiteDeArticulos () ;
 		bool getEstadoDeAsignadoAProfesor () ;
-		struct tm* getFecha () ; 
-		void AsignarFecha (struct tm* AgregarFecha) ;  
 		virtual float Despreciacion () = 0 ;
 		~Articulo () ; 
 };

@@ -13,7 +13,7 @@ class Menu {
 	private :
 		int Opcion ; // Este Atributo es para utilizar solo en el menu 
 					 // para que me vaya almacenando la opciones ingresadas
-		Laboratorio* UsoDelLaboratorio = new Laboratorio () ;  
+		Laboratorio* UsoDelLaboratorio = new Laboratorio () ;   
 		 
 	public :
 		Menu () ; 
