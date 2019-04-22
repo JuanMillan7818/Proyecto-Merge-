@@ -2,6 +2,7 @@
 
 // CONSTRUCTOR
 Menu::Menu(){
+	
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,56 +13,69 @@ void Menu::MenuIngreso() {
 	
 	UsoDelLaboratorio->CargarTodoslosArchivos() ; // Cargar los archivos a los vecotres
 	
-	UsoDelLaboratorio->getComputo() ;
-	system("pause") ; 
-
-//	UsoDelLaboratorio->getEstudianteYPrestados() ;
-//	system("pause") ; 
+	bool Estado = UsoDelLaboratorio->IndicarFecha() ;  // Dar la fecha actual
 	
-	
-	// Crear Informacion Inicial 
-	if (UsoDelLaboratorio->VerificarVectorInformaciones() == true) {
-		UsoDelLaboratorio->AgregarAlVectorInformaciones(3) ;
-	}
-	
-	 
-	do {
+	if (Estado == true) {
+		 
+		UsoDelLaboratorio->Multa() ; 
+		UsoDelLaboratorio->Depreciar() ;
+		
+		// Crear Informacion Inicial 
+		if (UsoDelLaboratorio->VerificarVectorInformaciones() == true) {
+			UsoDelLaboratorio->AgregarAlVectorInformaciones(3) ;
+		}
+ 		
+		 
+		do {
+			system("cls") ;
+			cout << "\t\bBienvenido Al Laboratorio Budokai Taichi \n\n" ;
+			cout << "1. Registrarse. \n" ;
+			cout << "2. Ver informacion principal del Laboratorio. \n" ;
+			cout << "3. Consultas. \n" ;
+			cout << "4. Salir. \n\n " ;
+			
+			Opcion = common::ValidarEntero("Ingresa una opcion: \n" ) ;
+			
+			switch (this->Opcion) {
+				case 1 : { // Ingreso al sistema
+					RegistroIDPersona () ;
+					break;  
+				}
+				
+				case 2 : { // Ver informacion principal
+					UsoDelLaboratorio->getInformaciones() ;
+					system("pause") ;
+					MenuParaArticulosDeComputo() ; 
+					break;
+				}
+				
+				case 3 : { // Consultas
+					MenuConsultas() ;
+					break;
+				}
+				
+				case 4 : { // Salir 
+					cout << "Gracias Por su Visita \n\n" ;
+					*Salir = true ;
+					exit(1) ; // sale del ejecutable directamente
+					break;
+				}
+							
+				default : { // Opcion Incorrecta
+					cout << "\nHas elegido una opcion incorrecta \n" ;
+					cout << "Por favor intente de nuevo \n" ;
+					system("pause") ;
+					break;
+				}
+			} 
+		}while (!*Salir) ;
+	}else {
 		system("cls") ;
-		cout << "\t\bBienvenido Al Laboratorio Budokai Taichi \n\n" ;
-		cout << "1. Registrarse. \n" ;
-		cout << "2. Ver informacion principal del Laboratorio. \n" ;
-		cout << "3. Salir. \n\n " ;
-		
-		Opcion = common::ValidarEntero("Ingresa una opcion: \n" ) ;
-		
-		switch (this->Opcion) {
-			case 1 : { // Ingreso al sistema
-				RegistroIDPersona () ;
-				break;  
-			}
-			
-			case 2 : { // Ver informacion principal
-				UsoDelLaboratorio->getInformaciones() ;
-				system("pause") ;
-				MenuParaArticulosDeComputo() ; 
-				break;
-			}
-			
-			case 3 : { // Salir 
-				cout << "Gracias Por su Visita \n\n" ;
-				*Salir = true ;
-				exit(1) ; // sale del ejecutable directamente
-				break;
-			}
-						
-			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
-				system("pause") ;
-				break;
-			}
-		} 
-	}while (!*Salir) ;
+		cout << "\n\t\tHas ingresado datos no validos \n" ;
+		cout << "\t\tIntenta de nuevo \n\n" ;
+		system("pause") ;
+		MenuIngreso() ; 
+	}
 	
 	delete Salir ;
 }
@@ -92,6 +106,7 @@ void Menu::RegistroIDPersona() {
 				bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(Cantidad) ;
 				
 				if (Estado == true) {
+					*Salir = true ;
 					MenuParaEstudiantes(UsoDelLaboratorio->MandarPosicionActual(0)) ;
 				}
 				break;
@@ -101,6 +116,7 @@ void Menu::RegistroIDPersona() {
 				bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(Cantidad) ;
 				
 				if (Estado == true) {
+					*Salir = true ;
 					MenuParaProfesores(UsoDelLaboratorio->MandarPosicionActual(1)) ;
 				}
 				break;
@@ -110,6 +126,7 @@ void Menu::RegistroIDPersona() {
 				bool Estado = UsoDelLaboratorio->AgregarAlVectorPersonalAdmin(Cantidad) ;
 				
 				if (Estado == true) {
+					*Salir = true ;
 					MenuParaPersonalAdmi(UsoDelLaboratorio->MandarPosicionActual(3)) ;
 				}
 				break;
@@ -412,7 +429,7 @@ void Menu::MenuParaArticulosDePrestamo(){
     	this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ;
     	
     	switch(this->Opcion){
-    		case 1 :{
+    		case 1 :{ // Ver todos los articulos
     			if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
 					UsoDelLaboratorio->getPrestamos() ;
     				system("pause");
@@ -424,7 +441,7 @@ void Menu::MenuParaArticulosDePrestamo(){
 				break;
 			}
 			
-			case 2 :{ 
+			case 2 :{ // Ver un articulo en especifico
 				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
 					UsoDelLaboratorio->getPrestamos() ;
 					this->Opcion = common::ValidarEntero("Elija ucual desea ver especificamente? \n") ;					
@@ -445,9 +462,13 @@ void Menu::MenuParaArticulosDePrestamo(){
 				
 				this->Opcion = common::ValidarEntero("Ingrese la cantidad: \n") ;
 				
-				UsoDelLaboratorio->AgregarAlVectorPrestamo(this->Opcion) ; 
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorPrestamo(this->Opcion) ; 
+				system("pause") ;
 				
-				system("pause");
+				if (Estado == false) {
+					*Salir = true ;
+					MenuParaArticulosDePrestamo() ;
+				}
 				
 				break;
 			}
@@ -569,26 +590,34 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 			}
 			
 			case 6 : { // diligenciar devolucion
+				bool Estado ; 
 				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
 					
-					UsoDelLaboratorio->ServicioDevolucion(Posicion) ;
+					Estado = UsoDelLaboratorio->ServicioDevolucion(Posicion) ;
 					
 				}else {
 					cout << "\n\tERROR !!! \n" ;
-					cout << "\tNo puedes ejecutar la funcion de devolucion por razones de no haber registro de articulos de Prestamo \n\n" ; 									
+					cout << "\tNo puedes ejecutar la funcion de devolucion por razones de no haber registro de articulos de Prestamo \n\n" ;
 				}				
 				system("pause") ; 	
+				
+				if (Estado == true) {
+					cout << "\n\tTe redigiriendo al menu anterios para que se conserven los cambios \n\n" ; 
+					system("pause") ; 
+					*Salir = true ;
+					RegistroIDPersona() ; 
+				}
 				break;
 			}
 			
-			case 7 : { // Diligenciar pago de multa
+			case 7 : { // Diligenciar pago de multa	
 				UsoDelLaboratorio->RealizarPagoMulta(Posicion) ; 
 				system("pause") ;
 				break;
 			}
 			
-			case 8 : { //consultar estado y valor de multa
-				UsoDelLaboratorio->AccederEStadoMultaEstudiante(this->Opcion) ;
+			case 8 : { //consultar estado y valor de multa					
+				UsoDelLaboratorio->AccederEstadoMultaEstudiante(Posicion) ;
 				system("pause") ;
 				break;
 			}
@@ -671,6 +700,7 @@ void Menu::MenuExclusivoEstudiante(){
 				bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion);
 				
 				if (Estado == false) {
+					*Salir = true ;
 					MenuExclusivoEstudiante() ; 
 				}
 				break;
@@ -784,7 +814,13 @@ void Menu::MenuParaArticulosDeMueble() {
 				
 				Cantidad = common::ValidarEntero("\nCuantos articulos desea requistar ? \n") ;
 					
-				UsoDelLaboratorio->AgregarAlVectorMueble(Cantidad) ;
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorMueble(Cantidad) ;
+				system("pause") ; 
+				
+				if (Estado == false) {
+					*Salir = true ;
+					MenuParaArticulosDeMueble() ;
+				}
 
 				break;
 			}
@@ -906,8 +942,13 @@ void Menu::MenuParaArticulosDeComputo() {
 				
 				Cantidad = common::ValidarEntero("\nCuantos articulos desea requistar ? \n") ;
 					
-				UsoDelLaboratorio->AgregarAlVectorComputo(Cantidad) ;
+				bool Estado = UsoDelLaboratorio->AgregarAlVectorComputo(Cantidad) ;
 				system("pause") ; 
+				
+				if (Estado == false) {
+					*Salir = true ;
+					MenuParaArticulosDeComputo() ;
+				}
 				break;
 			}
 				
@@ -1027,6 +1068,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion) ;
 					
 					if (Estado == false) {
+						*Salir = true ;
 						MenuParaPersonalAdmi(Posicion) ;
 					}
 				}
@@ -1050,6 +1092,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 					
 					if (Estado == false) {
+						*Salir = true ;
 						MenuParaPersonalAdmi(Posicion) ;
 					}
 				}
@@ -1073,13 +1116,19 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
 						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
 						
-						UsoDelLaboratorio->AgregarAlVectorComputo(this->Opcion) ;
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorComputo(this->Opcion) ;
+						if(Estado == false) {
+							*Salir = true ;
+							MenuParaPersonalAdmi(Posicion) ;
+						}
+						
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
 						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 						
 						if (Estado == false) {
+							*Salir = true ;
 							MenuParaPersonalAdmi(Posicion) ;
 						}
 					}					
@@ -1104,13 +1153,19 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
 						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
 						
-						UsoDelLaboratorio->AgregarAlVectorMueble(this->Opcion) ;
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorMueble(this->Opcion) ;
+						
+						if (Estado == false) {
+							*Salir = true ;
+							MenuParaPersonalAdmi(Posicion) ;
+						}
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
 						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 						
 						if (Estado == false) {
+							*Salir = true ;
 							MenuParaPersonalAdmi(Posicion) ;
 						}
 					}
@@ -1134,13 +1189,18 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
 						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
 						
-						UsoDelLaboratorio->AgregarAlVectorDisponibles(this->Opcion) ;
+						bool Estado = UsoDelLaboratorio->AgregarAlVectorPrestamo(this->Opcion) ;
+						
+						if (Estado == false) {
+							MenuParaPersonalAdmi(Posicion) ;
+						}
 					}else {
 						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
 						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
 						bool Estado = UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 						
 						if (Estado == false ){
+							*Salir = true ;
 							MenuParaPersonalAdmi(Posicion) ;
 						}
 					}
@@ -1245,9 +1305,107 @@ void Menu::MenuInformacionLaboratorio() {
 	}while(!*Salir) ;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+void Menu::MenuConsultas() {
+	bool* Salir = new bool (false) ;
+	
+	do {
+		system("cls") ;
+		
+		cout << "\n\tFunciones disponibles para consultas \n\n" ;
+		cout << "1. Consultar articulos asigados a un profesor. \n" ;
+		cout << "2. Consultar asignacion de articulo. \n" ;
+		cout << "3. Consultar historial de prestamo de un articulo. \n" ;
+		cout << "4. Consultar historial de prestamo de un estudiante. \n" ;
+		cout << "5. Consultar multa y estado de prestamo de un estudiante. \n" ;
+		cout << "6. Consultar prestamos realizados en fechas determinadas. \n" ;
+		cout << "7. Consultar valor , despreciacion y estado de un articulo. \n" ; 
+		cout << "8. Consultar los articulos activos e inactivos. \n" ;
+		cout << "9. Atras. \n" ;
+		cout << "10. Salir \n\n" ;
+		
+		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
+		
+		switch(this->Opcion) {
+			case 1 : { // Consultar Articulos de profesor
+				UsoDelLaboratorio->ConsultaProfeArticulos() ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 2 : { // Consultar asignacion del articulo
+				UsoDelLaboratorio->ConsultaAsignacionArt() ; 
+				system("pause") ; 
+				break;
+			}
+			
+			case 3 : { // Consultar Historial de articulo Prestamo
+				system("cls") ;
+				UsoDelLaboratorio->MostrarHistorialArticulo() ; 
+				system("pause") ; 
+				break;
+			}
+			
+			case 4 : { // Consultar Historial de prestamo estudiante
+				UsoDelLaboratorio->MostrarHistorialEstudiante() ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 5 : { // Multa y Estado de estudiante
+				UsoDelLaboratorio->ConsultaMultaYEstado() ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 6 : { // Consultar Prestamos en fechas
+				UsoDelLaboratorio->MostrarHistorialConFechas() ;
+				system("pause") ;
+				break;
+			}
+			
+			case 7 : { // Valor, Despreciacion Y estado de articulo
+				UsoDelLaboratorio->ConsultaVDEArticulo() ;
+				system("pause") ;
+				break;
+			}
+			
+			case 8 : { // Estados de activos o inactivos
+				UsoDelLaboratorio->ConsultaActiInac() ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 9 : { // Atras
+				*Salir = true ; 
+				break;
+			}
+			
+			case 10 : { // Salir
+				cout << "\nEsperamos su regreso \n\n" ;
+				system("pause") ;
+				exit(1) ;
+				break;
+			}
+			
+			default : { // Opcion Incorrecta
+				cout << "\nHas elegido una opcion incorrecta \n" ;
+				cout << "Por favor intente de nuevo \n" ;
+				system("pause") ;
+				system("cls") ;
+				break;
+			}
+			
+		}
+	}while(!*Salir) ;
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
+
 // DESTRUCTOR
 Menu::~Menu() {
 }

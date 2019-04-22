@@ -24,7 +24,7 @@ class ArticuloMueble : public Articulo {
 		float getDespreciacion() ;
 		int getCantidad () ; 
 		Profesor* getProfesorAsignado () ;
-		float Despreciacion ()  ; // Polimorfismo
+		bool Despreciacion (Fecha* Actual, Fecha* FechaArticulo)  ; // Polimorfismo
 		void CrearMueble (ArticuloMueble* ArticuloACrear) ; 
 		~ArticuloMueble () ;
 };

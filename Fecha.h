@@ -1,6 +1,8 @@
 
 #ifndef FECHA_H_
 #define FECHA_H_
+#include <iostream>
+#include <stdlib.h>
 
 using namespace std ;
 
@@ -19,7 +21,7 @@ class Fecha {
 		int getDia () ;
 		int getMes () ;
 		int getAnio () ;
-		bool ValidarFormatoDeFecha (int Dia, int Mes, int Anio) ;
+		bool ValidarFormatoDeFecha (Fecha* FechaAValidar, Fecha* Actual) ;
 		~Fecha () ;
 };
 #endif

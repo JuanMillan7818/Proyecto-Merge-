@@ -18,6 +18,8 @@ class Articulo  {
 		bool EstadoDeLimiteDeArticulos ;
 		bool EstadoDeAsignadoAProfesor ; 
 		
+		Fecha* FechaDeRegistro ;
+		
 	public :
 		Articulo () ;
 		Articulo (string IDNombre, int CodigoArticulo, int ValorArticuloInicial, int ValorActualArticulo, 
@@ -36,7 +38,9 @@ class Articulo  {
 		bool getEstadoArticuloDeActivo () ;
 		bool getEstadoDeLimiteDeArticulos () ;
 		bool getEstadoDeAsignadoAProfesor () ;
-		virtual float Despreciacion () = 0 ;
+		Fecha* getFecha () ; 
+		void AsignarFecha (Fecha* FechaArticulo) ;
+		virtual bool Despreciacion (Fecha* Actual, Fecha* FechaArticulo) = 0 ;
 		~Articulo () ; 
 };
 #endif

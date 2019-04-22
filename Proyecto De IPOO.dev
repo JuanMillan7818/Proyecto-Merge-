@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=32
+UnitCount=29
 
 [VersionInfo]
 Major=1
@@ -150,27 +150,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit11]
-FileName=Historial.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit12]
-FileName=ArticuloMueble.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit13]
 FileName=ArticuloComputo.h
 CompileCpp=1
 Folder=
@@ -180,7 +160,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit14]
+[Unit13]
 FileName=ArticuloDePrestamo.h
 CompileCpp=1
 Folder=
@@ -190,7 +170,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
+[Unit14]
 FileName=Articulo.cpp
 CompileCpp=1
 Folder=
@@ -200,7 +180,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
+[Unit15]
 FileName=Fecha.cpp
 CompileCpp=1
 Folder=
@@ -210,7 +190,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit17]
+[Unit16]
 FileName=Informacion.cpp
 CompileCpp=1
 Folder=
@@ -220,7 +200,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit18]
+[Unit17]
 FileName=Laboratorio.cpp
 CompileCpp=1
 Folder=
@@ -230,7 +210,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit18]
 FileName=Profesor.cpp
 CompileCpp=1
 Folder=
@@ -240,7 +220,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit19]
 FileName=Persona.cpp
 CompileCpp=1
 Folder=
@@ -250,7 +230,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
+[Unit20]
 FileName=ArticuloComputo.cpp
 CompileCpp=1
 Folder=
@@ -260,7 +240,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit22]
+[Unit21]
 FileName=ArticuloDePrestamo.cpp
 CompileCpp=1
 Folder=
@@ -270,7 +250,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit23]
+[Unit22]
 FileName=Menu.cpp
 CompileCpp=1
 Folder=
@@ -280,7 +260,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit24]
+[Unit23]
 FileName=Estudiante.cpp
 CompileCpp=1
 Folder=
@@ -290,17 +270,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit26]
-FileName=common.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit25]
+[Unit24]
 FileName=common.cpp
 CompileCpp=1
 Folder=
@@ -310,7 +280,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit27]
+[Unit26]
 FileName=ManejoDeArchivo.cpp
 CompileCpp=1
 Folder=
@@ -320,8 +290,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit28]
-FileName=Prestamo.h
+[Unit25]
+FileName=common.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -331,7 +301,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit29]
-FileName=Prestamo.cpp
+FileName=PersonalAdmi.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -341,7 +311,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=ArticuloMueble.cpp
+FileName=PersonalAdmi.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -351,7 +321,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit31]
-FileName=PersonalAdmi.h
+FileName=PersonalAdmi.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -362,6 +332,36 @@ BuildCmd=
 
 [Unit32]
 FileName=PersonalAdmi.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=ArticuloMueble.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
+FileName=ArticuloMueble.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit28]
+FileName=PersonalAdmi.h
 CompileCpp=1
 Folder=
 Compile=1

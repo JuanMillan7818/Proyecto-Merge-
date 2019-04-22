@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o Prestamo.o ArticuloMueble.o PersonalAdmi.o
-LINKOBJ  = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o Prestamo.o ArticuloMueble.o PersonalAdmi.o
+OBJ      = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o ArticuloMueble.o PersonalAdmi.o
+LINKOBJ  = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o ArticuloMueble.o PersonalAdmi.o
 LIBS     = -L"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/lib" -L"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/include" -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/include" -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/juancho/FUNDAMENTOS DE PROGRAMACIÓN/SEMESTRE 2  IPO/Datos de  C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -62,9 +62,6 @@ common.o: common.cpp
 
 ManejoDeArchivo.o: ManejoDeArchivo.cpp
 	$(CPP) -c ManejoDeArchivo.cpp -o ManejoDeArchivo.o $(CXXFLAGS)
-
-Prestamo.o: Prestamo.cpp
-	$(CPP) -c Prestamo.cpp -o Prestamo.o $(CXXFLAGS)
 
 ArticuloMueble.o: ArticuloMueble.cpp
 	$(CPP) -c ArticuloMueble.cpp -o ArticuloMueble.o $(CXXFLAGS)

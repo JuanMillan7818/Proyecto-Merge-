@@ -5,7 +5,6 @@
 #include <vector>
 #include "Persona.h"
 #include "ArticuloDePrestamo.h"
-//#include "Prestamo.h" 
 
 
 class Estudiante : public Persona {

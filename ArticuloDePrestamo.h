@@ -3,6 +3,7 @@
 #define ARTICULODEPRESTAMO_H_
 #include "Articulo.h"
 #include "Profesor.h"
+#include "Fecha.h"
 #include <vector>
 
 class ArticuloDePrestamo : public Articulo { 
@@ -13,7 +14,8 @@ class ArticuloDePrestamo : public Articulo {
 
 		
 		Profesor* ProfesorAsignado ;
-			
+		Fecha* FechaLimite ; 
+		
 	public :
 		ArticuloDePrestamo () ;
 		void setIDMarca (string IDMarca) ;
@@ -25,8 +27,9 @@ class ArticuloDePrestamo : public Articulo {
 		Profesor* getProfesor () ;
 		void AsignarAProfesor (Profesor* Profesor) ;
 		void CrearArticuloParaPrestamo (ArticuloDePrestamo* ArticuloParaCrear) ; 
-		ArticuloDePrestamo* ArticulosDePrestamoIniciales (ArticuloDePrestamo* ArticulosIniciales, int NroDeArticulo) ; 
-		float Despreciacion ()  ;  // Polimorfismo
+		bool Despreciacion (Fecha* Actual, Fecha* FechaArticulo)  ;  // Polimorfismo
+		void AgregarFechaLim (Fecha* FechaLim) ; 
+		Fecha* MostrarFecha () ; 
 		~ArticuloDePrestamo () ;
 };
 #endif 

@@ -16,6 +16,7 @@ class Persona {
 		int Edad ;
 		long Cedula ;
 		long Telefono ;
+		
 	
 	public :
 		Persona () ;

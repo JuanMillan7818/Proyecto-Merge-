@@ -12,8 +12,7 @@ class ArticuloComputo : public Articulo {
 		int CantidadDisponibles ;
 		float ValorDespreciacionAnual ;
 		
-		Profesor* ProfesorAsignado ;
-		Fecha* FechaDeRegistro ;		
+		Profesor* ProfesorAsignado ;		
 
 	public :
 		ArticuloComputo () ;
@@ -25,10 +24,7 @@ class ArticuloComputo : public Articulo {
 		string getIDMarca () ;
 		float getDespreciacion() ;
 		int getCantidad () ; 
-		float Despreciacion ()  ; // Polimorfismo
-		Fecha* getFecha () ; 
-		void AsignarFecha (Fecha* FechaRegistro) ; 
-		void RegistrarFecha (int Dia, int Mes, int Anio) ;
+		bool Despreciacion (Fecha* Actual, Fecha* FechaArticulo)  ; // Polimorfismo 
 		void CrearComputo (ArticuloComputo* ComputoACrear) ; 
 		void CrearArchivoInventario () ;
 		~ArticuloComputo () ;

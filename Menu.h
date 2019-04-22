@@ -3,9 +3,6 @@
 #define MENU_H_
 #include <string>
 #include "Laboratorio.h"
-#include "Prestamo.h" 
- 
- 
 
 using namespace std ;
 
@@ -30,8 +27,8 @@ class Menu {
 		void MenuParaArticulosDeComputo  () ;
 		void MenuParaPersonalAdmi(int Posicion) ;
 		void MenuInformacionLaboratorio () ;
-		void MenuParaHistoriales () ;
 		void MenuParaEstadosDeArticulo () ;
+		void MenuConsultas () ;
 		~Menu () ;
 };
 #endif 

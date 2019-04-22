@@ -49,59 +49,238 @@ float ArticuloDePrestamo::getDespreciacion(){
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-float ArticuloDePrestamo::Despreciacion() { 
-	float ValorDeArticulo, DespreciacionXMes ; 
-	//ValorDeArticulo = ArticuloADespreciar.getValorArticuloInicial() ;
-	DespreciacionXMes = ValorDeArticulo / 18 ; 
-//	for (int i=1 ; )
-//	ValorDeArticulo -=
-//	ArticuloADespreciar.setValorActualArticulo()
-	float a = 1.2 ;
+bool ArticuloDePrestamo::Despreciacion(Fecha* Actual, Fecha* FechaArticulo) { 
+	int DiferenciAnios, DiferenciaMes, DiferenciaAlAnio ; 
 	
-	return a ; 
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
-ArticuloDePrestamo* ArticuloDePrestamo::ArticulosDePrestamoIniciales(ArticuloDePrestamo* ArticulosIniciales, int NroDeArticulo ) {
-	string Nombre, Marca ;
-	int Codigo, Cantidad ; 
-	float Valor ;
-	bool EstadoArticulo = false, EstadoDeLimiteCantidad = false, Asignacion = false ;
+	DiferenciAnios = Actual->getAnio() - FechaArticulo->getAnio() ;
+	DiferenciaMes = Actual->getMes() - FechaArticulo->getMes() ;
 	
-	if (NroDeArticulo == 0) {
-		Nombre = "Control" ;
-		Marca = "Samsumng" ;
-		Codigo = 7818 ;
-		Cantidad = 3 ;
-		Valor = 2500 ;
-		ArticulosIniciales->setIDNombre(Nombre) ;
-		ArticulosIniciales->setIDMarca(Marca) ;
-		ArticulosIniciales->setCodigoArticulo(Codigo) ;
-		ArticulosIniciales->setCantidadDeTipoDeArticulo(Cantidad) ;
-		ArticulosIniciales->setValorArticuloInicial(Valor) ;
-		ArticulosIniciales->setEstadoArticuloDeActivo(EstadoArticulo) ;
-		ArticulosIniciales->setEstadoDeLimiteDeArticulos(EstadoDeLimiteCantidad) ;
-		ArticulosIniciales->setEstadoDeAsignadoAProfesor(Asignacion) ;
-	}else {
-		Nombre = "Guitarra" ;
-		Marca = "Yamaha" ;
-		Codigo = 1304 ;
-		Cantidad = 2 ;
-		Valor = 5000 ;
-		ArticulosIniciales->setIDNombre(Nombre) ;
-		ArticulosIniciales->setIDMarca(Marca) ;
-		ArticulosIniciales->setCodigoArticulo(Codigo) ;
-		ArticulosIniciales->setCantidadDeTipoDeArticulo(Cantidad) ;
-		ArticulosIniciales->setValorArticuloInicial(Valor) ;
-		ArticulosIniciales->setEstadoArticuloDeActivo(EstadoArticulo) ;
-		ArticulosIniciales->setEstadoDeLimiteDeArticulos(EstadoDeLimiteCantidad) ;
-		ArticulosIniciales->setEstadoDeAsignadoAProfesor(Asignacion) ;
+	if (DiferenciAnios >= 2) {
+		this->ValorActualArticulo = 0 ;
+		return true ; 				
+	}else if (DiferenciAnios == 1) {
+		if (FechaArticulo->getMes() >= Actual->getMes()) {
+			DiferenciaAlAnio = FechaArticulo->getMes() - Actual->getMes() ; 
+			DiferenciaMes = 12 - DiferenciaAlAnio ; 
+			this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * DiferenciaMes) ;
+			DiferenciaMes -= 18 ; 
+			switch (DiferenciaMes) {
+				case 1 : { // Un mes
+					this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  				
+					return false ;
+					break;
+				}
+				
+				case 2 : { // Dos meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 2) ;
+					return false ;
+					break;
+				}
+				
+				case 3 : { // Tres meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 3) ;
+					return false ;
+					break;
+				}
+				
+				case 4 : { // Cuatro meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 4) ;
+					return false ;
+					break;
+				}
+				
+				case 5 : { // Cinco meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 5) ;
+					return false ;
+					break;
+				}
+				
+				case 6 : { // Seis meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 6) ;
+					return false ;
+					break;
+				}
+				
+				case 7 : { // Siete meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 7) ;
+					return false ;
+					break;
+				}
+				
+				case 8 : { // Ocho meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 8) ;
+					return false ;
+					break;
+				}
+				
+				case 9 : { // Nueve meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 9) ;
+					return false ;
+					break;
+				}
+				
+				case 10 : { // Dies meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 10) ;
+					return false ;
+					break;
+				}
+				
+				
+				case 11 : { // Once meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 11) ;
+					return false ;
+					break;
+				}
+			}
+		}else {			
+			DiferenciaMes += 12 ;
+			this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * DiferenciaMes) ;
+			DiferenciaMes -= 18 ; 
+			switch (DiferenciaMes) {
+				case 1 : { // Un mes
+					this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  				
+					return false ;
+					break;
+				}
+				
+				case 2 : { // Dos meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 2) ;
+					return false ;
+					break;
+				}
+				
+				case 3 : { // Tres meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 3) ;
+					return false ;
+					break;
+				}
+				
+				case 4 : { // Cuatro meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 4) ;
+					return false ;
+					break;
+				}
+				
+				case 5 : { // Cinco meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 5) ;
+					return false ;
+					break;
+				}
+				
+				case 6 : { // Seis meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 6) ;
+					return false ;
+					break;
+				}
+				
+				case 7 : { // Siete meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 7) ;
+					return false ;
+					break;
+				}
+				
+				case 8 : { // Ocho meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 8) ;
+					return false ;
+					break;
+				}
+				
+				case 9 : { // Nueve meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 9) ;
+					return false ;
+					break;
+				}
+				
+				case 10 : { // Dies meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 10) ;
+					return false ;
+					break;
+				}
+				
+				
+				case 11 : { // Once meses
+					this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 11) ;
+					return false ;
+					break;
+				}
+			}
+		}
+	}else if (DiferenciAnios == 0) {
+		switch (DiferenciaMes) {
+			case 1 : { // Un mes
+				this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  				
+				return false ;
+				break;
+			}
+			
+			case 2 : { // Dos meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 2) ;
+				return false ;
+				break;
+			}
+			
+			case 3 : { // Tres meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 3) ;
+				return false ;
+				break;
+			}
+			
+			case 4 : { // Cuatro meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 4) ;
+				return false ;
+				break;
+			}
+			
+			case 5 : { // Cinco meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 5) ;
+				return false ;
+				break;
+			}
+			
+			case 6 : { // Seis meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 6) ;
+				return false ;
+				break;
+			}
+			
+			case 7 : { // Siete meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 7) ;
+				return false ;
+				break;
+			}
+			
+			case 8 : { // Ocho meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 8) ;
+				return false ;
+				break;
+			}
+			
+			case 9 : { // Nueve meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 9) ;
+				return false ;
+				break;
+			}
+			
+			case 10 : { // Dies meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 10) ;
+				return false ;
+				break;
+			}
+			
+			
+			case 11 : { // Once meses
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 11) ;
+				return false ;
+				break;
+			}
+		}
 	}
-	return ArticulosIniciales ;
+	
+	if (this->ValorActualArticulo == 0) {
+		this->EstadoArticuloDeActivo == false ; 
+	}
 }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -111,14 +290,16 @@ void ArticuloDePrestamo::CrearArticuloParaPrestamo(ArticuloDePrestamo* ArticuloP
 	string Nombre, Marca ;
 	int Codigo, NroDeArticulos ; 
 	float Valor ;
-	bool EstadoArticulo = false, EstadoDeLimiteCantidad = false, Asignacion = false ;
+	bool EstadoArticulo = true, EstadoDeLimiteCantidad = true, Asignacion = true ;
 	
 	cout << "\n\tPor favor ingrese los datos correspondientes a articulos de prestamos \n\n" ;
 	
 	cout << "Ingrese el nombre del articulo: \n" ;
+	fflush(stdin) ;
 	cin  >> Nombre ;
 	
 	cout << "Ingrese la marca del articulo: \n"  ;
+	fflush(stdin) ;
 	cin  >> Marca ;
 	
 	Codigo = common::ValidarEntero("Ingrese el Codigo del articulo: \n" ) ;
@@ -137,14 +318,22 @@ void ArticuloDePrestamo::CrearArticuloParaPrestamo(ArticuloDePrestamo* ArticuloP
 	ArticuloParaCrear->setEstadoArticuloDeActivo(EstadoArticulo) ;
 	ArticuloParaCrear->setEstadoDeLimiteDeArticulos(EstadoDeLimiteCantidad) ;
 	ArticuloParaCrear->setEstadoDeAsignadoAProfesor(Asignacion) ;
-	
-	cout << "\nRegistro Exitoso \n\n" ;
+
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
+void ArticuloDePrestamo::AgregarFechaLim(Fecha* FechaLim) {
+	this->FechaLimite = FechaLim ;	
+}
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+Fecha* ArticuloDePrestamo::MostrarFecha() {
+	return this->FechaLimite ; 
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////

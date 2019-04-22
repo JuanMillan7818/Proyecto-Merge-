@@ -18,6 +18,7 @@ class ManejoDeArchivo {
 
 	public :
 		ManejoDeArchivo () ;
+		
 		// Manejo de Archivos Para Informacion del laboratorio
 		void CrearArchivoInformacionCSV (vector <Informacion> Informaciones) ;
 		void CargarArchivoInformacionCSV (vector <Informacion>* Informaciones) ;
@@ -41,33 +42,40 @@ class ManejoDeArchivo {
 		void CrearArchivoAdminisCSV (vector <PersonalAdmi> PersonalAdm) ;
 		void CargarArchivoAdminisCSV (vector <PersonalAdmi>* PersonalAdm) ;
 		
+		// Manejo de Archivos para Articulos de Computo del Laboratorio 
+		void CrearArchivoArticuloComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ; 
+		void ActualizarComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ;
+		vector <int> CargarArchivoArticuloComputoCSV (vector <ArticuloComputo>* ArticulosParaComputo) ;
+		void CargarArticuloComputoCSV (vector <Fecha>* FechasRegistradas) ;
+		
+		
 		// Manejo de Archivos Para Articulo de prestamo del laboratorio
 		void CrearArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
 		void ActualizarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo> ArticulosParaPrestar) ;
 		vector <int> CargarArchivoArticuloDePrestamoCSV (vector <ArticuloDePrestamo>* ArticulosParaPrestar) ;
-		
-		// Manejo de Archivos para Articulos de Computo del Laboratorio 
-		void CrearArchivoArticuloComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ; 
-		vector <int> CargarArchivoArticuloComputoCSV (vector <ArticuloComputo>* ArticulosParaComputo) ;
-		void CargarArticuloComputoCSV (vector <Fecha>* FechasRegistradas) ;
-		void ActualizarComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ;
+		void CargarArticuloDePrestamoCSV (vector <Fecha>* FechasRegistradas) ;
 
 		// Manejo de Archivos para Articulos de Mueble del Laboratorio
 		void CrearArchivoArticuloMuebleCSV (vector <ArticuloMueble> ArticulosParaMueble) ; 
-		vector <int> CargarArchivoArticuloMuebleCSV (vector <ArticuloMueble>* ArticulosParaMueble) ;
 		void ActualizarMuebleCSV (vector <ArticuloMueble> ArticulosParaMueble) ;
-
-		
-		//Crear archivo Fechas y manejo de archivos fechas		
-		void CrearArchivoFechas (vector <ArticuloComputo> ArticulosComp) ;
-		void ActualizarArchivoFechas (vector <ArticuloComputo> ArticulosComp) ;
-		void CargarArchivoFechasCSV(vector <int>* FechasDeUso) ;
-		
+		vector <int> CargarArchivoArticuloMuebleCSV (vector <ArticuloMueble>* ArticulosParaMueble) ;
+		void CargarArticuloMuebleCSV (vector <Fecha>* FechasRegistradas) ;
+	
+		// Crear historiales
+		void HistorialPrestamoCSV (vector <Estudiante> EstudiantePrestamo) ; 
+		void ActualizarHistorial (vector <Estudiante> EstudiantePrestamo) ; 
+		void CargarHistorialPrestamo (vector <Estudiante>* Estudiantes) ;
+		void CargarHistorialPrestamo (vector <ArticuloDePrestamo>* Prestamos) ;
+		void CargarHistorialPrestamo (vector <Fecha>* FechaHistorial) ; 
+				
+		// Crear Plazo de entrega
+		void CrearPlazoEntrega (vector <Estudiante> EstudiantePlazo) ;
+		void ActualizarPlazos (vector <Estudiante> EstudiantePlazo) ;
+		void CargarPlazos (vector <Estudiante>* EstudianteAux) ;
+		void CargarPlazos (vector <Fecha>* FechasRegistradas) ;
 		
 		// Funcion para Cambiar de string -> int
-		long CambioStringALong (string Temporal) ;
-
-		// Archivo para historial de prestamos
+		float CambioStringALong (string Temporal) ;
 		
 		~ManejoDeArchivo () ;
 };

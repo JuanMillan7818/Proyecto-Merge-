@@ -90,6 +90,8 @@ void Estudiante::MostrarTodosLosArticulos() {
 	 	cout << "10.Valor de despreciacion: " << this->ArticulosPrestados[i]->getDespreciacion() << "\n" ;
 	 	cout << "11. Asignado al Profesor: " << this->ArticulosPrestados[i]->getProfesor()->getNombre() << "\n" ;  
 		cout << "    Codigo del Profesor: " << this->ArticulosPrestados[i]->getProfesor()->getCodigo() << "\n" ;  
+		cout << "12. Anio:" << this->ArticulosPrestados[i]->getFecha()->getAnio() << "\n" ;
+		cout << "13. Mes:" << this->ArticulosPrestados[i]->getFecha()->getMes() << "\n" ;
  		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}
@@ -182,6 +184,7 @@ void Estudiante::Devolucion(int Posicion) {
 		this->ArticulosPrestados.push_back(&Paso[i]) ; 
 	}
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 // DESTRUCTOR

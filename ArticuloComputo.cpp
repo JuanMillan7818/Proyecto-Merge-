@@ -46,45 +46,84 @@ float ArticuloComputo::getDespreciacion() {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-Fecha* ArticuloComputo::getFecha() {
-	return this->FechaDeRegistro ; 
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
-void ArticuloComputo::AsignarFecha(Fecha* FechaRegistro) {
-	this->FechaDeRegistro = FechaRegistro ; 
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
-void ArticuloComputo::RegistrarFecha(int Dia, int Mes, int Anio) {
-	this->FechaDeRegistro->setAnio(Anio) ;
-	this->FechaDeRegistro->setMes(Mes) ;
-	this->FechaDeRegistro->setDia(Dia) ;
+bool ArticuloComputo::Despreciacion (Fecha* Actual, Fecha* FechaArticulo) {
+	int DiferenciAnios ; 
+	DiferenciAnios = Actual->getAnio() - FechaArticulo->getAnio() ;
 	
-	cout << "\nRegistro de fecha exitoso !!! \n" ;
-	system("pause") ;
-}
-/////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
-
-float ArticuloComputo::Despreciacion () {
-//	int Hoy = 2019 ; 
-//	int AnioActual = this->FechaActual()->tm_year+1900 ; 
-//	for (int i=AnioActual ; i<=AnioActual+10 ; i++) {
-//		if (this->ValorArticulo != 0) {
-//			this->ValorDespreciacionAnual = this->ValorArticulo / 10 ;
-//			this->ValorArticulo -= this->ValorDespreciacionAnual ;
-//		}
-//	} 
-//	
-//	return this->ValorDespreciacionAnual ;
+	if (DiferenciAnios >= 10) {
+		this->ValorActualArticulo = 0 ;
+		return true ; 				
+	}else  {
+		switch (DiferenciAnios) {
+			case 1 : { // Un año 
+				this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  								
+				return false ;
+				break;
+			}
+			
+			case 2 : { // Dos años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 2) ;				
+				return false ;
+				break;
+			}
+			
+			case 3 : { // Tres años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 3) ;
+				return false ;
+				break;
+			}
+			
+			case 4 : { // Cuatro años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 4) ;
+				return false ;
+				break;
+			}
+			
+			case 5 : { // Cinco años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 5) ;
+				return false ;
+				break;
+			}
+			
+			case 6 : { // Seis años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 6) ;
+				return false ;
+				break;
+			}
+			
+			case 7 : { // Siete años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 7) ;
+				return false ;
+				break;
+			}
+			
+			case 8 : { // Ocho años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 8) ;
+				return false ;
+				break;
+			}
+			
+			case 9 : { // Nueve años
+				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 9) ;
+				return false ;
+				break;
+			}
+			
+			default : { // Datos incorrecto
+				cout << "\nDato Incorrecto \n\n" ;
+				system("pause") ; 
+				return false ;
+				break;
+			}
+		}
+	}
+	
+	if (this->ValorActualArticulo == 0) {
+		this->EstadoArticuloDeActivo == false ; 
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -96,16 +135,17 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	string Nombre, Marca ;
 	int Codigo, Cantidad, DatosFecha ;
 	float ValorArticulo ; 
-	Fecha FechaActual ;
 
 	system("cls") ;
 
 	cout << "\n\tA Continuacion digite la informacion correspondiente \n\n" ;
 
 	cout << "\nIngrese el nombre del articulo: \n" ;
+	fflush(stdin) ;
 	cin  >> Nombre ;
 	
 	cout << "\nIngrese la Marca del articulo: \n" ;
+	fflush(stdin) ;
 	cin  >> Marca ;
 	
 	Codigo = common::ValidarEntero("\nIngrese el codigo del articulo \n") ;
@@ -113,16 +153,7 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	ValorArticulo = common::ValidarEntero("\nIngrese el valor del articulo \n") ;
 	
 	Cantidad = common::ValidarEntero("\nIngrese la cantidad del articulo que van a estar disponibles \n") ;
-	
-//	DatosFecha = common::ValidarEntero("\nIngrese el anio de entrada \n") ;
-//	FechaActual.setAnio(DatosFecha) ; 
-//	
-//	DatosFecha = common::ValidarEntero("\nIngrese el mes de entrada \n") ;
-//	FechaActual.setMes(DatosFecha) ;
-//	
-//	DatosFecha = common::ValidarEntero("\nIngrese el dia de entrada \n") ;
-//	FechaActual.setDia(DatosFecha) ;
-	
+		
 	ComputoACrear->setIDNombre(Nombre) ;
 	ComputoACrear->setIDMarca(Marca) ; 
 	ComputoACrear->setCodigoArticulo(Codigo) ;
@@ -130,14 +161,9 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	ComputoACrear->setValorArticuloInicial(ValorArticulo) ;
 	ComputoACrear->setValorActualArticulo(ValorArticulo) ;
 	ComputoACrear->setDespreciacion(this->ValorArticulo/10) ; 
-	ComputoACrear->setEstadoArticuloDeActivo(0) ;
-	ComputoACrear->setEstadoDeLimiteDeArticulos(0) ;
-	ComputoACrear->setEstadoDeAsignadoAProfesor(0) ;
-	//ComputoACrear->AsignarFecha(&FechaActual) ;
-	
-//	cout << "\nRegistro Exitoso !!! \n\n" ;
-//	system("pause") ;
-
+	ComputoACrear->setEstadoArticuloDeActivo(1) ;
+	ComputoACrear->setEstadoDeLimiteDeArticulos(1) ;
+	ComputoACrear->setEstadoDeAsignadoAProfesor(1) ;
 }
 
 
