@@ -57,58 +57,64 @@ bool ArticuloMueble::Despreciacion(Fecha* Actual, Fecha* FechaArticulo) {
 		return true ; 				
 	}else  {
 		switch (DiferenciAnios) {
+			case 0 : { // 0 Años
+				this->ValorActualArticulo = this->ValorActualArticulo ;  				
+				return false ;
+				break;
+			}
+			
 			case 1 : { // Un año 
 				this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  				
-				break;
 				return false ;
+				break;
 			}
 			
 			case 2 : { // Dos años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 2) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 3 : { // Tres años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 3) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 4 : { // Cuatro años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 4) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 5 : { // Cinco años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 5) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 6 : { // Seis años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 6) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 7 : { // Siete años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 7) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 8 : { // Ocho años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 8) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			case 9 : { // Nueve años
 				this->ValorActualArticulo = this->ValorActualArticulo - (this->ValorDespreciacionAnual * 9) ;
-				break;
 				return false ;
+				break;
 			}
 			
 			default : { // Datos incorrecto
@@ -156,9 +162,9 @@ void ArticuloMueble::CrearMueble(ArticuloMueble* ArticuloACrear) {
 	ArticuloACrear->setValorArticuloInicial(ValorArticulo) ;
 	ArticuloACrear->setValorActualArticulo(ValorArticulo) ;
 	ArticuloACrear->setDespreciacion(this->ValorArticulo/10) ; 
-	ArticuloACrear->setEstadoArticuloDeActivo(1) ;
-	ArticuloACrear->setEstadoDeLimiteDeArticulos(1) ;
-	ArticuloACrear->setEstadoDeAsignadoAProfesor(1) ;
+	ArticuloACrear->setEstadoArticuloDeActivo(true) ;
+	ArticuloACrear->setEstadoDeLimiteDeArticulos(true) ;
+	ArticuloACrear->setEstadoDeAsignadoAProfesor(true) ;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

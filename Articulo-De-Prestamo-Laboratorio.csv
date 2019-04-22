@@ -1,0 +1,4 @@
+Nombre;Marca;Cantidad De Articulos;Codigo;Valor De Articulo;Valor Actual Del Articulo;Estado Del Articulo;Estado De Disponibilidad;Estado De Asignacion a Profesor;Valor De Despreciacion;Asignado a;Anio;Mes;Dia
+audifono;lenovo;2;2345;2032;2032;1;1;1;112.889;0;2019;4;22
+memoria;usb;3;123;1000;1000;1;1;1;55.5556;0;2019;4;23
+lapiz;mina;5;432;2340;2340;1;1;1;130;0;2019;4;24

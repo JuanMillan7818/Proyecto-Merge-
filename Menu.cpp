@@ -329,64 +329,74 @@ void Menu::MenuParaProfesores(int Posicion) {
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 void Menu::MenuExclusivoProfe(){
-	 
-	
-	
-	cout << "\t\tPROFESORES REGISTRADOS EN EL SISTEMA\n" ;
 
 	bool* Salir = new bool (false) ;
 	
-	UsoDelLaboratorio->getProfesores() ;
-	
-	int Eleccion ;
-		
-	this->Opcion = common::ValidarEntero("Elija un Profesor\n") ;
-	
-	UsoDelLaboratorio->AccederProfesorPosicion(Opcion) ;
 	do{
 		system("cls") ;
 		
-		cout << "1. Modificar informacion \t\n" ;
-		cout << "2. Eliminar un profesor del sistema \t\n" ;
-		cout << "3. Ver datos existentes \t\n" ;
-		cout << "4. Ver articulos asignados \t\n" ;
-		cout << "5. Atras\n" ;
-		cout << "6. Salir \n\n" ;
+		cout << "\n\tFunciones disponibles para profesores \n\n" ;	
+		cout << "1. Ver todos los profesores existentes \n" ;
+		cout << "2. Ver articulos asignados a un profesor \n" ;
+		cout << "3. Registrar Profesores \n" ;
+		cout << "4. Modificar informacion de un profesor \n" ;
+		cout << "5. Eliminar un profesor del sistema \n" ;
+		cout << "6. Atras\n" ;
+		cout << "7. Salir \n\n" ;
 		
-		Eleccion = common::ValidarEntero("Elija una Opcion: \n") ;
+		this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ;
 		
 		
-		switch(Eleccion) {
-			
-			case 1 : {//Modifica los datos personales de un profesor
-				UsoDelLaboratorio->ModificarDatosProfe(Eleccion) ;
-				system("pause") ;
+		switch(this->Opcion) {
+			case 1 : { // Ver todos los profesores 
+				UsoDelLaboratorio->getProfesores() ;
+				system("pause") ;	
 				break;
 			}
 			
-			case 2 : {//Eliminar un profesor
-				UsoDelLaboratorio->EliminarDatosDelVectorProfesor(this->Opcion) ;
-				system("pause") ;
-				break;
-			}
-			
-			case 3 : {//Acceder a un profesor
-				UsoDelLaboratorio->AccederProfesorPosicion(this->Opcion) ;
-				system("pause") ;
-				break;
-			}
-			
-			case 4 : {//Ver articulos Asignados
+			case 2 : { //Ver articulos Asignados
+				UsoDelLaboratorio->getProfesores() ;
+				
+				this->Opcion = common::ValidarEntero("Elija el indicador del profesor: \n") ;
+				
 				UsoDelLaboratorio->AccederArticulosProfe(this->Opcion) ;
+				system("pause") ;
 				break;
 			}
 			
-			case 5 : {//Atras
+			case 3 : { // Registrar profesores
+				system("cls") ;
+				
+				cout << "\nCuantos profesores quiere registrar? \n\n" ;
+				this->Opcion = common::ValidarEntero("Ingrese la cantidad de profesores a registrar: \n") ;
+				
+				UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
+				system("pause") ;
+				break;
+			}
+			
+			case 4 : { //Modifica los datos personales de un profesor
+				UsoDelLaboratorio->getProfesores() ;
+				
+				this->Opcion = common::ValidarEntero("Elija el indicador del profesor: \n") ;
+				
+				UsoDelLaboratorio->ModificarDatosProfe(this->Opcion) ;
+				system("pause") ;
+				break;
+			}
+			
+			case 5 : { //Eliminar un profesor
+				UsoDelLaboratorio->EliminarDatosDelVectorProfesor() ;
+				system("pause") ;
+				break;
+			}
+			
+			case 6 : { //Atras
 				*Salir = true ; 
 				break;
 			}
 			
-			case 6 : {//Salir
+			case 7 : { //Salir
 				cout << "\nREGRESA PRONTO \n\n" ;
 				system("pause") ;
 				exit(1) ;
@@ -402,7 +412,6 @@ void Menu::MenuExclusivoProfe(){
 			}
 		}  
 	}while(!*Salir) ;
-	
 }
 
 
@@ -1016,14 +1025,15 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 		
 		cout << "\n\tFunciones Disponibles \n\n" ;
 		cout << "1. Ver mi informacion disponible \n" ; 
-		cout << "2. Funciones: Para Informacion del Laboratorio \n" ;
-		cout << "3. Funciones: Para Estudiantes del Laboratorio \n" ;
-		cout << "4. Funciones: Para Profesores del Laboratorio \n" ;
-		cout << "5. Funciones: Para Articulos de Computo del Laboratorio \n" ;
-		cout << "6. Funciones: Para Articulos de Mueble del Laboratorio \n" ;
-		cout << "7. Funciones: Para Articulos de Prestamo del Laboratorio \n" ;
-		cout << "8. Ir a Menu Principal \n" ;
-		cout << "9. Salir \n\n" ;
+		cout << "2. Eliminar otro personal administrativo \n" ; 
+		cout << "3. Funciones: Para Informacion del Laboratorio \n" ;
+		cout << "4. Funciones: Para Estudiantes del Laboratorio \n" ;
+		cout << "5. Funciones: Para Profesores del Laboratorio \n" ;
+		cout << "6. Funciones: Para Articulos de Computo del Laboratorio \n" ;
+		cout << "7. Funciones: Para Articulos de Mueble del Laboratorio \n" ;
+		cout << "8. Funciones: Para Articulos de Prestamo del Laboratorio \n" ;
+		cout << "9. Ir a Menu Principal \n" ;
+		cout << "10. Salir \n\n" ;
 		
 		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
 		
@@ -1036,7 +1046,14 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 2 : { // Funciones para informaciones
+			case 2 : { // Eliminar otro personal adiminstrativo
+				
+				UsoDelLaboratorio->EliminarDatosDelVectorAdmi() ;
+				system("pause") ; 
+				break;
+			}
+			
+			case 3 : { // Funciones para informaciones
 				cout << "\nEn Cualquier momento sera dirigido \n" ;
 				system("pause") ;
 				
@@ -1050,7 +1067,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 3 : { // Menu exclusivo de estudiantes
+			case 4 : { // Menu exclusivo de estudiantes
 				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
 				system("pause") ;
 				
@@ -1068,6 +1085,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					bool Estado = UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion) ;
 					
 					if (Estado == false) {
+						system("pause") ;
 						*Salir = true ;
 						MenuParaPersonalAdmi(Posicion) ;
 					}
@@ -1075,7 +1093,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 4 : { //Menu para funciones exclusivas de profesor desde administrador				
+			case 5 : { //Menu para funciones exclusivas de profesor desde administrador				
 				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
 				system("pause") ;
 				
@@ -1099,7 +1117,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 5 : { // Funciones para articulos de computo
+			case 6 : { // Funciones para articulos de computo
 				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
 				system("pause") ;
 				
@@ -1137,7 +1155,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 6 : { // Funciones para articulos de Mueble
+			case 7 : { // Funciones para articulos de Mueble
 				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
 				system("pause") ;
 				
@@ -1173,7 +1191,7 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 7 : { // Funciones para articulos de Prestamo
+			case 8 : { // Funciones para articulos de Prestamo
 				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
 				system("pause") ;
 				
@@ -1208,13 +1226,13 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 				break;
 			}
 			
-			case 8 : { // Atras
+			case 9 : { // Atras
 				MenuIngreso() ;
 				*Salir = true ;
 				break;
 			}
 			
-			case 9 : { // Salir 
+			case 10 : { // Salir 
 				cout << "\nEsperamos su regreso \n\n" ;
 				system("pause") ;
 				exit(1) ;
@@ -1323,8 +1341,9 @@ void Menu::MenuConsultas() {
 		cout << "6. Consultar prestamos realizados en fechas determinadas. \n" ;
 		cout << "7. Consultar valor , despreciacion y estado de un articulo. \n" ; 
 		cout << "8. Consultar los articulos activos e inactivos. \n" ;
-		cout << "9. Atras. \n" ;
-		cout << "10. Salir \n\n" ;
+		cout << "9. Eliminar histrial completo del Laboratorio \" ; 
+		cout << "10. Atras. \n" ;
+		cout << "11. Salir \n\n" ;
 		
 		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
 		
@@ -1378,12 +1397,18 @@ void Menu::MenuConsultas() {
 				break;
 			}
 			
-			case 9 : { // Atras
+			case 9 : { // Eliminar Historial 
+				UsoDelLaboratorio->EliminarHistorial() ;
+				system("pause") ;
+				break;
+			}
+			
+			case 10 : { // Atras
 				*Salir = true ; 
 				break;
 			}
 			
-			case 10 : { // Salir
+			case 11 : { // Salir
 				cout << "\nEsperamos su regreso \n\n" ;
 				system("pause") ;
 				exit(1) ;

@@ -104,11 +104,12 @@ class Laboratorio {
 		// Eliminar datos de los vectores
 		void EliminarDatosDelVectorInformaciones() ;
 		void EliminarDatosDelVectorComputo() ;
-		void EliminarDatosDelVectorProfesor(int Opcion) ;
+		void EliminarDatosDelVectorProfesor() ;
 		void EliminarDatosDelVectorEstudiante(int Opcion) ;
 		void EliminarDatosDelVectorMueble() ;
 		void EliminarDatosDelVectorArticuloPrestamos() ;
-
+		void EliminarDatosDelVectorAdmi() ; 
+		void EliminarHistorial() ; 
 
 		// Asignar Profesor a Articulo
 		void AsignarCodigosEstudiantes () ; 

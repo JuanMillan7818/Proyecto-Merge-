@@ -46,34 +46,37 @@ void Profesor::CrearDatosDeProfesor(Profesor* Profesor) {
 
 	cout << "\nIngresa los datos correspondiente de Profesor \n" ;
 	cout << "Ingrese su nombre: \n" ;
+	fflush(stdin) ;
 	cin  >> *Nombre ;
 	Profesor->setNombre(*Nombre) ;
 	
-	cout << "Ingrese su apellido: \n" ;
+	cout << "\nIngrese su apellido: \n" ;
+	fflush(stdin) ;
 	cin  >> *Apellido ;
 	Profesor->setApellido(*Apellido) ;
 	
-	cout << "Ingrese su email: \n" ;
+	cout << "\nIngrese su email: \n" ;
+	fflush(stdin) ;
 	cin  >> *Email ;
 	Profesor->setEmail(*Email) ;
 
-	cout << "Ingrese su Titulo de profesion: \n" ;
+	cout << "\nIngrese su Titulo de profesion: \n" ;
 	fflush(stdin) ; // Liberar memoria para string
 	cin  >> *TituloProfesional ;
 	Profesor->setTituloProfesional(*TituloProfesional) ;
 	
 		
-	*Edad = common::ValidarEntero("Ingrese su edad: \n") ;
+	*Edad = common::ValidarEntero("\nIngrese su edad: \n") ;
 	Profesor->setEdad(*Edad) ;
 	
 		
-	*Cedula = common::ValidarEntero("Ingrese su numero de cedula: \n" ) ;
+	*Cedula = common::ValidarEntero("\nIngrese su numero de cedula: \n" ) ;
 	Profesor->setCedula(*Cedula) ;
 	
-	*Telefono = common::ValidarEntero("Ingrese su numero de telefono: \n") ;
+	*Telefono = common::ValidarEntero("\nIngrese su numero de telefono: \n") ;
 	Profesor->setTelefono(*Telefono) ;
 	
-	*Codigo = common::ValidarEntero("Ingrese su nuevo numero de codigo: \n") ;
+	*Codigo = common::ValidarEntero("\nIngrese su nuevo numero de codigo: \n") ;
 	Profesor->setCodigo(*Codigo) ;
 	
 	cout << "\nPor favor espere ! \n" ;

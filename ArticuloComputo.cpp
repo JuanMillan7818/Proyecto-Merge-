@@ -58,6 +58,12 @@ bool ArticuloComputo::Despreciacion (Fecha* Actual, Fecha* FechaArticulo) {
 		return true ; 				
 	}else  {
 		switch (DiferenciAnios) {
+			case 0 : { // 0 Años
+				this->ValorActualArticulo = this->ValorActualArticulo ;  				
+				return false ;
+				break;
+			}
+			
 			case 1 : { // Un año 
 				this->ValorActualArticulo -= this->ValorDespreciacionAnual ;  								
 				return false ;

@@ -40,7 +40,9 @@ class ManejoDeArchivo {
 		
 		// Manejo de Archivos Para Articulo de Personal Administrativo del laboratorio
 		void CrearArchivoAdminisCSV (vector <PersonalAdmi> PersonalAdm) ;
+		void ActualizarAdimisCSV (vector <PersonalAdmi> PersonalAdm) ; 
 		void CargarArchivoAdminisCSV (vector <PersonalAdmi>* PersonalAdm) ;
+		
 		
 		// Manejo de Archivos para Articulos de Computo del Laboratorio 
 		void CrearArchivoArticuloComputoCSV (vector <ArticuloComputo> ArticulosParaComputo) ; 

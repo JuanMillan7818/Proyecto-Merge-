@@ -120,10 +120,12 @@ void Estudiante::CrearDatosDeObjetoEstudiante(Estudiante* EstudianteParaCrear, i
 	for (int i=0 ; i<Cantidad ; i++) {
 		cout << "\nIngresa los datos correspondiente de estudiante \n" ;
 		cout << "Ingrese su nombre: \n" ;
+		fflush(stdin) ;
 		cin  >> Nombre ;
 		EstudianteParaCrear->setNombre(Nombre) ;
 		
 		cout << "Ingrese su apellido: \n" ;
+		fflush(stdin) ;
 		cin  >> Apellido ;
 		EstudianteParaCrear->setApellido(Apellido) ;
 		

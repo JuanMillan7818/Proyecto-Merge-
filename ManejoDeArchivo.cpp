@@ -248,8 +248,38 @@ void ManejoDeArchivo::CargarPrestados(vector <Estudiante*> Prestamos, vector <Ar
 
 // Funcion para crear Archivo .csv de informacion de profesores
 void ManejoDeArchivo::CrearArchivoProfesorCSV(vector <Profesor> Profesores) {
+	ifstream Archivo ("Profesores-Laboratorio.csv") ;
+	
+	if (!Archivo.is_open()) {
+		ofstream Archivo ;
+		
+		Archivo.open("Profesores-Laboratorio.csv", ios::app) ;
+	
+		Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
+		Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << ';'   ;
+		Archivo << "Codigo" << ';' << "Titulo Prfesional" << '\n' ;
+		
+		for (int i=0 ; i<Profesores.size() ; i++) {
+			Archivo << Profesores[i].getNombre() << ';' << Profesores[i].getApellido() << ';'  ;
+			Archivo << Profesores[i].getEmail() << ';' << Profesores[i].getEdad() << ';'       ;
+			Archivo << Profesores[i].getCedula() << ';' << Profesores[i].getTelefono() << ';'  ;
+			Archivo << Profesores[i].getCodigo() << ';' << Profesores[i].getTituloProfesional() << '\n'   ;
+			
+		}
+	}else {
+		ActualizarArchivoProfesorCSV(Profesores) ;
+	}
+	
+	Archivo.close() ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void ManejoDeArchivo::ActualizarArchivoProfesorCSV(vector <Profesor> Profesores) {
 	ofstream Archivo ;
-	Archivo.open("Profesores-Laboratorio.csv", ios::app) ;
+	Archivo.open("Profesores-Laboratorio.csv", ios::out) ;
 
 	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
 	Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << ';'   ;
@@ -259,11 +289,13 @@ void ManejoDeArchivo::CrearArchivoProfesorCSV(vector <Profesor> Profesores) {
 		Archivo << Profesores[i].getNombre() << ';' << Profesores[i].getApellido() << ';'  ;
 		Archivo << Profesores[i].getEmail() << ';' << Profesores[i].getEdad() << ';'       ;
 		Archivo << Profesores[i].getCedula() << ';' << Profesores[i].getTelefono() << ';'  ;
-		Archivo << Profesores[i].getCodigo() << ';' << Profesores[i].getTituloProfesional() << '\n'   ;
-		
+		Archivo << Profesores[i].getCodigo() << ';' << Profesores[i].getTituloProfesional() << '\n' ;
 	}
 	Archivo.close() ;
 }
+ 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void ManejoDeArchivo::CargarArchivoProfesorCSV(vector <Profesor>* Profesores) {
 	Profesores->clear() ; // Eliminar por si existe algo ya en el vector
@@ -308,47 +340,53 @@ void ManejoDeArchivo::CargarArchivoProfesorCSV(vector <Profesor>* Profesores) {
 	delete ProfesoreAuxiliar ;
 }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-void ManejoDeArchivo::ActualizarArchivoProfesorCSV(vector <Profesor> Profesores) {
-	ofstream Archivo ;
-	Archivo.open("Profesores-Laboratorio.csv", ios::out) ;
-
-	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
-	Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << ';'   ;
-	Archivo << "Codigo" << ';' << "Titulo Prfesional" << '\n' ;
-	
-	for (int i=0 ; i<Profesores.size() ; i++) {
-		Archivo << Profesores[i].getNombre() << ';' << Profesores[i].getApellido() << ';'  ;
-		Archivo << Profesores[i].getEmail() << ';' << Profesores[i].getEdad() << ';'       ;
-		Archivo << Profesores[i].getCedula() << ';' << Profesores[i].getTelefono() << ';'  ;
-		Archivo << Profesores[i].getCodigo() << ';' << Profesores[i].getTituloProfesional() << '\n' ;
-	}
-	Archivo.close() ;
-}
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 void ManejoDeArchivo::CrearArchivoAdminisCSV(vector <PersonalAdmi> PersonalAdm) {
+	ifstream Archivo ("PersonalAdmi-Laboratorio.csv") ;
+	
+	if(!Archivo.is_open()) {
+		ofstream Archivo ;
+		Archivo.open("PersonalAdmi-Laboratorio.csv", ios::app) ;
+	
+		Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
+		Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << '\n'   ;
+		
+		for (int i=0 ; i<PersonalAdm.size() ; i++) {
+			Archivo << PersonalAdm[i].getNombre() << ';' << PersonalAdm[i].getApellido() << ';'  ;
+			Archivo << PersonalAdm[i].getEmail() << ';' << PersonalAdm[i].getEdad() << ';'       ;
+			Archivo << PersonalAdm[i].getCedula() << ';' << PersonalAdm[i].getTelefono() << '\n'  ;
+		}
+	}else {
+		ActualizarAdimisCSV(PersonalAdm) ; 
+	}
+	
+	Archivo.close() ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ManejoDeArchivo::ActualizarAdimisCSV(vector <PersonalAdmi> PersonalAdm) {
 	ofstream Archivo ;
 	Archivo.open("PersonalAdmi-Laboratorio.csv", ios::out) ;
-
+	
 	Archivo << "Nombre" << ';' << "Apellido" << ';' << "Email" << ';'  ;
 	Archivo << "Edad" << ';' << "Cedula" << ';' << "Telefono" << '\n'   ;
-	
+		
 	for (int i=0 ; i<PersonalAdm.size() ; i++) {
 		Archivo << PersonalAdm[i].getNombre() << ';' << PersonalAdm[i].getApellido() << ';'  ;
 		Archivo << PersonalAdm[i].getEmail() << ';' << PersonalAdm[i].getEdad() << ';'       ;
 		Archivo << PersonalAdm[i].getCedula() << ';' << PersonalAdm[i].getTelefono() << '\n'  ;
 	}
-	Archivo.close() ;
+	
+	Archivo.close() ; 
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void ManejoDeArchivo::CargarArchivoAdminisCSV(vector <PersonalAdmi>* PersonalAdm) {
 	PersonalAdm->clear() ; // Eliminar por si existe algo ya en el vector
