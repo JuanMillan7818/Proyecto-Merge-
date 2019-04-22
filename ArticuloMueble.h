@@ -1,4 +1,3 @@
-
 #ifndef ARTICULOMUEBLE_H_
 #define ARTICULOMUEBLE_H_
 #include "Articulo.h"
@@ -12,20 +11,30 @@ class ArticuloMueble : public Articulo {
 		int CantidadMueble ;
 		float ValorDespreciacionAnual ;
 		
+		//Puntero
 		Profesor* ProfesorAsignado ;
 						
 	public :
+		//Constructor
 		ArticuloMueble () ;
+		
+		//Otros metodos
 		void setMaterial (string Material) ;
 		void setDespreciacion (float Despreciacion) ;
 		void setCantidad (int Cantidad) ;
 		void AsignarAlArticulo (Profesor* Profesor) ;  
 		string getMaterial () ;
 		float getDespreciacion() ;
-		int getCantidad () ; 
-		Profesor* getProfesorAsignado () ;
-		float Despreciacion ()  ; // Polimorfismo
+		int getCantidad () ;
 		void CrearMueble (ArticuloMueble* ArticuloACrear) ; 
+		 
+		//Polimorfismo
+		float Despreciacion ()  ; 
+		
+		//Puntero
+		Profesor* getProfesorAsignado () ;
+		
+		//Destructor
 		~ArticuloMueble () ;
 };
 #endif 

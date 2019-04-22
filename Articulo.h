@@ -18,12 +18,17 @@ class Articulo {
 		bool EstadoDeLimiteDeArticulos ;
 		bool EstadoDeAsignadoAProfesor ;
 		
+		// Estructuras
 		struct tm* Fecha ;
 		
 	public :
+		
+		//Constructores
 		Articulo () ;
 		Articulo (string IDNombre, int CodigoArticulo, int ValorArticuloInicial, int ValorActualArticulo, 
 				  bool EstadoArticulo, bool EstadoDeLimiteDeArticulos, bool EstadoDeAsignadoAProfesor) ;
+				  
+		//Otros metodos...		  
 		void setIDNombre (string IDNombre) ;
 		void setCodigoArticulo (int CodigoArticulo) ;
 		void setValorArticuloInicial (float ValorArticuloInicial) ;
@@ -38,9 +43,15 @@ class Articulo {
 		bool getEstadoArticuloDeActivo () ;
 		bool getEstadoDeLimiteDeArticulos () ;
 		bool getEstadoDeAsignadoAProfesor () ;
+		void AsignarFecha (struct tm* AgregarFecha) ;
+		
+		//Estructura
 		struct tm* getFecha () ; 
-		void AsignarFecha (struct tm* AgregarFecha) ;  
-		virtual float Despreciacion () = 0 ;
+		
+		//Funcion virtual...
+		virtual float Despreciacion () = 0 ; //Funcion implementada por sus hijos.
+		
+		//Destructor...
 		~Articulo () ; 
 };
 #endif

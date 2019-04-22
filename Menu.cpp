@@ -27,12 +27,12 @@ void Menu::MenuIngreso() {
 	 
 	do {
 		system("cls") ;
-		cout << "\t\bBienvenido Al Laboratorio Budokai Taichi \n\n" ;
-		cout << "1. Registrarse. \n" ;
-		cout << "2. Ver informacion principal del Laboratorio. \n" ;
-		cout << "3. Salir. \n\n " ;
+		cout << "\t\bBIENVENIDO AL LABORATORIO \n\n" ;
+		cout << "1. REGISTRARSE. \n" ;
+		cout << "2. VER INFORMACION PRINCIPAL \n" ;
+		cout << "3. SALIR \n\n " ;
 		
-		Opcion = common::ValidarEntero("Ingresa una opcion: \n" ) ;
+		Opcion = common::ValidarEntero("ELIGE UNA OPCION: \n" ) ;
 		
 		switch (this->Opcion) {
 			case 1 : { // Ingreso al sistema
@@ -48,15 +48,15 @@ void Menu::MenuIngreso() {
 			}
 			
 			case 3 : { // Salir 
-				cout << "Gracias Por su Visita \n\n" ;
+				cout << "GRACIAS POR VISITARNOS, ESPERAMOS TU REGRESO... \n\n" ;
 				*Salir = true ;
 				exit(1) ; // sale del ejecutable directamente
 				break;
 			}
 						
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION NO VALIDA \n" ;
+				cout << "INTENTA DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -76,14 +76,14 @@ void Menu::RegistroIDPersona() {
 		system("cls") ;
 		cout << "\t\nRegistro De Usuario \n" ;
 		cout << "Elige la opcion correspendiente... \n\n" ;
-		cout << "1. Ingresar como estudiante \n" ;
-		cout << "2. Ingresar como profesor \n" ;
-		cout << "3. Ingresar como personal administrativo \n" ;
-		cout << "4. Funciones relacionadas al manejo de la informacion del Laboratorio \n" ;
-		cout << "5. Registrarse con datos ya existentes \n" ; 
+		cout << "1. INGRESAR COMO ESTUDIANTE \n" ;
+		cout << "2. INGRESAR COMO PROFESOR \n" ;
+		cout << "3. INGRESAR COMO PERSONAL ADMINISTRATIVO \n" ;
+		cout << "4. FUNCIONES AL MANEJO DE INFORMACION DEL LABORATORIO \n" ;
+		cout << "5. INGRESAR CON DATOS EXISTENTES \n" ; 
 		cout << "6. Atras \n\n" ;
 		
-		this->Opcion = common::ValidarEntero("Ingresa una opcion: \n" ) ;
+		this->Opcion = common::ValidarEntero("ELIGE UNA OPCION:\n" ) ;
 
 		int Cantidad = 1 ; // Para referir que solo puede registrarse una persona a la vez
 		
@@ -133,8 +133,8 @@ void Menu::RegistroIDPersona() {
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION INVALIDA \n" ;
+				cout << "INTENTA DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -153,25 +153,26 @@ void Menu::MenuDatosExistentes() {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tIngresar con Datos Existentes \n\n" ;
-		cout << "1. Ingresar con datos de un estudiantes \n" ;
-		cout << "2. Ingresar con datos de un profesor \n" ;
-		cout << "3. Ingresar con datos de un personal administrativo \n" ;
+		cout << "\n\tDATOS EXISTENTES \n\n" ;
+		cout << "1. INGRESAR COMO ESTUDIANTE \n" ;
+		cout << "2. INGRESAR COMO PROFESOR \n" ;
+		cout << "3. INGRESAR COMO PERSONAL ADMINISTRATIVO \n" ;
 		cout << "4. Atras \n" ;
 		cout << "5. Salir \n\n" ;
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion\n") ; 
+		this->Opcion = common::ValidarEntero("SELECCIONE UNA OPCION:\n") ; 
 		
 		switch(this->Opcion) {
 			case 1 : { // Ingresar con datos de estudiantes
+			
 				if(UsoDelLaboratorio->VerificarVectorEstudiantes() == false) {
 					UsoDelLaboratorio->getEstudiantes() ;
 				
-					this->Opcion = common::ValidarEntero("Elija con que informacion desea ingresar \n") ; 
+					this->Opcion = common::ValidarEntero("SELECCIONE SUS DATOS \n") ; 
 				
 					MenuParaEstudiantes(this->Opcion) ;	
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nDATOS NO EXISTENTES \n\n" ;
 					system("pause") ;
 					RegistroIDPersona() ; 
 				}
@@ -182,11 +183,11 @@ void Menu::MenuDatosExistentes() {
 				if(UsoDelLaboratorio->VerificarVectorProfesores() == false) {
 					UsoDelLaboratorio->getProfesores() ;
 				
-					this->Opcion = common::ValidarEntero("Elija con que informacion desea ingresar \n") ; 
+					this->Opcion = common::ValidarEntero("SELECCIONE SUS DATOS \n") ; 
 				
 					MenuParaProfesores(this->Opcion) ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nDATOS NO EXISTENTES \n\n" ;
 					system("pause") ;
 					RegistroIDPersona() ; 
 				}		
@@ -197,11 +198,11 @@ void Menu::MenuDatosExistentes() {
 				if(UsoDelLaboratorio->VerificarVectorAdmin() == false) {
 					UsoDelLaboratorio->getPersonalAdmin() ;
 				
-					this->Opcion = common::ValidarEntero("Elija con que informacion desea ingresar \n") ; 
+					this->Opcion = common::ValidarEntero("SELECCIONE SUS DATOS \n") ; 
 				
 					MenuParaPersonalAdmi(this->Opcion) ;	
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nDATOS NO EXISTENTES \n\n" ;
 					system("pause") ;
 					RegistroIDPersona() ; 
 				}				
@@ -215,15 +216,15 @@ void Menu::MenuDatosExistentes() {
 			}
 			
 			case 5 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+				cout << "\nESPERAMOS SU REGRESO \n\n" ;
 				system("pause") ;
 				exit(1) ; // Sale del ejecutable directamente
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTE DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -246,15 +247,15 @@ void Menu::MenuParaProfesores(int Posicion) {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tFunciones disponibles para profesores \n\n" ;
-		cout << "1. Ver mi informacion disponible \n" ;
-		cout << "2. Ver Articulos encargados \n" ;
-		cout << "3. Ver todos profesores del Laboratorio \n" ;
-		cout << "4. Modificar datos basicos \n" ;
+		cout << "\n\tFUNCIONES DISPONIBLES PARA PROFESORES \n\n" ;
+		cout << "1. VER MI INFORMACION DISPONIBLE \n" ;
+		cout << "2. VER ARTICULOS ENCARGADOS \n" ;
+		cout << "3. VER PROFESORES REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "4. MODIFICAR DATOS BASICOS \n" ;
 		cout << "5. Atras \n" ;
 		cout << "6. Salir \n\n" ; 
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion\n") ; 
+		this->Opcion = common::ValidarEntero("SELECCIONA UNA OPCION:\n") ; 
 		
 		switch(this->Opcion) {
 			case 1 : { // Ver mi informacion disponible
@@ -266,6 +267,7 @@ void Menu::MenuParaProfesores(int Posicion) {
 			}
 			
 			case 2 : { // Ver informacion de los articulos 
+			
 				UsoDelLaboratorio->AccederArticulosProfe(Posicion) ;
 				system("pause") ;
 				
@@ -273,6 +275,7 @@ void Menu::MenuParaProfesores(int Posicion) {
 			}
 			
 			case 3 : { // Ver todos los profesores 
+			
 				UsoDelLaboratorio->getProfesores() ;
 				
 				system("pause") ;
@@ -280,26 +283,30 @@ void Menu::MenuParaProfesores(int Posicion) {
 			}
 			
 			case 4 : { // Modificar datos basicos
+			
 				UsoDelLaboratorio->ModificarDatosBasicosProfe(Posicion) ;
 								
 				break;
 			}
 			
 			case 5 : { // Atras
+			
 				RegistroIDPersona() ;
 				break;
 			}
 			
 			case 6 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nESPERAMOS SU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ; // Sale del ejecutable directamente
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+			
+				cout << "\nHOPCION INCORRECTA \n" ;
+				cout << "INTENTE DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -323,62 +330,69 @@ void Menu::MenuExclusivoProfe(){
 	
 	int Eleccion ;
 		
-	this->Opcion = common::ValidarEntero("Elija un Profesor\n") ;
+	this->Opcion = common::ValidarEntero("SELECCIONA UN PROFESOR\n") ;
 	
 	UsoDelLaboratorio->AccederProfesorPosicion(Opcion) ;
 	do{
 		system("cls") ;
 		
-		cout << "1. Modificar informacion \t\n" ;
-		cout << "2. Eliminar un profesor del sistema \t\n" ;
-		cout << "3. Ver datos existentes \t\n" ;
-		cout << "4. Ver articulos asignados \t\n" ;
+		cout << "1. MODIFICAR INFORMACION \t\n" ;
+		cout << "2. ELIMINAR PROFESOR DEL SISTEMA \t\n" ;
+		cout << "3. VER SUS DATOS EXISTENTES \t\n" ;
+		cout << "4. VER ARTICULOS ASIGNADOS \t\n" ;
 		cout << "5. Atras\n" ;
 		cout << "6. Salir \n\n" ;
 		
-		Eleccion = common::ValidarEntero("Elija una Opcion: \n") ;
+		Eleccion = common::ValidarEntero("SELECCIONE UNA OPCION: \n") ;
 		
 		
 		switch(Eleccion) {
 			
 			case 1 : {//Modifica los datos personales de un profesor
+			
 				UsoDelLaboratorio->ModificarDatosProfe(Eleccion) ;
 				system("pause") ;
 				break;
 			}
 			
 			case 2 : {//Eliminar un profesor
+			
 				UsoDelLaboratorio->EliminarDatosDelVectorProfesor(this->Opcion) ;
 				system("pause") ;
 				break;
 			}
 			
 			case 3 : {//Acceder a un profesor
+			
 				UsoDelLaboratorio->AccederProfesorPosicion(this->Opcion) ;
 				system("pause") ;
 				break;
 			}
 			
 			case 4 : {//Ver articulos Asignados
+			
 				UsoDelLaboratorio->AccederArticulosProfe(this->Opcion) ;
 				break;
 			}
 			
 			case 5 : {//Atras
+			
 				*Salir = true ; 
 				break;
 			}
 			
 			case 6 : {//Salir
-				cout << "\nREGRESA PRONTO \n\n" ;
+			
+				cout << "\nESPERAMOS SU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ;
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+			
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTALO DE NUEVO \n" ;
 				system("pause") ;
 				system("cls") ;
 				break;
@@ -400,16 +414,16 @@ void Menu::MenuParaArticulosDePrestamo(){
     do{
     	system("cls");
     	
-    	cout << "\n\tFunciones permitidas para articulos de prestamos \n\n" ;
-    	cout << "1. Ver todos los articulos prestados\n" ;
-    	cout << "2. Ver un articulo en especifico\n" ;
-    	cout << "3. Registrar un articulo de prestamo\n" ;
-    	cout << "4. Modificar un articulo\n" ;
-    	cout << "5. Eliminar un articulo\n" ;
+    	cout << "\n\tFUNCIONES PERMITIDAS PARA ARTICULOS DE PRESTAMO \n\n" ;
+    	cout << "1. ARTICULOS PRESTADOS\n" ;
+    	cout << "2. CONSULTAR UN ARTICULO EN ESPECIFICO\n" ;
+    	cout << "3. REGISTRAR UN NUEVO ARTICULO DE PRESTAMO\n" ;
+    	cout << "4. MODIFICAR UN ARTICULO\n" ;
+    	cout << "5. ELIMINAR ARTICULO\n" ;
     	cout << "6. Atras \n" ;
     	cout << "7. Salir \n\n" ;
     	
-    	this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ;
+    	this->Opcion = common::ValidarEntero("SELECCIONE UNA OPCION:\n") ;
     	
     	switch(this->Opcion){
     		case 1 :{
@@ -417,7 +431,7 @@ void Menu::MenuParaArticulosDePrestamo(){
 					UsoDelLaboratorio->getPrestamos() ;
     				system("pause");
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nDATOS DE REGISTRO NO EXISTENTE \n\n" ;
 					system("pause") ;
 				}
     			
@@ -427,12 +441,12 @@ void Menu::MenuParaArticulosDePrestamo(){
 			case 2 :{ 
 				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
 					UsoDelLaboratorio->getPrestamos() ;
-					this->Opcion = common::ValidarEntero("Elija ucual desea ver especificamente? \n") ;					
+					this->Opcion = common::ValidarEntero("SELECCIONA UN ARTICULO EN ESPECIFICO \n") ;					
 					
 					UsoDelLaboratorio->AccederArticulosPrestamo(Opcion);
 					system("pause");
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nDATOS DE REGISTRO NO EXISTENTES \n\n" ;
 					system("pause") ;
 				}
 				
@@ -441,9 +455,9 @@ void Menu::MenuParaArticulosDePrestamo(){
 			
 			case 3 :{ // Registrar nuevos articulos de prestamos
 				
-				cout << "\nPor favor ingrese la cantidad de articulos que desea registrar \n\n" ;
+				cout << "\nCANTIDAD DE ARTICULOS QUE DESEA REGISTRAR: " ;
 				
-				this->Opcion = common::ValidarEntero("Ingrese la cantidad: \n") ;
+				this->Opcion = common::ValidarEntero("\nCANTIDAD: ") ;
 				
 				UsoDelLaboratorio->AgregarAlVectorPrestamo(this->Opcion) ; 
 				
@@ -456,7 +470,7 @@ void Menu::MenuParaArticulosDePrestamo(){
 				
 				UsoDelLaboratorio->getPrestamos() ;
 				
-				this->Opcion = common::ValidarEntero("\nQue articulo desea modificar ? \n") ;
+				this->Opcion = common::ValidarEntero("\nSELECCIONE EL ARTICULO QUE DESEA MODIFICAR \n") ;
 					
 				UsoDelLaboratorio->ModificarDatosArticulosPrestamos(this->Opcion) ; 
 					
@@ -479,15 +493,15 @@ void Menu::MenuParaArticulosDePrestamo(){
 			}
 			
 			case 7 :{ // Salir
-				cout << "\nREGRESA PRONTO \n\n" ;
+				cout << "\nESPERAMOS TU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ;
 				break;
 			}
 			
 			default :{ // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTALO DE NUEVO \n" ;
 				system("pause") ;
 				system("cls") ;
 				break;
@@ -507,20 +521,21 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 	do {
 		system("cls") ;
 		
-		cout << "\n\t\tMenu Exclusivo para estudiantes \n\n" ;
-		cout << "1. Ver mi informacion personal \n" ;
-		cout << "2. Ver estudian3tes registrados en el Laboratorio \n" ;
-		cout << "3. Ver articulos de prestamo disponibles \n" ;
-		cout << "4. Diligenciar prestamos \n" ;
-		cout << "5. Diligenciar devolucion \n" ;
-		cout << "6. Consultar mi estado y valor de multa \n" ;
+		cout << "\n\t\tMENU EXCLUSIVO PARA ESTUDIANTES \n\n" ;
+		cout << "1. VER MI INFORMACION PERSONAL \n" ;
+		cout << "2. VER ESTUDIANTES REGISRADOS EN EL SISTEMA \n" ;
+		cout << "3. VER ARTICULOS DE PRESTAMO DISPONIBLE \n" ;
+		cout << "4. DILIGENCIAR PRESTAMO  \n" ;
+		cout << "5. DILIGENCIAR DEVOLUCION \n" ;
+		cout << "6. CONSULTAR MI ESTADO DE MULTA \n" ;
 		cout << "7. Atras \n" ;
 		cout << "8. Salir \n\n" ;
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
+		this->Opcion = common::ValidarEntero("SELECCION UNA OPCION: \n") ;
 		
 		switch (this->Opcion) {
 			case 1 : { // Ver mi informacion es decir el de registrado
+			
 				// Nota : 0 = Al vector de estudiantes, y lo utilizamos para sacar la ultima posicion del vector que es donde se encuentra mis datos
 				UsoDelLaboratorio->AccederAUnEstudiante(Posicion) ; 
 				
@@ -529,18 +544,21 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 			}
 			
 			case 2 : { // Ver todos los estudiantes registrados en el Laboratorio
+			
 				UsoDelLaboratorio->getEstudiantes() ; 
 				system("pause") ;
 				break;
 			}
 			
 			case 3 : { // Ver articulos de prestamo disponible
+			
 				UsoDelLaboratorio->getPrestamos() ;
 				system("pause") ;
 				break;
 			}
 			
 			case 4 : {//diligenciar prestamos
+			
 				UsoDelLaboratorio->AccederArticulosPrestamo(this->Opcion) ;
 				//cout << "HOla";
 				system("pause") ;
@@ -548,16 +566,19 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 			}
 			
 			case 5 : {// diligenciar devolucion
+			
 				break;
 			}
 			
 			case 6 : {//consultar estado y valor de multa
+			
 				UsoDelLaboratorio->AccederEStadoMultaEstudiante(this->Opcion) ;
 				system("pause") ;
 				break;
 			}
 			
 			case 7 : {// Atras
+			
 				*Salir = true ;
 				RegistroIDPersona () ;
 				
@@ -565,7 +586,8 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 			}
 			
 			case 8 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nESPERAMOS TU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ; // sale del ejecutable directamente
 				break;
@@ -573,8 +595,9 @@ void Menu::MenuParaEstudiantes(int Posicion) {
 			
 			
 			default : {
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				
+				cout << "\nOPCION INCORRECTA\n" ;
+				cout << "INTENTALO DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -608,50 +631,55 @@ void Menu::MenuExclusivoEstudiante(){
 		cout << "6. Atras. \n" ;
 		cout << "7. Salir. \n";
 		
-		Eleccion = common::ValidarEntero("Elija una Opcion: \n") ;
+		Eleccion = common::ValidarEntero("SELECCIONA UNA OPCION: \n") ;
 		
 		switch(Eleccion){
 			case 1 : { // Ver todos los estudiantes
-				cout << "Todos los estudiantes registrados son: ";
+			
+				cout << "LOS ESTUDIANTES REGISTRADOS EN EK SISTEMA SON: ";
 				UsoDelLaboratorio->getEstudiantes();
 				system("pause");
 				break;
 			}
 			
 			case 2 : { // Ver un estudiante en especifico 
+			
 				UsoDelLaboratorio->getEstudiantes();
 				
 				this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ; 
 				
-				cout<< "El estudiante que eligio es:";
+				cout<< "EEL ESTUDIANTE SELECCIONADO ES:";
 				UsoDelLaboratorio->AccederAUnEstudiante(this->Opcion);
 				system("pause");
 				break;
 			}
 			
 			case 3 : { // Registrar estudiantes
-				cout << "Cuantos estudiantes quiere registrar \n";
-				this->Opcion = common::ValidarEntero("Elija una Opcion: \n") ;
+			
+				cout << "CANTIDAD DE ESTUDIANTES A REGISTRAR \n";
+				this->Opcion = common::ValidarEntero("SELECCIONA UNA OPCION: \n") ;
 				
 				UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion);
 				break;
 			}
 			
 			case 4 : { // Modificar estudiantes
-				cout << "Modificacion de estudiante";
+			
+				cout << "\tMODIFICACION DE LOS DATOS DE UN ESTUDIANTE\n";
 				UsoDelLaboratorio->getEstudiantes() ;
-				this->Opcion = common::ValidarEntero("Elija el estudiante que desea modificar: ") ;
+				this->Opcion = common::ValidarEntero("SELECCIONE EL CAMPO QUE DESEA MODIFICAR: ") ;
 				UsoDelLaboratorio->ModificarDatosEstudiante(this->Opcion) ;
 				system("pause");
 				break;
 			}
 			
 			case 5 : { // Eliminar algun estudiante
+			
 				UsoDelLaboratorio->AccederAUnEstudiante(this->Opcion);
 				
 				UsoDelLaboratorio->getEstudiantes() ;
 			
-				this->Opcion = common::ValidarEntero("Elija el estudiante que desea eliminar: ") ;
+				this->Opcion = common::ValidarEntero("SELECCIONE EL ESTUDIANTE QUE DESEA ELIMINAR: ") ;
 				
 				UsoDelLaboratorio->EliminarDatosDelVectorEstudiante(this->Opcion);
 				system("pause");
@@ -659,20 +687,22 @@ void Menu::MenuExclusivoEstudiante(){
 			}
 			
 			case 6 : { // Atras
+			
 				*Salir = true ;
 				break;
 			}
 			
 			case 7 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nESPERAMOS SU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ; // sale del ejecutable directamente
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTE DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -693,19 +723,20 @@ void Menu::MenuParaArticulosDeMueble() {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tFunciones Disponibles \n\n" ;
-		cout << "1. Ver articulos de mueble registrados \n" ;
-		cout << "2. Ver un articulo en especifico \n" ; 
-		cout << "3. Registrar nuevos articulos de mueble \n" ;
-		cout << "4. Modificar articulos de mueble \n" ;
-		cout << "5. Eliminar articulos de mueble \n" ;
+		cout << "\n\tFUNCIONES DISPONIBLES \n\n" ;
+		cout << "1. ARTICULOS DE MUEBLES REGISTRADOS \n" ;
+		cout << "2. VER UN ARTICULO EN ESPECIFICO \n" ; 
+		cout << "3. REGISTRAR UN NUEVO MUEBLE \n" ;
+		cout << "4. MODIFICAR ARTICULO MUEBLE  \n" ;
+		cout << "5. ELIMINAR ARTICULO MUEBLE \n" ;
 		cout << "6. Atras \n" ;
 		cout << "7. Salir \n\n" ; 
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion \n") ;
+		this->Opcion = common::ValidarEntero("SELECCIONE UNA OPCION: \n") ;
 		
 		switch(this->Opcion) {
 			case 1 : { // Ver articulos registrados
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosMueble() == false) {
@@ -714,7 +745,7 @@ void Menu::MenuParaArticulosDeMueble() {
 					system("pause") ; 
 					
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 					 
 				}
@@ -722,18 +753,19 @@ void Menu::MenuParaArticulosDeMueble() {
 			}
 			
 			case 2 : { // Ver articulo en especifico
+			
 				system("cls") ; 
 				
 				if (UsoDelLaboratorio->VerificarArticulosMueble() == false) {
 					UsoDelLaboratorio->getMuebles() ;
 					
-					cout << "\nIngrese el articulo que desea ver su informacion \n\n" ;
+					cout << "\nSELECCION EL ARTICULO QUE DESEA VER:	" ;
 					cin  >> this->Opcion ;
 					UsoDelLaboratorio->AccederAMueble(this->Opcion) ;
 					
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}  
 				
@@ -741,9 +773,10 @@ void Menu::MenuParaArticulosDeMueble() {
 			}
 				
 			case 3 : { // Registrar Articulos
+			
 				system("cls") ;
 				
-				Cantidad = common::ValidarEntero("\nCuantos articulos desea requistar ? \n") ;
+				Cantidad = common::ValidarEntero("\nCANTIDAD DE ARTICULOS A REGISTRAR \n") ;
 					
 				UsoDelLaboratorio->AgregarAlVectorMueble(Cantidad) ;
 
@@ -751,51 +784,56 @@ void Menu::MenuParaArticulosDeMueble() {
 			}
 				
 			case 4 : { // Modificar Articulos
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosMueble() == false){
 					UsoDelLaboratorio->getMuebles() ;
 					
-					this->Opcion = common::ValidarEntero("\nQue articulo desea modificar ? \n") ;
+					this->Opcion = common::ValidarEntero("\nARTICULO A MODIFICAR:") ;
 					
 					UsoDelLaboratorio->ModificarDatosMueble(this->Opcion) ;
 					 
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}
 				break;
 			} 
 				
 			case 5 : { // Eliminar Articulos 
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosMueble() == false){
 					UsoDelLaboratorio->EliminarDatosDelVectorMueble() ;
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}
 				break;
 			}
 			
 			case 6 : { // Atras
+			
 				*Salir = true ; 
 				break;
 			}
 				
 			case 7 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nREGRESA PRONTO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ;
 				break;
 			}
 				
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+			
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTA DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -817,19 +855,20 @@ void Menu::MenuParaArticulosDeComputo() {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tFunciones Disponibles \n\n" ;
-		cout << "1. Ver articulos de computo registrados \n" ;
-		cout << "2. Ver un articulo en especifico \n" ; 
-		cout << "3. Registrar nuevos articulos de computo \n" ;
-		cout << "4. Modificar articulos de computo \n" ;
+		cout << "\n\tFUNCIONES DISPONIBLES \n\n" ;
+		cout << "1. ARTICULOS DE COMPUTO DISPONIBLES \n" ;
+		cout << "2. VER ARTICULO ESPECIFICO \n" ; 
+		cout << "3. REGISTRAR UN NUEVO COMPUTO \n" ;
+		cout << "4. MODIFICAR UN ARTICULO DE COMPUTO \n" ;
 		cout << "5. Eliminar articulos de computo \n" ;
 		cout << "6. Atras \n" ;
 		cout << "7. Salir \n\n" ; 
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion \n") ;
+		this->Opcion = common::ValidarEntero("SELECCIONA UNA OPCION:\n") ;
 		
 		switch(this->Opcion) {
 			case 1 : { // Ver articulos registrados
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosCompu() == false) {
@@ -838,7 +877,7 @@ void Menu::MenuParaArticulosDeComputo() {
 					system("pause") ; 
 					
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 					 
 				}
@@ -846,16 +885,17 @@ void Menu::MenuParaArticulosDeComputo() {
 			}
 			
 			case 2 : { // Ver articulo en especifico
+			
 				system("cls") ; 
 				
 				if (UsoDelLaboratorio->VerificarArticulosCompu() == false) {
-					cout << "\nIngrese el articulo que desea ver su informacion \n\n" ;
+					cout << "\nSELECCIONE UN ARTICULO EN ESPECIFICO A CONSULTAR \n\n" ;
 					cin  >> this->Opcion ;
 					UsoDelLaboratorio->AccederAComputo(this->Opcion) ;
 					
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}  
 				
@@ -863,9 +903,10 @@ void Menu::MenuParaArticulosDeComputo() {
 			}
 				
 			case 3 : { // Registrar Articulos
+			
 				system("cls") ;
 				
-				Cantidad = common::ValidarEntero("\nCuantos articulos desea requistar ? \n") ;
+				Cantidad = common::ValidarEntero("\nCANTIDAD DE ARTICULOS A REGISTRAR  \n") ;
 					
 				UsoDelLaboratorio->AgregarAlVectorComputo(Cantidad) ;
 				system("pause") ; 
@@ -873,46 +914,50 @@ void Menu::MenuParaArticulosDeComputo() {
 			}
 				
 			case 4 : { // Modificar Articulos
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosCompu() == false){
 					UsoDelLaboratorio->ModificarDatosDelVectorComputo() ; 
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}
 				break;
 			} 
 				
 			case 5 : { // Eliminar Articulos 
+			
 				system("cls") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosCompu() == false){
 					UsoDelLaboratorio->EliminarDatosDelVectorComputo() ;
 					system("pause") ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 				}
 				break;
 			}
 			
 			case 6 : { // Atras
+			
 				*Salir = true ; 
 				break;
 			}
 				
 			case 7 : { // Salir
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nESPERAMOS SU REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ;
 				break;
 			}
 				
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTA DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -934,18 +979,18 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tFunciones Disponibles \n\n" ;
-		cout << "1. Ver mi informacion disponible \n" ; 
-		cout << "2. Funciones: Para Informacion del Laboratorio \n" ;
-		cout << "3. Funciones: Para Estudiantes del Laboratorio \n" ;
-		cout << "4. Funciones: Para Profesores del Laboratorio \n" ;
-		cout << "5. Funciones: Para Articulos de Computo del Laboratorio \n" ;
-		cout << "6. Funciones: Para Articulos de Mueble del Laboratorio \n" ;
-		cout << "7. Funciones: Para Articulos de Prestamo del Laboratorio \n" ;
-		cout << "8. Ir a Menu Principal \n" ;
+		cout << "\n\tFUNCIONES DISPONIBLES \n\n" ;
+		cout << "1. VER MI INFORMACION PERSONAL \n" ; 
+		cout << "2. FUNCIONES PARA INFORMACION DE LABORATORIO \n" ;
+		cout << "3. FUNCIONES PARA ESTUDIANTES REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "4. FUNCIONES PARA PROFESORES REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "5. FUNCIONES PARA ARTICULOS DE COMPUTO REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "6. FUNCIONES PARA ARTICULOS MUEBLE REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "7. FUNCIONES PARA ARTICULOS DE PRESTAMO REGISTRADOS EN EL LABORATORIO \n" ;
+		cout << "8. MENU PRINCIPAL \n" ;
 		cout << "9. Salir \n\n" ;
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
+		this->Opcion = common::ValidarEntero("SELECCIONA UNA OPCION: \n") ;
 		
 		switch (this->Opcion) {
 			case 1 : { // Ver mi informacion
@@ -957,13 +1002,14 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 			}
 			
 			case 2 : { // Funciones para informaciones
-				cout << "\nEn Cualquier momento sera dirigido \n" ;
+			
+				cout << "\nPRESIONA UNA TECLA PARA SER DIRIGIDO \n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarVectorInformaciones() == false) {
 					MenuInformacionLaboratorio() ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
 					system("pause") ;
 					MenuInformacionLaboratorio() ;
 				}
@@ -971,45 +1017,50 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 			}
 			
 			case 3 : { // Menu exclusivo de estudiantes
-				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
+			
+				cout << "\nPRESIONA UNA TECLA PARA SER DIRIGIDO \n\n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarVectorEstudiantes() == false) {
 					MenuExclusivoEstudiante() ;
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
-					cout << "\nPor favor registre Al menos un estudiante \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
+					cout << "\nREGISTRE AL MENOS UN ESTUDIANTE \n\n" ;
+					
 					system("pause") ;
 					system("cls") ;
 					
-					cout << "\nPor favor registre algun estudiante \n\n" ;				
-					this->Opcion = common::ValidarEntero("\n\nCuantos Estudiantes desea registrar? \n") ;
+					cout << "\nREGISTRE UN ESTUDIANTE \n\n" ;				
+					this->Opcion = common::ValidarEntero("\n\nCANTIDAD DE ESTUDIANTES A REGISTRAR \n") ;
 					UsoDelLaboratorio->AgregarAlVectorEstudiantes(this->Opcion) ;
 				}
 				break;
 			}
 			
-			case 4 : { //Menu para funciones exclusivas de profesor desde administrador				
-				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
+			case 4 : { //Menu para funciones exclusivas de profesor desde administrador		
+					
+				cout << "\nPRESIONA UNA TECLA PARA SER DIRIGIDO \n\n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {
 					MenuExclusivoProfe();
 				}else {
-					cout << "\nNo existen datos de registro \n\n" ;
-					cout << "\nPor favor registre Al menos un Profesor \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
+					cout << "\nREGISTRE AL MENOS UN PROFESOR \n\n" ;
 					system("pause") ;
 					system("cls") ;
 					
-					cout << "\nPor favor registre algun profesor \n\n" ;				
-					this->Opcion = common::ValidarEntero("\n\nCuantos Profesores desea registrar? \n") ;
+					cout << "\nREGISTRE UN PROFESOR \n\n" ;				
+					this->Opcion = common::ValidarEntero("\n\nCANTIDAD DE PROFESORES A REGISTRAR \n") ;
 					UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 				}
 				break;
 			}
 			
 			case 5 : { // Funciones para articulos de computo
-				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
+			
+			
+				cout << "\nPRESIONA UNA TECLA PARA SER DIRIGIDO \n\n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosCompu() == false) {
@@ -1017,18 +1068,18 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 					
 				}else {
 					system("cls") ;
-					cout << "\nNo existen datos de registro \n\n" ;
-					cout << "\nPor favor registre articulos de computo \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n\n" ;
+					cout << "\nREGISTRE UN ARTICULO DE COMPUTO \n\n" ;
 					system("pause") ;
 					system("cls") ;
 					
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
-						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
+						this->Opcion = common::ValidarEntero("\n\nCANTIDAD DE ARTICULOS A REGISTRAR \n") ;
 						
 						UsoDelLaboratorio->AgregarAlVectorComputo(this->Opcion) ;
 					}else {
-						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
-						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
+						cout << "\nREGISTRE AL MENOS UN PROFESOR PARA DILIGENCIAR EL REGISTRO DE ARTICULO \n\n" ;				
+						this->Opcion = common::ValidarEntero("CANTIDAD DE PROFESORES A REGISTRAR \n") ;
 						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 					}
 					
@@ -1038,25 +1089,26 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 			}
 			
 			case 6 : { // Funciones para articulos de Mueble
-				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
+			
+				cout << "\nPRESIONA UNA TECLA PARA SER DIRIGIDO \n\n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosMueble() == false) {
 					MenuParaArticulosDeMueble() ; 
 				}else {
 					system("cls") ;
-					cout << "\nNo existen datos de registro \n" ;
-					cout << "Registre articulos de muebles \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n" ;
+					cout << "REGISTRE UN ARTICULO DE MUEBLE \n\n" ;
 					system("pause") ;
 					system("cls") ;
 					
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
-						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
+						this->Opcion = common::ValidarEntero("\n\nCANTIDAD DE ARTICULOS A REGISTRAR \n") ;
 						
 						UsoDelLaboratorio->AgregarAlVectorMueble(this->Opcion) ;
 					}else {
-						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
-						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
+						cout << "\nREGISTRE AL MENOS UN PROFESOR PARA DILIGENCIAR EL REGISTRO DE ARTICULO \n\n" ;				
+						this->Opcion = common::ValidarEntero("CANTIDAD DE PROFESORES A REGISTRAR \n") ;
 						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 					}
 				}
@@ -1064,25 +1116,26 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 			}
 			
 			case 7 : { // Funciones para articulos de Prestamo
-				cout << "\nEn Cualquier momento sera dirigido \n\n" ;
+			
+				cout << "\nPRESIONE UNA TECLA PARA SER DIRIGIDO \n\n" ;
 				system("pause") ;
 				
 				if (UsoDelLaboratorio->VerificarArticulosPrestamo() == false) {
 					MenuParaArticulosDePrestamo() ;
 				}else {
 					system("cls") ;
-					cout << "\nNo existen datos de registro \n" ;
-					cout << "Registre articulos de prestamo \n\n" ;
+					cout << "\nNO EXISTEN DATOS DE REGISTRO \n" ;
+					cout << "REGISTRE UN ARTICULO DE PRESTAMO \n\n" ;
 					system("pause") ;
 					system("cls") ;
 					
 					if (UsoDelLaboratorio->VerificarVectorProfesores() == false) {				
-						this->Opcion = common::ValidarEntero("\n\nCuantos articulos desea registrar? \n") ;
+						this->Opcion = common::ValidarEntero("\n\nCANTIDAD DE ARTICULOS A REGISTRAR \n") ;
 						
 						UsoDelLaboratorio->AgregarAlVectorDisponibles(this->Opcion) ;
 					}else {
-						cout << "\nPor favor registre al menos un profesor para poder proceder al registro de articulos \n\n" ;				
-						this->Opcion = common::ValidarEntero("Cuantos Profesores desea registrar? \n") ;
+						cout << "\nREGISTRE AL MENOS UN PROFESOR PARA DILIGENCIAR EL REGISTRO DE ARTICULO\n\n" ;				
+						this->Opcion = common::ValidarEntero("CANTIDAD DE PROFESORES A REGISTRAR\n") ;
 						UsoDelLaboratorio->AgregarAlVectorProfesores(this->Opcion) ;
 					}
 				}
@@ -1090,21 +1143,24 @@ void Menu::MenuParaPersonalAdmi(int Posicion) {
 			}
 			
 			case 8 : { // Atras
+			
 				MenuIngreso() ;
 				*Salir = true ;
 				break;
 			}
 			
 			case 9 : { // Salir 
-				cout << "\nEsperamos su regreso \n\n" ;
+			
+				cout << "\nESPERAMOS SU PRONTO REGRESO, ADIOS... \n\n" ;
 				system("pause") ;
 				exit(1) ;
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+			
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTALO DE NUEVO \n" ;
 				system("pause") ;
 				break;
 			}
@@ -1124,17 +1180,18 @@ void Menu::MenuInformacionLaboratorio() {
 	do {
 		system("cls") ;
 		
-		cout << "\n\tFunciones Disponibles  \n\n" ;
-		cout << "1. Ver informacion principal del Laboratorio. \n" ;
-		cout << "2. Agregar informacion al Laboratorio. \n" ;
-		cout << "3. Modificar informacion al Laboratorio. \n" ;
-		cout << "4. Eliminar datos agregados al Laboratorio. \n" ;
+		cout << "\n\tFUNCIONES DISPONIBLES  \n\n" ;
+		cout << "1. VER INFORMACION PRINCIPAL DEL LABORATORIO \n" ;
+		cout << "2. AGREGAR INFORMACION AL LABORATORIO \n" ;
+		cout << "3. MODIFICIAR INFORMACION AL LABORATORIO \n" ;
+		cout << "4. ELIMINAR DATOS AGREGADOS  \n" ;
 		cout << "5. Atras. \n" ;
 		
-		this->Opcion = common::ValidarEntero("Elija una opcion\n") ;
+		this->Opcion = common::ValidarEntero("SELECCIONA UNA OPCION\n") ;
 		
 		switch (this->Opcion) {
 			case 1 : { // Ver toda la informacion del Laboratorio disponible
+			
 				UsoDelLaboratorio->getInformaciones() ;
 				cout << "\n" ; 
 				system("pause") ;
@@ -1142,28 +1199,31 @@ void Menu::MenuInformacionLaboratorio() {
 			}
 			
 			case 2 : { // Agregar informacion al Laboratorio
+			
 				system("cls") ;
-				cout << "Ingrese la cantidad de datos que desea agregar \n" ;
-				Cantidad = common::ValidarEntero("Digete la cantidad de informacion que desea registrar \n") ;
+				cout << "CANTIDAD DE DATOS A INGRESAR \n" ;
+				Cantidad = common::ValidarEntero("CANTIDAD DE DATOS QUE DESEA AGREGAR \n") ;
 				
 				UsoDelLaboratorio->AgregarAlVectorInformaciones(Cantidad) ; 
 				break;
 			}
 			
 			case 3 : { // Modificar datos del Laboratorio
+			
 				system("cls") ;
 				
-				cout << "\nEs hora modificar !!! \n" ;
+				cout << "\nMOODIFICACION DE DATOS BASICOS DEL LABORATORIO !!! \n" ;
 				system("pause") ;
 				UsoDelLaboratorio->ModificarDatosDelVectorInformaciones() ;
 				break;
 			}
 			
 			case 4 : { // Eliminar datos del Laboratorio Exclusivo para personal Adiministrativo
+			
 				system("cls") ;
 				
-				cout << "\nA continuacion podras eliminar informacion del Laboratorio \n" ;
-				cout << "Solo podras eliminar informacion agregada \n\n" ;
+				cout << "\nELIMINAR DATOS DEL LABORATORIO \n" ;
+				cout << "ATENCION <SOLO PODRAS ELIMINAR LA INFORMACION AGREGADA" ;
 				system("pause") ;
 				UsoDelLaboratorio->EliminarDatosDelVectorInformaciones() ;
 								
@@ -1171,13 +1231,15 @@ void Menu::MenuInformacionLaboratorio() {
 			}
 			
 			case 5 : { // Atras 
+			
 				*Salir = true ; 
 				break;
 			}
 			
 			default : { // Opcion Incorrecta
-				cout << "\nHas elegido una opcion incorrecta \n" ;
-				cout << "Por favor intente de nuevo \n" ;
+			
+				cout << "\nOPCION INCORRECTA \n" ;
+				cout << "INTENTA DE NUEVO \n" ;
 				system("pause") ;
 				system("cls") ;
 				break;
@@ -1189,6 +1251,7 @@ void Menu::MenuInformacionLaboratorio() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
+
 // DESTRUCTOR
 Menu::~Menu() {
 }

@@ -1,4 +1,3 @@
-
 #include "ArticuloDePrestamo.h"
 
 // CONSTRUCTOR
@@ -8,7 +7,7 @@ ArticuloDePrestamo::ArticuloDePrestamo() {
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// SETTERS 
+// Setters
 void ArticuloDePrestamo::setIDMarca(string IDMarca) {
 	this->IDMarca = IDMarca ;
 }
@@ -17,22 +16,25 @@ void ArticuloDePrestamo::setCantidadDeTipoDeArticulo(int CantidadDeArticulos)  {
 	this->CantidadDeTipoDeArticulo = CantidadDeArticulos ;
 }
 
+void ArticuloDePrestamo::setDespreciacion(float Despreciacion){
+	this->ValorDespreciacionAnual = Despreciacion ;	
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//Asignacion de profesor al articulo
 void ArticuloDePrestamo::AsignarAProfesor(Profesor* Profesor) {
 	this->ProfesorAsignado = Profesor ; 
-}
+}	
 
-void ArticuloDePrestamo::setDespreciacion(float Despreciacion){
-	this->ValorDespreciacionAnual = Despreciacion ;
-	
-}
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// GETTERS
+// Getters
 string ArticuloDePrestamo::getIDMarca() {
 	return this->IDMarca ; 
 }
-
 
 int ArticuloDePrestamo::getCantidadDeTipoDeArticulo() {
 	return this->CantidadDeTipoDeArticulo ;
@@ -49,6 +51,7 @@ float ArticuloDePrestamo::getDespreciacion(){
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
+//Otros metodos
 float ArticuloDePrestamo::Despreciacion() { 
 	float ValorDeArticulo, DespreciacionXMes ; 
 	//ValorDeArticulo = ArticuloADespreciar.getValorArticuloInicial() ;
@@ -62,8 +65,7 @@ float ArticuloDePrestamo::Despreciacion() {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ArticuloDePrestamo* ArticuloDePrestamo::ArticulosDePrestamoIniciales(ArticuloDePrestamo* ArticulosIniciales, int NroDeArticulo ) {
 	string Nombre, Marca ;
@@ -104,7 +106,6 @@ ArticuloDePrestamo* ArticuloDePrestamo::ArticulosDePrestamoIniciales(ArticuloDeP
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
 
 void ArticuloDePrestamo::CrearArticuloParaPrestamo(ArticuloDePrestamo* ArticuloParaCrear) {
 	system("cls") ;
@@ -113,19 +114,19 @@ void ArticuloDePrestamo::CrearArticuloParaPrestamo(ArticuloDePrestamo* ArticuloP
 	float Valor ;
 	bool EstadoArticulo = false, EstadoDeLimiteCantidad = false, Asignacion = false ;
 	
-	cout << "\n\tPor favor ingrese los datos correspondientes a articulos de prestamos \n\n" ;
+	cout << "\n\tINGRESE LOS SIGUIENTES DATOS PARA CREAR ARTICULOS DE PRESTAMO \n\n" ;
 	
-	cout << "Ingrese el nombre del articulo: \n" ;
+	cout << "-INGRESE NOMBRE DEL ARTICULO:		" ;
 	cin  >> Nombre ;
 	
-	cout << "Ingrese la marca del articulo: \n"  ;
+	cout << "-INGRESE LA MARCA DEL ARTICULO:		"  ;
 	cin  >> Marca ;
 	
-	Codigo = common::ValidarEntero("Ingrese el Codigo del articulo: \n" ) ;
+	Codigo = common::ValidarEntero("-INGRESE EL CODIGO DEL ARTICULO:	" ) ;
 	
-	NroDeArticulos = common::ValidarEntero("Ingrese la cantidad de articulos que van a estar disponibles: \n" ) ;
+	NroDeArticulos = common::ValidarEntero("-INGRESE UNA CANTIDAD DE DISPONIBLES:	" ) ;
 		
-	Valor = common::ValidarEntero("Ingrese el valor del articulo: \n" ) ;
+	Valor = common::ValidarEntero("-INGRESE UN VALOR AL ARTICULO:		" ) ;
 		
 	ArticuloParaCrear->setIDNombre(Nombre) ;
 	ArticuloParaCrear->setIDMarca(Marca) ;
@@ -138,17 +139,13 @@ void ArticuloDePrestamo::CrearArticuloParaPrestamo(ArticuloDePrestamo* ArticuloP
 	ArticuloParaCrear->setEstadoDeLimiteDeArticulos(EstadoDeLimiteCantidad) ;
 	ArticuloParaCrear->setEstadoDeAsignadoAProfesor(Asignacion) ;
 	
-	cout << "\nRegistro Exitoso \n\n" ;
+	cout << "\n\n\tSU ARTICULO DE PRESTAMO SE REGISTRO CON EXITO... \n\n" ;
 }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
-// DESTRUCTOR
+// Destructor
 ArticuloDePrestamo::~ArticuloDePrestamo() {
 }

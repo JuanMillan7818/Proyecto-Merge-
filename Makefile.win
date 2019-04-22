@@ -1,0 +1,73 @@
+# Project: Proyecto De IPOO
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o Prestamo.o ArticuloMueble.o PersonalAdmi.o
+LINKOBJ  = main.o Articulo.o Fecha.o Informacion.o Laboratorio.o Profesor.o Persona.o ArticuloComputo.o ArticuloDePrestamo.o Menu.o Estudiante.o common.o ManejoDeArchivo.o Prestamo.o ArticuloMueble.o PersonalAdmi.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "Proyecto De IPOO.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Articulo.o: Articulo.cpp
+	$(CPP) -c Articulo.cpp -o Articulo.o $(CXXFLAGS)
+
+Fecha.o: Fecha.cpp
+	$(CPP) -c Fecha.cpp -o Fecha.o $(CXXFLAGS)
+
+Informacion.o: Informacion.cpp
+	$(CPP) -c Informacion.cpp -o Informacion.o $(CXXFLAGS)
+
+Laboratorio.o: Laboratorio.cpp
+	$(CPP) -c Laboratorio.cpp -o Laboratorio.o $(CXXFLAGS)
+
+Profesor.o: Profesor.cpp
+	$(CPP) -c Profesor.cpp -o Profesor.o $(CXXFLAGS)
+
+Persona.o: Persona.cpp
+	$(CPP) -c Persona.cpp -o Persona.o $(CXXFLAGS)
+
+ArticuloComputo.o: ArticuloComputo.cpp
+	$(CPP) -c ArticuloComputo.cpp -o ArticuloComputo.o $(CXXFLAGS)
+
+ArticuloDePrestamo.o: ArticuloDePrestamo.cpp
+	$(CPP) -c ArticuloDePrestamo.cpp -o ArticuloDePrestamo.o $(CXXFLAGS)
+
+Menu.o: Menu.cpp
+	$(CPP) -c Menu.cpp -o Menu.o $(CXXFLAGS)
+
+Estudiante.o: Estudiante.cpp
+	$(CPP) -c Estudiante.cpp -o Estudiante.o $(CXXFLAGS)
+
+common.o: common.cpp
+	$(CPP) -c common.cpp -o common.o $(CXXFLAGS)
+
+ManejoDeArchivo.o: ManejoDeArchivo.cpp
+	$(CPP) -c ManejoDeArchivo.cpp -o ManejoDeArchivo.o $(CXXFLAGS)
+
+Prestamo.o: Prestamo.cpp
+	$(CPP) -c Prestamo.cpp -o Prestamo.o $(CXXFLAGS)
+
+ArticuloMueble.o: ArticuloMueble.cpp
+	$(CPP) -c ArticuloMueble.cpp -o ArticuloMueble.o $(CXXFLAGS)
+
+PersonalAdmi.o: PersonalAdmi.cpp
+	$(CPP) -c PersonalAdmi.cpp -o PersonalAdmi.o $(CXXFLAGS)

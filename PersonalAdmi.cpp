@@ -18,30 +18,30 @@ void PersonalAdmi::CrearPersonal(PersonalAdmi* Personal) {
 	int Edad ;
 	long Cedula, Telefono ;
 	
-	cout << "\nIngresa los datos correspondiente de Personal administrativo \n" ;
-	cout << "Ingrese su nombre: \n" ;
+	cout << "\nLLENA EL FORMULARIO PARA LA CREACION DE UN NUEVO PERFIL \n" ;
+	cout << "NOMBRE:" ;
 	cin  >> Nombre ;
 	Personal->setNombre(Nombre) ;
 	
-	cout << "Ingrese su apellido: \n" ;
+	cout << "APELLIDO:" ;
 	cin  >> Apellido ;
 	Personal->setApellido(Apellido) ;
 	
-	cout << "Ingrese su email: \n" ;
+	cout << "E-MAIL:" ;
 	cin  >> Email ;
 	Personal->setEmail(Email) ;
 	
-	Edad = common::ValidarEntero("Ingrese su edad: \n") ;
+	Edad = common::ValidarEntero("EDAD:") ;
 	Personal->setEdad(Edad) ;
 		
 		
-	Cedula = common::ValidarEntero("Ingrese su numero de cedula: \n" ) ;
+	Cedula = common::ValidarEntero("# DE IDENTIFICACION:" ) ;
 	Personal->setCedula(Cedula) ;
 	
-	Telefono = common::ValidarEntero("Ingrese su numero de telefono: \n") ;
+	Telefono = common::ValidarEntero("# TELEFONICO:") ;
 	Personal->setTelefono(Telefono) ;
 	
-	cout << "\n\nRegistro Exitoso !!! \n\n" ;
+	cout << "\n\nPERFIL CREADO CON EXITO !! \n\n" ;
 	system("pause") ;
 }
  

@@ -1,4 +1,3 @@
-
 #ifndef FECHA_H_
 #define FECHA_H_
 
@@ -11,8 +10,11 @@ class Fecha {
 		int Anio ;
 	
 	public :
+		//Constructores
 		Fecha () ;
 		Fecha (int Dia, int Mes, int Anio) ;
+		
+		//Otros metodos
 		void setDia (int Dia) ;
 		void setMes (int Mes) ;
 		void setAnio (int Anio) ;
@@ -21,6 +23,8 @@ class Fecha {
 		int getAnio () ;
 		bool ValidarFormatoDeFecha (int Dia, int Mes, int Anio) ;
 		void RegistrarFecha (int Dia, int Mes, int Anio) ;
+		
+		//Destructor
 		~Fecha () ;
 };
 #endif

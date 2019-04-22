@@ -1,4 +1,3 @@
-
 #ifndef PROFESOR_H_
 #define PROFESOR_H_
 #include <iostream>
@@ -12,14 +11,19 @@ class Profesor : public Persona {
 		string TituloProfesional ;
 		
 	public :
+		//Constructor
 		Profesor () ;
 		Profesor (string Nombre, string Apellido, string Email, int Edad,
 				  long Cedula, int Telefono, int Codigo, string TituloProfesional) ;
+				  
+		//Otros metodos		  
 		void setCodigo (int Codigo) ;
 		void setTituloProfesional (string TituloProfesional) ;
 		int getCodigo () ;
 		string getTituloProfesional () ;
 		void CrearDatosDeProfesor (Profesor* Profesor) ;	
+		
+		//Destructor
 		~Profesor () ;
 };
 #endif 

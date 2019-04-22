@@ -11,8 +11,8 @@ Prestamo::Prestamo(){
 
 // Archivo CSV Para historial
 void Prestamo::CrearArchivoCSVHistorial() {
-	//ManejoDeArchivo* ArchivoHstorial = new ManejoDeArchivo ;
 	
+	//ManejoDeArchivo* ArchivoHstorial = new ManejoDeArchivo ;
 }
 
 

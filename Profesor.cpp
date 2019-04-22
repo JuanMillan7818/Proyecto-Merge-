@@ -1,4 +1,3 @@
-
 #include "Profesor.h"
 
 // CONSTRUCTOR
@@ -44,39 +43,39 @@ void Profesor::CrearDatosDeProfesor(Profesor* Profesor) {
 	int* Codigo = new int ;
 	string* TituloProfesional = new string ;
 
-	cout << "\nIngresa los datos correspondiente de Profesor \n" ;
-	cout << "Ingrese su nombre: \n" ;
+	cout << "\nLLENA EL SIGUIENTE FORMULARIO PARA CREAR U NUEVO PERFIL \n" ;
+	cout << "NOMBRE:" ;
 	cin  >> *Nombre ;
 	Profesor->setNombre(*Nombre) ;
 	
-	cout << "Ingrese su apellido: \n" ;
+	cout << "APELLIDO:" ;
 	cin  >> *Apellido ;
 	Profesor->setApellido(*Apellido) ;
 	
-	cout << "Ingrese su email: \n" ;
+	cout << "E-MAIL:" ;
 	cin  >> *Email ;
 	Profesor->setEmail(*Email) ;
 
-	cout << "Ingrese su Titulo de profesion: \n" ;
+	cout << "TITULO PROFESIONAL:" ;
 	fflush(stdin) ; // Liberar memoria para string
 	cin  >> *TituloProfesional ;
 	Profesor->setTituloProfesional(*TituloProfesional) ;
 	
 		
-	*Edad = common::ValidarEntero("Ingrese su edad: \n") ;
+	*Edad = common::ValidarEntero("EDAD:") ;
 	Profesor->setEdad(*Edad) ;
 	
 		
-	*Cedula = common::ValidarEntero("Ingrese su numero de cedula: \n" ) ;
+	*Cedula = common::ValidarEntero("# DE IDENTIFICACION:" ) ;
 	Profesor->setCedula(*Cedula) ;
 	
-	*Telefono = common::ValidarEntero("Ingrese su numero de telefono: \n") ;
+	*Telefono = common::ValidarEntero("# TELEFONICO:") ;
 	Profesor->setTelefono(*Telefono) ;
 	
-	*Codigo = common::ValidarEntero("Ingrese su nuevo numero de codigo: \n") ;
+	*Codigo = common::ValidarEntero("CODIGO:") ;
 	Profesor->setCodigo(*Codigo) ;
 	
-	cout << "\nRegistro Exitoso \n\n" ;
+	cout << "\nEL NUEVO PERFIL PROFESOR SE HA CREADO CON EXITO \n\n" ;
 	system("pause") ;
 	
    	delete Nombre, Apellido, Email, TituloProfesional ;

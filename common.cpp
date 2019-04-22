@@ -1,4 +1,3 @@
-
 #include "common.h"
 
 int common::ValidarEntero(string Mensaje) { // Esta funcion solicta un enetro por consola y valida que sea correcto
@@ -11,8 +10,8 @@ int common::ValidarEntero(string Mensaje) { // Esta funcion solicta un enetro po
 		if(cin.fail()) {
 			cin.clear() ; 
 			cin.ignore(numeric_limits<streamsize>::max(), '\n') ;
-			cout << "Has ingresado un valor no valido \n" ;
-			cout << "Intenta de nuevo \n" ;
+			cout << "VALOR INVALIDO, DIGITE UN NUMERO \n" ;
+			cout << "INTENTALO DE NUEVO \n" ;
 			system("pause") ;
 			cout << "\n" ;
 			cout << Mensaje ;

@@ -1,14 +1,13 @@
-
 #include "Estudiante.h"
 
-// CONSTRUCTOR
+// Constructor
 Estudiante::Estudiante(){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// SETTERS
+// Setters
 void Estudiante::setCarrera(string Carrera) {
 	this->Carrera = Carrera ;
 }
@@ -19,10 +18,6 @@ void Estudiante::setCodigo(int Codigo) {
 
 void Estudiante::setSemestre(int Semestre) {
 	this->Semestre = Semestre ;
-}
-
-void Estudiante::CorrerValorMulta(int ValorMultaAcomulada) {
-	this->ValorMultaAcomulada = ValorMultaAcomulada ;
 }
 
 void Estudiante::setEstadoDeMulta(bool EstadoDeMulta) {
@@ -36,7 +31,14 @@ void Estudiante::setEstadoDeEstudiante(bool EstadoDeEstudiante) {
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// GETTERS
+//Funcion correr valor de multa del estudiante
+void Estudiante::CorrerValorMulta(int ValorMultaAcomulada) {
+	this->ValorMultaAcomulada = ValorMultaAcomulada ;
+}
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+// Getters
 string Estudiante::getCarrera() {
 	return this->Carrera ; 
 }
@@ -61,21 +63,17 @@ bool Estudiante::getEstadoDeEstudiante() {
 	return this->EstadoDeEstudiante ;
 }
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// Mostrar
-void Estudiante::MostrarTodosLosArticulos() {
-	
-	
+// Mostrar todo
+void Estudiante::MostrarTodosLosArticulos() {	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// OTROS METODOS 
+// Otros metodos
 void Estudiante::CrearDatosDeObjetoEstudiante(Estudiante* EstudianteParaCrear, int Cantidad) {
 	system("cls") ;
 	string Nombre, Apellido, Email, Carrera ; 
@@ -85,46 +83,46 @@ void Estudiante::CrearDatosDeObjetoEstudiante(Estudiante* EstudianteParaCrear, i
 	bool EstadoDeEstudiante = false ;
 
 	for (int i=0 ; i<Cantidad ; i++) {
-		cout << "\nIngresa los datos correspondiente de estudiante \n" ;
-		cout << "Ingrese su nombre: \n" ;
+		cout << "\n\tCOMPLETE EL SIGUIENTE FORMULARIO \n\n" ;
+		cout << "-NOMBRE:		" ;
 		cin  >> Nombre ;
 		EstudianteParaCrear->setNombre(Nombre) ;
 		
-		cout << "Ingrese su apellido: \n" ;
+		cout << "-APELLIDO:		" ;
 		cin  >> Apellido ;
 		EstudianteParaCrear->setApellido(Apellido) ;
 		
-		cout << "Ingrese su email: \n" ;
+		cout << "-EMAIL:			" ;
 		fflush(stdin) ;
 		cin  >> Email ;
 		EstudianteParaCrear->setEmail(Email) ;
 		
-		cout << "Ingrese su carrera: \n" ;
+		cout << "-CARRERA:		" ;
 		fflush(stdin) ;
 		cin  >> Carrera ;
 		EstudianteParaCrear->setCarrera(Carrera) ;
 		
 		fflush(stdin) ;
-		Edad = common::ValidarEntero("Ingrese su edad: \n") ;
+		Edad = common::ValidarEntero("-EDAD:			") ;
 		EstudianteParaCrear->setEdad(Edad) ;
 		
 		
-		Cedula = common::ValidarEntero("Ingrese su numero de cedula: \n" ) ;
+		Cedula = common::ValidarEntero("-# DOC. IDENTIDAD:	") ;
 		EstudianteParaCrear->setCedula(Cedula) ;
 		
-		Telefono = common::ValidarEntero("Ingrese su numero de telefono: \n") ;
+		Telefono = common::ValidarEntero("-# TELEFONICO:		") ;
 		EstudianteParaCrear->setTelefono(Telefono) ;
 		
-		Codigo = common::ValidarEntero("Ingrese su nuevo numero de codigo: \n") ;
+		Codigo = common::ValidarEntero("-CODIGO:		") ;
 		EstudianteParaCrear->setCodigo(Codigo) ;
 		
-		Semestre = common::ValidarEntero("Ingrese el semestre que cursa: \n") ;
+		Semestre = common::ValidarEntero("-SEMESTRE QUE CURSA:	") ;
 		EstudianteParaCrear->setSemestre(Semestre) ;
 		
 		EstudianteParaCrear->setEstadoDeMulta(EstadoDeMulta) ;
 		EstudianteParaCrear->setEstadoDeEstudiante(EstadoDeEstudiante) ;
 		EstudianteParaCrear->CorrerValorMulta(ValorMultaAcomulada) ;
-		cout << "\nRegistro Exitoso \n\n" ;
+		cout << "\n\nSUS DATOS SE HAN REGISTRADO EXITOSAMENTE... \n\n" ;
 		system("pause") ; 
 	}
 }

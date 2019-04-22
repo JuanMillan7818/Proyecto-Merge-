@@ -1,7 +1,6 @@
-
 #include "Informacion.h"
 
-// CONSTRUCTOR
+// CONSTRUCTORES
 Informacion::Informacion() {
 
 }
@@ -44,23 +43,26 @@ void Informacion::DatosIniciales(Informacion* InfoInicial, int NroAuxiliar) {
 	string* Contenido = new string ;
 	
 	if (NroAuxiliar == 0) {
-		*Nombre = "Nombre o Tipo de informacion" ;
-		*Contenido = "Contenido" ;
+		*Nombre = "NOMBRE O TIPO DE INFORMACION" ;
+		*Contenido = "CONTENIDO" ;
 		InfoInicial->setNombreDeInfo(*Nombre) ;
 		InfoInicial->setContenidoDeInfo(*Contenido) ;
 	}else if (NroAuxiliar == 1) {
+		
 		// Hacer otro objeto de informacion
-		*Nombre = "Nombre del Laboratorio" ;
-		*Contenido = "Laboratorio Central de Tulua" ;
+		*Nombre = "NOMBRE DEL LABORATORIO" ;
+		*Contenido = "LABORATORIO CENTRAL DE TULUA" ;
 		InfoInicial->setNombreDeInfo(*Nombre) ;
 		InfoInicial->setContenidoDeInfo(*Contenido) ;
 	}else if (NroAuxiliar == 2) {
+		
 		// Hacer otro objeto de informacion
-		*Nombre = "Direccion" ;
+		*Nombre = "DIRECCION" ;
 		*Contenido = "Carrera 13 #21-56 B/Ruben Cruz" ;
 		InfoInicial->setNombreDeInfo(*Nombre) ;
 		InfoInicial->setContenidoDeInfo(*Contenido) ;
 	}
+	
 	// ELiminar datos en memoria dinamica
 	delete Nombre ;
 	delete Contenido ;
@@ -69,6 +71,7 @@ void Informacion::DatosIniciales(Informacion* InfoInicial, int NroAuxiliar) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+//CREAR LA INFORMACION DEL LABORATORIO
 
 void Informacion::CrearInformacionLabotatorio(Informacion* InformacionParaCrear) {
 	
@@ -76,17 +79,19 @@ void Informacion::CrearInformacionLabotatorio(Informacion* InformacionParaCrear)
 	
 	system("cls") ;
 	
-	cout << "\nPor favor ingrese los datos correspondientes \n\n" ;
+	cout << "\n\tCOMPLETE LA SIGUIENTE INFORMACION \n\n" ;
 	
 		
-	cout << "Ingrese el tipo o nombre de la informacion que desea registrar \n" ;
+	cout << "IMGRESE EL TIPO O NOMBRE QUE DESEA REGISTRAR:		" ;
 	cin  >> Nombre ;
 		
-	cout << "Ingrese el contenido de la informacion que desea registrar \n" ;
+	cout << "INGRESE EL CONTENIDO QUE DESEA REGISTRAR:		" ;
 	cin  >> Contenido ;		
 		
 	InformacionParaCrear->setNombreDeInfo(Nombre) ;
 	InformacionParaCrear->setContenidoDeInfo(Contenido) ;
+	
+	cout << "\n\tACCION EXITOSA... \n" ;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

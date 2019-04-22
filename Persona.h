@@ -18,8 +18,12 @@ class Persona {
 		long Telefono ;
 	
 	public :
+		
+		//Constructores
 		Persona () ;
 		Persona (string Nombre, string Apellido, string Email, int Edad, int Cedula, long Telefono) ;
+		
+		//Otros metodos
 		void setNombre (string Nombre) ;
 		void setApellido (string Apellido) ;
 		void setEmail (string Email) ;
@@ -32,6 +36,8 @@ class Persona {
 		int getEdad () ;
 		long getCedula () ;
 		long getTelefono () ;
+		
+		//Destructor
 		~Persona () ;
 };
 #endif

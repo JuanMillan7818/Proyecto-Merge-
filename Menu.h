@@ -13,10 +13,15 @@ class Menu {
 	private :
 		int Opcion ; // Este Atributo es para utilizar solo en el menu 
 					 // para que me vaya almacenando la opciones ingresadas
+					 
+		//Puntero			 
 		Laboratorio* UsoDelLaboratorio = new Laboratorio () ;  
 		 
 	public :
+		//Constructor
 		Menu () ; 
+		
+		//Otros metodos
 		void MenuIngreso () ;
 		void RegistroIDPersona () ;
 		void MenuDatosExistentes() ;
@@ -32,6 +37,8 @@ class Menu {
 		void MenuInformacionLaboratorio () ;
 		void MenuParaHistoriales () ;
 		void MenuParaEstadosDeArticulo () ;
+		
+		//Destructor
 		~Menu () ;
 };
 #endif 

@@ -1,20 +1,15 @@
-
 #include "ArticuloMueble.h"
 
-// CONSTRUCTOR 
+// Constructor
 ArticuloMueble::ArticuloMueble() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-// SETTERS
+// Setters
 void ArticuloMueble::setMaterial(string Material) {
 	this->Material = Material ;
-}
-
-void ArticuloMueble::AsignarAlArticulo(Profesor* Profesor) {
-	this->ProfesorAsignado = Profesor ;
 }
 
 void ArticuloMueble::setCantidad(int Cantidad) {
@@ -28,7 +23,15 @@ void ArticuloMueble::setDespreciacion(float Despreciacion) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-// GETTERS
+//ASIGNACION 
+
+void ArticuloMueble::AsignarAlArticulo(Profesor* Profesor) { // FUNCION DONDE SE ASIGNA UN PROFESOR 
+	this->ProfesorAsignado = Profesor ;						 // RESPONSABLE DEL ARTICULO...
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+// Getters
 string ArticuloMueble::getMaterial() {
 	return this->Material ;
 }
@@ -48,11 +51,15 @@ float ArticuloMueble::getDespreciacion() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
+// DESPRECIACION 
+
 float ArticuloMueble::Despreciacion() {
-	
+											// -> DESPRECIACION ANUAL...
 	return 1.3 ;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 void ArticuloMueble::CrearMueble(ArticuloMueble* ArticuloACrear) {
 	string Nombre, Material ;
@@ -61,19 +68,19 @@ void ArticuloMueble::CrearMueble(ArticuloMueble* ArticuloACrear) {
 
 	system("cls") ;
 
-	cout << "\n\tA Continuacion digite la informacion correspondiente \n\n" ;
-
-	cout << "\nIngrese el nombre del articulo: \n" ;
+	cout << "\n\tINGRESE LOS SIGUIENTES DATOS PARA CREACION DE MUEBLE \n\n" ;
+	
+	cout << "-INGRESE EL NOMBRE DEL ARTICULO:		" ;	
 	cin  >> Nombre ;
 	
-	cout << "\nIngrese el material del articulo: \n" ;
+	cout << "-INGRESE EL MATERIAL DEL ARTICULO		" ;
 	cin  >> Material ;
 	
-	Codigo = common::ValidarEntero("\nIngrese el codigo del articulo \n") ;
+	Codigo = common::ValidarEntero("-INGRESE EL CODIGO DEL ARTICULO:		") ;
 
-	ValorArticulo = common::ValidarEntero("\nIngrese el valor del articulo \n") ;
+	ValorArticulo = common::ValidarEntero("-INGRESE UN VALOR AL ARTICULO:			") ;
 	
-	Cantidad = common::ValidarEntero("\nIngrese la cantidad del articulo que van a estar disponibles \n") ;
+	Cantidad = common::ValidarEntero("-INGRESE UNA CANTIDAD DE DISPONIBLES:		") ;
 	
 	ArticuloACrear->setIDNombre(Nombre) ;
 	ArticuloACrear->setMaterial(Material) ; 
@@ -87,11 +94,10 @@ void ArticuloMueble::CrearMueble(ArticuloMueble* ArticuloACrear) {
 	ArticuloACrear->setEstadoDeAsignadoAProfesor(0) ;
 	
 	
-	cout << "\nRegistro Exitoso !!! \n\n" ;
+	cout << "\n\n SU ARTICULO MUEBLE SE REGISTRO CON EXITO... \n\n" ;
 	system("pause") ;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 // DESTRUCTOR

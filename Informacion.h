@@ -1,4 +1,3 @@
-
 #ifndef INFORMACION_H_
 #define INFORMACION_H_
 #include <iostream>
@@ -13,8 +12,11 @@ class Informacion {
 		string ContenidoDeInfo ;
 		
 	public :	
+		//Constructores
 		Informacion () ;
 		Informacion (string NombreDeInfo, string ContenidoDeInfo) ;
+		
+		//Otros metodos
 		void setNombreDeInfo (string NombreDeInfo) ;
 		void setContenidoDeInfo (string ContenidoDeInfo) ;
 		string getNombreDeInfo () ;
@@ -22,6 +24,7 @@ class Informacion {
 		void DatosIniciales (Informacion* InfoInicial, int NroAuxiliar) ;
 		void CrearInformacionLabotatorio (Informacion* InformacionParaCrear) ;
 		
+		//Destructor
 		~Informacion () ;
 };
 #endif

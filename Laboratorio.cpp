@@ -7,68 +7,79 @@ Laboratorio::Laboratorio() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-// Mostrar todo el vector de profesores
+// MOSTRAR VECTOR PROFESORES...
 void Laboratorio::getProfesores(){
 	system("cls") ;
 	for (int i=0 ; i<this->Profesores.size() ; i++) {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "\n\tProfesor " << i+1 << "\n\n" ;
-		cout << "Nombre :" << Profesores[i].getNombre() << "\n" ;
-		cout << "Apellido :" << Profesores[i].getApellido() << "\n" ;
-		cout << "Email: " << Profesores[i].getEmail() << "\n" ;
-		cout << "Edad: " << Profesores[i].getEdad() << "\n" ;
-		cout << "Cedula: " << Profesores[i].getCedula() << "\n" ;
-		cout << "Telefono: " << Profesores[i].getTelefono() << "\n" ;
-		cout << "Titulo Profesional: " << Profesores[i].getTituloProfesional() << "\n" ;
-		cout << "Codigo: " << Profesores[i].getCodigo() << "\n" ;
+		cout << "\n\tPROFESOR	" << i+1 << "\n\n" ;
+		cout << "-NOMBRE :		" << Profesores[i].getNombre() << "\n" ;
+		cout << "-APELLIDO :		" << Profesores[i].getApellido() << "\n" ;
+		cout << "-EMAIL: 		" << Profesores[i].getEmail() << "\n" ;
+		cout << "-EDAD: 			" << Profesores[i].getEdad() << "\n" ;
+		cout << "-CEDULA: 		" << Profesores[i].getCedula() << "\n" ;
+		cout << "-TELEFONO: 		" << Profesores[i].getTelefono() << "\n" ;
+		cout << "-TITULO:		" << Profesores[i].getTituloProfesional() << "\n" ;
+		cout << "-CODIGO:		" << Profesores[i].getCodigo() << "\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // Mostrar todo el vector de estudiantes
 void Laboratorio::getEstudiantes() {
 	system("cls") ;
 	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "\n\tEstudiante " << i+1 << "\n\n" ;
-		cout << "Nombre :" << Estudiantes[i].getNombre() << "\n" ;
-		cout << "Apellido :" << Estudiantes[i].getApellido() << "\n" ;
-		cout << "Email: " << Estudiantes[i].getEmail() << "\n" ;
-		cout << "Edad: " << Estudiantes[i].getEdad() << "\n" ;
-		cout << "Cedula: " << Estudiantes[i].getCedula() << "\n" ;
-		cout << "Telefono: " << Estudiantes[i].getTelefono() << "\n" ;
-		cout << "Carrera: " << Estudiantes[i].getCarrera() << "\n" ;
-		cout << "Codigo: " << Estudiantes[i].getCodigo() << "\n" ;
-		cout << "Semestre: " << Estudiantes[i].getSemestre() << "\n" ;
-		cout << "Valor la multa acomulada: " << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
-		cout << "Estado de multa :" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
-		cout << "Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
+		cout << "\n\tESTUDIANTE " << i+1 << "\n\n" ;
+		cout << "-NoOMBRE:			" << Estudiantes[i].getNombre() << "\n" ;
+		cout << "-APELLIDO:			" << Estudiantes[i].getApellido() << "\n" ;
+		cout << "-EMAIL:				" << Estudiantes[i].getEmail() << "\n" ;
+		cout << "-EDAD:				" << Estudiantes[i].getEdad() << "\n" ;
+		cout << "-CEDULA:			" << Estudiantes[i].getCedula() << "\n" ;
+		cout << "-TELEFONO:			" << Estudiantes[i].getTelefono() << "\n" ;
+		cout << "-CARRERA:			" << Estudiantes[i].getCarrera() << "\n" ;
+		cout << "-CODIGO:			" << Estudiantes[i].getCodigo() << "\n" ;
+		cout << "-SEMESTRE:			" << Estudiantes[i].getSemestre() << "\n" ;
+		cout << "-MULTA ACUMULADA: 		" << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
+		cout << "-ESTADO MULTA:			" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
+		cout << "-ESTADO ESTUDIANTE:		" << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	} 
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // Mostrar todo el vector de personal administrativo
 void Laboratorio::getPersonalAdmin(){
 	system("cls") ;
 	for (int i=0 ; i<this->PersonalAdmin.size() ; i++) {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "\n\tPersonal Administrativo " << i+1 << "\n\n" ;
-		cout << "Nombre :" << PersonalAdmin[i].getNombre() << "\n" ;
-		cout << "Apellido :" << PersonalAdmin[i].getApellido() << "\n" ;
-		cout << "Email: " << PersonalAdmin[i].getEmail() << "\n" ;
-		cout << "Edad: " << PersonalAdmin[i].getEdad() << "\n" ;
-		cout << "Cedula: " << PersonalAdmin[i].getCedula() << "\n" ;
-		cout << "Telefono: " << PersonalAdmin[i].getTelefono() << "\n" ;
+		cout << "\n\tPERSONAL ADMINISTRATIVO" << i+1 << "\n\n" ;
+		cout << "1.NOMBRE:		" << PersonalAdmin[i].getNombre() << "\n" ;
+		cout << "2.APELLIDO:		" << PersonalAdmin[i].getApellido() << "\n" ;
+		cout << "3.EMAIL:		" << PersonalAdmin[i].getEmail() << "\n" ;
+		cout << "4.EDAD: 		" << PersonalAdmin[i].getEdad() << "\n" ;
+		cout << "5.CEDULA: 		" << PersonalAdmin[i].getCedula() << "\n" ;
+		cout << "6.TELEFONO: 		" << PersonalAdmin[i].getTelefono() << "\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+//Mostrar vector informaciones
 void Laboratorio::getInformaciones() {
+	
 	system("cls") ;
-	cout << "\n\tInformacion Disponible Del Laboratorio \n\n\n" ;
+	
+	cout << "\n\t<INFORMACION DISPONIBLE DEL LABORATORIO> \n\n\n" ;
 	for (int i=1 ; i<this->Informaciones.size() ; i++) { 
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		cout << i << ". " << Informaciones[i].getNombreDeInfo() << ": \n" ;
@@ -77,25 +88,30 @@ void Laboratorio::getInformaciones() {
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Mostrar los articulos computo
 void Laboratorio::getComputo() {
 	system("cls") ;
-	cout << "\n\tArticulos de computo disponibles \n\n\n" ; 
+	cout << "\n\tARTICULOS DE COMPUTO DISPONIBLES \n\n\n" ; 
+	
 	for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "\t Articulo #" << i+1 << "\n\n" ;
-		cout << "1. Nombre: " << ArticulosComp[i].getIDNombre() << "\n" ;
-		cout << "2. Marca: " << ArticulosComp[i].getIDMarca() << "\n" ;
-		cout << "3. Cantidad: " << ArticulosComp[i].getCantidad() << "\n" ;
-		cout << "4. Codigo: " << ArticulosComp[i].getCodigoArticulo() << "\n" ;
-		cout << "4. Valor del Articulo: " << ArticulosComp[i].getValorArticuloInicial() << "\n" ; 
-		cout << "5. Valor Actual: " << ArticulosComp[i].getValorActualArticulo() << "\n" ;
-		cout << "6. Estado del Articulo: " << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
-		cout << "7. Disponibilidad: " << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
-		cout << "8. Estado de Asigancion: " << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-		cout << "9. Valor de despreciacion: " << ArticulosComp[i].getDespreciacion() << "\n" ;
-		cout << "10. Asignado al Profesor: " << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
-		cout << "    Codigo del Profesor: " << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
-		cout << "11. Anio:" << ArticulosComp[i].getFecha()->tm_year << "\n" ;
+		cout << "\t ARTICULO #" << i+1 << "\n\n" ;
+		cout << "1.NOMBRE:			" << ArticulosComp[i].getIDNombre() << "\n" ;
+		cout << "2.MARCA:			" << ArticulosComp[i].getIDMarca() << "\n" ;
+		cout << "3.CANTIDAD:			" << ArticulosComp[i].getCantidad() << "\n" ;
+		cout << "4.CODIGO:			" << ArticulosComp[i].getCodigoArticulo() << "\n" ;
+		cout << "4.VALOR:			" << ArticulosComp[i].getValorArticuloInicial() << "\n" ;  // -> VALOR CON EL QUE INGRESA AL LABORATORIO...
+		cout << "5.VALOR ACTUAL:			" << ArticulosComp[i].getValorActualArticulo() << "\n" ; // -> VALOR QUE VA TOMANDO DEPUES DEL TIEMPO...
+		cout << "6.Estado:			" << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
+		cout << "7.DISPONIBILIDAD:		" << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // FUNCION PARA AVERIGUAR SI HAY MAS DISPONIBLES DE ESTA REFERENCIA...
+		cout << "8.Estado de Asigancion:		" << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+		cout << "9.Valor de despreciacion:	" << ArticulosComp[i].getDespreciacion() << "\n" ;
+		cout << "10.Asignado al Profesor:	" << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
+		cout << "11.Codigo del Profesor:		" << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
+		cout << "12. Anio:		" << ArticulosComp[i].getFecha()->tm_year << "\n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}	
@@ -105,20 +121,21 @@ void Laboratorio::getComputo() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
 //void Laboratorio::getArticulosPrestamo() {
+//	
 //	system("cls") ; 
-//	cout << "\n\t Articulos de prestamo \n\n\n";
+//	cout << "\n\tARTICULOS DE PRESTAMO \n\n\n";
 //	for(int i=0 ; i<this->ArticulosDisponibles.size() ; i++){
 //		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-//		cout << "1. IDNombre: " << ArticulosDisponibles[i].getIDNombre() << "\n" ;
-//		cout << "2. Codigo del articulo" << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
-//		cout << "3. Precio del articulo" << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
-//		cout << "4. Precio actual del articulo" << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
-//		cout << "5. Estado del articulo activo" << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
-//		cout << "6. Estado limite del articulo" << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos () << "\n" ;
-//		cout << "7. Estado del articulo asignadoa un profesor" << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-//		cout << "8. ID de la marca" << ArticulosDisponibles[i].getIDMarca() << "\n" ;
-//		cout << "9. Cantidad de tipo del articulo" << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
-//		cout << "10. Valor despreciacion anual" << ArticulosDisponibles[i].getDespreciacion () << "\n" ;
+//		cout << "1.ID NOMBRE:			" << ArticulosDisponibles[i].getIDNombre() << "\n" ;
+//		cout << "2.CODIGO:			" << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
+//		cout << "3.PRECIO:			" << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
+//		cout << "4.PRECIO ACTUAL:		" << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
+//		cout << "5.ESTADO:			" << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
+//		cout << "6.ESTADO DE LIMITE:		" << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos () << "\n" ;
+//		cout << "7.Estado DE ASIGNACION:		" << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+//		cout << "8.ID MARCA:			" << ArticulosDisponibles[i].getIDMarca() << "\n" ;
+//		cout << "9.CANTIDAD DEL MISMO TIPO:	" << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
+//		cout << "10.DEPRECIACION ANUAL:		" << ArticulosDisponibles[i].getDespreciacion () << "\n" ;
 //	    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 //
 //	}
@@ -128,55 +145,57 @@ void Laboratorio::getComputo() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-void Laboratorio::getPrestamos() {
-	system("cls") ;
-	cout << ("\n\tArticulos De Prestamo \n\n\n") ;
-	for (int i=0 ; i<this->ArticulosDisponibles.size() ; i++) {
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-		cout << "\n\t Articulo #" << i+1 << "\n\n" ;
-		cout << "1. Nombre: " << ArticulosDisponibles[i].getIDNombre() << "\n" ;
-	 	cout << "2. Codigo: " << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
-	 	cout << "3. Marca: "  << ArticulosDisponibles[i].getIDMarca() << "\n" ;
-	 	cout << "4. Cantidad: " << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
-	 	cout << "5. Valor Articulo: " << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
-	 	cout << "6. Valor Actual: " << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
-	 	cout << "7. Estado: " << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
-	 	cout << "8. Estado Limite: " << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos() << "\n" ;
-	 	cout << "9. Asignado al profesor: " << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-	 	cout << "10.Valor de despreciacion: " << ArticulosDisponibles[i].getDespreciacion() << "\n" ;
-	 	cout << "11. Asignado al Profesor: " << ArticulosDisponibles[i].getProfesor()->getNombre() << "\n" ;  
-		cout << "    Codigo del Profesor: " << ArticulosDisponibles[i].getProfesor()->getCodigo() << "\n" ;  
- 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-	} 
-	
-}
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
+//Mostrar los articulos muebles
 void Laboratorio::getMuebles() {
 	system("cls") ;
-	cout << "\n\tArticulos de Mueble disponibles \n\n\n" ; 
+	cout << "\n\tARTICULOS DE MUEBLES DISPONIBLES \n\n\n" ; 
 	for (int i=0 ; i<this->ArticulosMuebles.size() ; i++) {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		cout << "\t Articulo #" << i+1 << "\n\n" ;
-		cout << "1. Nombre: " << ArticulosMuebles[i].getIDNombre() << "\n" ;
-		cout << "2. Material: " << ArticulosMuebles[i].getMaterial() << "\n" ;
-		cout << "3. Cantidad: " << ArticulosMuebles[i].getCantidad() << "\n" ;
-		cout << "4. Codigo: " << ArticulosMuebles[i].getCodigoArticulo() << "\n" ;
-		cout << "4. Valor del Articulo: " << ArticulosMuebles[i].getValorArticuloInicial() << "\n" ; 
-		cout << "5. Valor Actual: " << ArticulosMuebles[i].getValorActualArticulo() << "\n" ;
-		cout << "6. Estado del Articulo: " << ArticulosMuebles[i].getEstadoArticuloDeActivo() << "\n" ;
-		cout << "7. Disponibilidad: " << ArticulosMuebles[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
-		cout << "8. Estado de Asigancion: " << ArticulosMuebles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-		cout << "9. Valor de despreciacion: " << ArticulosMuebles[i].getDespreciacion() << "\n" ;
-		cout << "10. Asignado al Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getNombre() << "\n" ;  
-		cout << "    Codigo del Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getCodigo() << "\n" ;  
+		cout << "1.NOMBRE:			" << ArticulosMuebles[i].getIDNombre() << "\n" ;
+		cout << "2.MATERIAL:			" << ArticulosMuebles[i].getMaterial() << "\n" ;
+		cout << "3.CANTIDAD: 			" << ArticulosMuebles[i].getCantidad() << "\n" ;
+		cout << "4.CODIGO: 			" << ArticulosMuebles[i].getCodigoArticulo() << "\n" ;
+		cout << "5.VALOR: 			" << ArticulosMuebles[i].getValorArticuloInicial() << "\n" ; 
+		cout << "6.VALOR ACTUAL: 		" << ArticulosMuebles[i].getValorActualArticulo() << "\n" ;
+		cout << "7.ESTADO DEL ARTICULO:		" << ArticulosMuebles[i].getEstadoArticuloDeActivo() << "\n" ;
+		cout << "8.DISPONIBILIDAD:		" << ArticulosMuebles[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
+		cout << "9.ESTADO ASIGNACION:		" << ArticulosMuebles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+		cout << "10.VALOR DESPRECIACION:		" << ArticulosMuebles[i].getDespreciacion() << "\n" ;
+		cout << "11.Asignado al Profesor:	" << ArticulosMuebles[i].getProfesorAsignado()->getNombre() << "\n" ;  
+		cout << "12.Codigo del Profesor:		" << ArticulosMuebles[i].getProfesorAsignado()->getCodigo() << "\n" ;  
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+////Mostrar los articulos muebles
+//void Laboratorio::getMuebles() {
+//	system("cls") ;
+//	cout << "\n\tArticulos de Mueble disponibles \n\n\n" ; 
+//	for (int i=0 ; i<this->ArticulosMuebles.size() ; i++) {
+//		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+//		cout << "\t Articulo #" << i+1 << "\n\n" ;
+//		cout << "1. Nombre: " << ArticulosMuebles[i].getIDNombre() << "\n" ;
+//		cout << "2. Material: " << ArticulosMuebles[i].getMaterial() << "\n" ;
+//		cout << "3. Cantidad: " << ArticulosMuebles[i].getCantidad() << "\n" ;
+//		cout << "4. Codigo: " << ArticulosMuebles[i].getCodigoArticulo() << "\n" ;
+//		cout << "4. Valor del Articulo: " << ArticulosMuebles[i].getValorArticuloInicial() << "\n" ; 
+//		cout << "5. Valor Actual: " << ArticulosMuebles[i].getValorActualArticulo() << "\n" ;
+//		cout << "6. Estado del Articulo: " << ArticulosMuebles[i].getEstadoArticuloDeActivo() << "\n" ;
+//		cout << "7. Disponibilidad: " << ArticulosMuebles[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
+//		cout << "8. Estado de Asigancion: " << ArticulosMuebles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+//		cout << "9. Valor de despreciacion: " << ArticulosMuebles[i].getDespreciacion() << "\n" ;
+//		cout << "10. Asignado al Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getNombre() << "\n" ;  
+//		cout << "    Codigo del Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getCodigo() << "\n" ;  
+//		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
+//		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+//	}
+//}
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -253,13 +272,13 @@ int Laboratorio::MandarPosicionActual(int ClaseVector) { // ClaseVector = es el 
 											
 	// Claves para los vectores
 	map< string, int > Vectores ; 
-	Vectores.insert(pair< string, int> ("Estudiantes", 0)) ; 
-	Vectores.insert(pair< string, int> ("Profesores", 1)) ; 
-	Vectores.insert(pair< string, int> ("Informaciones", 2)) ; 
-	Vectores.insert(pair< string, int> ("Personal administrativo", 3)) ; 
-	Vectores.insert(pair< string, int> ("Articulos de Computo", 4)) ; 
-	Vectores.insert(pair< string, int> ("Articulos de Mueble", 5)) ; 
-	Vectores.insert(pair< string, int> ("Articulos Prestamo", 6)) ;
+	Vectores.insert(pair< string, int> ("ESTUDIANTES", 0)) ; 
+	Vectores.insert(pair< string, int> ("PROFESORES", 1)) ; 
+	Vectores.insert(pair< string, int> ("INFORMACIONES", 2)) ; 
+	Vectores.insert(pair< string, int> ("PERSONAL ADMINISTRATIVO", 3)) ; 
+	Vectores.insert(pair< string, int> ("ARTICULOS DE COMPUTO", 4)) ; 
+	Vectores.insert(pair< string, int> ("ARTICULOS DE MUEBLE", 5)) ; 
+	Vectores.insert(pair< string, int> ("ARTICULOS PRETSAMO", 6)) ;
 	
 	if (Vectores["Estudiantes"] == ClaseVector) {
 		return this->Estudiantes.size() ; 
@@ -283,6 +302,7 @@ int Laboratorio::MandarPosicionActual(int ClaseVector) { // ClaseVector = es el 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 // Crear objetos profesores y agregarlos al vector de profesores 
+
 void Laboratorio::AgregarAlVectorProfesores(int Cantidad) {
 	Profesor* ProfesoresParaCrear = new Profesor ;
 	for (int i=0 ; i<Cantidad ; i++) {
@@ -328,7 +348,7 @@ void Laboratorio::AgregarAlVectorInformaciones(int Cantidad) {
 			InformacionParaCrear->CrearInformacionLabotatorio(InformacionParaCrear) ;
 			this->Informaciones.push_back(*InformacionParaCrear) ;
 		}
-		cout << "\nRegistro exitoso \n\n" ; 
+		cout << "\nSE HA REGISTRADO CON EXITO \n\n" ; 
 		system("pause") ;	
 	}
 	
@@ -348,7 +368,7 @@ void Laboratorio::AgregarAlVectorPersonalAdmin(int Cantidad) {
 	}
 	
 	ManejoDeArchivo ManejoAdministra ;
-	cout << "Datos" << endl ;
+	cout << "DATOS" << endl ;
 	cout << this->PersonalAdmin[0].getNombre() << endl ;
 	system("pause") ; 
 	ManejoAdministra.CrearArchivoAdminisCSV(this->PersonalAdmin) ;
@@ -366,7 +386,7 @@ void Laboratorio::AgregarAlVectorComputo(int Cantidad) {
 			
 		AsignarProfesorArticulo(MandarPosicionActual(4)) ; // Funcion de asignar
 	}
-	cout << "Hola" << endl ; 
+	//cout << "Hola" << endl ; 
 	ManejoDeArchivo ManejoDeComputo ;
 	ManejoDeComputo.CrearArchivoArticuloComputoCSV(ArticulosComp) ; 
 		
@@ -460,7 +480,7 @@ void Laboratorio::ModificarDatosDelVectorInformaciones() {
 	int Opcion, DecisionAux ;
 	string DatoAuxiliar ; 
 	
-	Opcion = common::ValidarEntero("Ingrese el valor asignado a la informacion que desea modificar \n") ;
+	Opcion = common::ValidarEntero("SELECCIONE UN VALOR QUE SE ASIGNA A LA INFORMACION:	") ;
 	
 	for (int i=1 ; i<Informaciones.size() ; i++) { // Posicion 0 = Cabeceras			
 		do {	
@@ -469,25 +489,25 @@ void Laboratorio::ModificarDatosDelVectorInformaciones() {
 				
 				do { // Ciclo para repetir solo desde que desea cambiar por si introduce datos equivocados
 					system("cls") ; 
-					cout << "Por favor especifique que desea modificar de la informacion \n" ;
+					cout << "SELECCIONE ESPECIFICAMENTE QUE INFORMACION DESEA MODIFICAR: \n" ;
 					cout << "1. " << Informaciones[i].getNombreDeInfo() << "\n" ;
 					cout << "2. " << Informaciones[i].getContenidoDeInfo() << "\n" ;
 				
-					Opcion = common::ValidarEntero("\nIngrese el campo el desea modificar \n") ;
+					Opcion = common::ValidarEntero("\nSELECCIONE UNA OPCION:	") ;
 					
 					if ((Opcion >=1) && (Opcion <=2)) { // Evaluar si esta en las opciones mostradas para evitar hacer un switch
 						cout << "\nNota:  0=no ; 1=si \n" ;
-						DecisionAux = common::ValidarEntero("Estas seguro que desea modificar esta informacion?? \n") ;
+						DecisionAux = common::ValidarEntero("¿ESTA SEGURO DE REALIZAR ESTA ACCION? \n") ;
 						
 						if (DecisionAux == 1 ) {	
 							switch (Opcion) {
 								case 1 : { // Modificar nombre del dato correspondiente
-									cout << "\nIngrese el nuevo nombre correspondiente: \n" ;
+									cout << "\n-INGRESE UN NOMBRE NUEVO:		" ;
 									cin  >>  DatoAuxiliar ;
 									
 									Informaciones[i].setNombreDeInfo(DatoAuxiliar) ;
 									
-									cout << "\n\nModificacion Exitosa !!! \n" ;
+									cout << "\n\tSU MODIFICACION TUVO EXITO, <NOMBRE ACTUALIZADO> \n" ;
 									system("pause") ;
 									
 									*Salir = true ;
@@ -496,12 +516,12 @@ void Laboratorio::ModificarDatosDelVectorInformaciones() {
 								}
 								
 								case 2 : { // Modificar Contenido del dato correspondiente
-									cout << "\nIngrese el nuevo contenido correspondiente: \n" ;
+									cout << "\n-INGRESE UN NUEVO CONTENIDO:		" ;
 									cin  >>  DatoAuxiliar ;
 									
 									Informaciones[i].setContenidoDeInfo(DatoAuxiliar) ;
 									
-									cout << "\n\nModificacion Exitosa !!! \n\n" ;
+									cout << "\n\nSU MODIFICACION TUVO EXITO, <CONTENIDO ACTUALIZADO> \n\n" ;
 									system("pause") ;
 									
 									*Salir = true ;
@@ -510,24 +530,24 @@ void Laboratorio::ModificarDatosDelVectorInformaciones() {
 								}
 								
 								default : { // Opcion Incorrecta
-									cout << "\nOpcion Incorrecta \n\n" ;
+									cout << "\nOPCION NO VALIDA... \n\n" ;
 									system("pause") ;
 									break;
 								} 
 							}
 						}else if (DecisionAux == 0) { // Evalua si la opcion es 0 para mostrarle de nuevo las opciones permitidas
-							cout << "\nA continuacion te dirigiremos de nuevo al proceso anterior \n" ;
+							cout << "\n\tREGRESANDO AL ANTERIOR PROCESO... PRESIONA UNA TECLA PARA CONTINUAR. \n" ;
 							system("pause") ;
 							*SalirAux = true ;
 							*Salir = true ;
 							ModificarDatosDelVectorInformaciones () ;	
 						}else { // Opcion incorrecta de opciones 0 y 1 (es de si esta seguro o no de modificar algo)
-							cout << "\nVuelve a intentarlo \n" ;
-							cout << "Opcion Invalida \n\n" ;
+							cout << "\nVUELVE A INTENTARLO... \n" ;
+							cout << "OPCION INVALIDA... \n\n" ;
 							system("pause") ;
 						}
 					}else { // Opcion invalida
-						cout << "\nOpcion Incorrecta \n" ;
+						cout << "\nACCION FALLIDA, OPCION INCORRECTA. \n" ;
 						system("pause") ;
 						system("cls") ;
 					}
@@ -543,7 +563,7 @@ void Laboratorio::ModificarDatosDelVectorInformaciones() {
 	// Mostrar mensaje si no encontro nada
 	if (*SalirAux == false) {
 		system("cls") ;
-		cout << "\nNo se encontro el dato \n" ;
+		cout << "\n<NO SE HAYO EL CONTENIDO> \n" ;
 		system("pause") ;
 	}
 	
@@ -564,44 +584,44 @@ void Laboratorio::ModificarDatosBasicosProfe(int Posicion) {
 	
 	AccederProfesorPosicion(Posicion) ;
 		
-	cout << "////////A continuacion podras moficar campos basicos de tu informacion////////////////////////\n" ;
-	cout << "////////Usted esta autorizado para modificar los siguientes datos : Email, Edad, Telefono/////\n\n" ;
+	cout << "NOTA: SE MOSTRARAN DATOS PERSONALES Y REGISTRADOS EN EL SISTEMA...\n" ;
+	cout << "SOLO SE ENCUENTRA AUTORIZADO POARA MODIFICAR LOS SIGUIENTES DATOS: Email, Edad, Telefono \n\n" ;
 	
 		
-	Campo = common::ValidarEntero("Elija el campo que desea modificar \n") ;
+	Campo = common::ValidarEntero("CAMPO A MODIFICAR: \n") ;
 		
 	switch(Campo) {
 		case 3 : { // EMail
-			cout << "A Continuacion ingrese el nuevo Email: \n" ;
+			cout << "NUEVO E-MAIL:		" ;
 			cin  >> NombreCampo ; 
 			
 			this->Profesores[Posicion-1].setEmail(NombreCampo) ;
 			
-			cout << "\nSe ha Modifcado Exitosamente \n\n" ;
+			cout << "\nMODIFICACION EXITOSA...  \n\n" ;
 			system("pause") ;
 			 
 			break;
 		}
 			
 		case 4 : { // Edad
-			cout << "A Continuacion ingrese la nueva edad: \n" ;
+			cout << "NUEVA EDAD:		" ;
 			cin  >> NombreCampo ;
 			
 			this->Profesores[Posicion-1].setEdad(atof(NombreCampo)) ;
  			
-			cout << "\nSe ha Modifcado Exitosamente \n\n" ;
+			cout << "\nMODIFICACION EXITOSA...  \n\n" ;
 			system("pause") ;
 			
 			break;
 		}
 			
 		case 6 :{ // Telefono
-			cout << "A Continuacion ingrese el numero numero telefonico: \n" ;
+			cout << "NUEVO # TELEFONICO:		" ;
 			cin  >> NombreCampo ;
 			
 			this->Profesores[Posicion-1].setTelefono(atof(NombreCampo)) ;
 			
-			cout << "\nSe ha Modifcado Exitosamente \n\n" ;
+			cout << "\nMODIFICACION EXITOSA...  \n\n" ;
 			system("pause") ;
 			
 			break;
@@ -621,8 +641,8 @@ void Laboratorio::ModificarDatosBasicosProfe(int Posicion) {
 			
 		case 8 : { // Titulo Profesional
 			
-			cout << "\n\nUsted no esta Autorizado para modificar este campo \n" ;
-			cout << "Por favor dirigase al personal administrativo para poder modificar estos datos \n\n" ;
+			cout << "\n\nNO SE ENCUENTRA AUTORIZADO PARA REALIZAR ESTA ACCION \n" ;
+			cout << "<EN CASO DE QUERER MODIFICAR DIRIJASE A UN PERSONAL ADMINISTRATIVO> \n\n" ;
 			system("pause") ; 
 				
 			ModificarDatosBasicosProfe(Posicion) ;
@@ -631,7 +651,7 @@ void Laboratorio::ModificarDatosBasicosProfe(int Posicion) {
 		}
 			
 		default : { // Opcion Incorrecta
-			cout << "\nHas elegido una campo incorrecto \n\n" ;
+			cout << "\nOPCION INCORRECTA, NO VALIDA. \n\n" ;
 			system("pause") ;
 			
 			ModificarDatosBasicosProfe(Posicion) ;
@@ -653,100 +673,100 @@ void Laboratorio::ModificarDatosProfe(int Posicion){
 	char NombreOpcion[512] ;
 	
 	
-	Posicion = common::ValidarEntero("Elija el campo que desea modificar: ") ;
+	Posicion = common::ValidarEntero("CAMPO A MODIFICAR: ") ;
 		
 	switch(Posicion) {
 		
 		case 1 : { // Nombre
-			cout << "A continuacion ingrese el nuevo nombre: \n" ;
+			cout << "NUEVO NOMBRE:		" ;
 			cin >> NombreOpcion ;
 		
 			this->Profesores[Posicion-1].setNombre(NombreOpcion) ;
 		
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 		
 			break ;
 		}
 		
 		case 2 : { // Apellido 
-			cout << "A continuacion ingrese el nuevo apellido : \n" ;
+			cout << "NUEVO APELLIDO:		" ;
 			cin >> NombreOpcion ;
 		
 			this->Profesores[Posicion-1].setApellido(NombreOpcion) ;
 		
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 		
 			break ;
 		}
 		
 		case 3 : { // EMail
-			cout << "A Continuacion ingrese el nuevo Email: \n" ;
+			cout << "NUEVO E-MAIL:		" ;
 			cin  >> NombreOpcion ; 
 			
 			this->Profesores[Posicion-1].setEmail(NombreOpcion) ;
 			
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			 
 			break;
 		}
 			
 		case 4 : { // Edad
-			cout << "A Continuacion ingrese la nueva edad: \n" ;
+			cout << "NUEVA EDAD:		" ;
 			cin  >> NombreOpcion ;
 			
 			this->Profesores[Posicion-1].setEdad(atof(NombreOpcion)) ;
  			
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			
 			break;
 		}
 		
 		case 5 : { // Cedula 
-			cout << "A continuacion ingrese un nuevo numero de cedula : \n" ;
+			cout << "NEUVO # CEDULA:	" ;
 			cin >> NombreOpcion ;
 		
 			this->Profesores[Posicion-1].setCedula(atof(NombreOpcion)) ;
 		
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
  			break ;
 		}
 			
 		case 6 :{ // Telefono
-			cout << "A Continuacion ingrese el numero telefonico: \n" ;
+			cout << "NUEVO # TELEFONICO:		" ;
 			cin  >> NombreOpcion ;
 			
 			this->Profesores[Posicion-1].setTelefono(atof(NombreOpcion)) ;
 			
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			
 			break;
 		}
 			
 			
 		case 7 : { // Codigo
-			cout << "A continuacion ingrese el nuevo codigo: \n" ;
+			cout << "NUEVO CODIGO:		" ;
 			cin >> NombreOpcion ;
 		
 			this->Profesores[Posicion-1].setCodigo(atof(NombreOpcion)) ;
 		
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 		
 			break ;
 		}
 			
 		case 8 : { // Titulo Profesional
-			cout << "A continuacion ingrese el nuevo titulo profesional: \n" ;
+			cout << "NUEVO TITULO		" ;
 			cin >> NombreOpcion ;
 			
 			this->Profesores[Posicion-1].setTituloProfesional(NombreOpcion) ;
 			
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 				
 			break;
 		}
 			
 		default : { // Opcion Incorrecta
-			cout << "\nHas elegido una campo incorrecto \n\n" ;
+			cout << "\nCAMPO INCORRECTO, OPCION INCORRECTA. \n\n" ;
 			system("pause") ;
 			break;
 		}
@@ -763,97 +783,99 @@ void Laboratorio::ModificarDatosProfe(int Posicion){
 void Laboratorio::ModificarDatosEstudiante(int Posicion){
 	char NombreOpcion [512] ;
 	int Campo ;
-	cout << "La informacion es \n" ;
+	cout << "LA INFORMACION DEL ESTUDIANTE ES: \n" ;
+	
 	AccederAUnEstudiante(Posicion) ;
 	
-	Campo = common::ValidarEntero("Elija un campo a modificar: \n") ;
+	Campo = common::ValidarEntero("CAMPO A MODIFICAR: \n") ;
 	
 	switch(Campo){
 		case 1 : {
-			cout << "A continuacion ingrese el nuevo nombre";
+			cout << "NUEVO NOMBRE:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setNombre(NombreOpcion);
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 2 : {
-			cout << "A continuacion ingrese el nuevo apellido";
+			cout << "NUEVO APELLIDO:	";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setApellido(NombreOpcion);
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 3 : {
-			cout << "A continuacion ingrese el nuevo email";
+			cout << "NUEVO E-MAIL:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setEmail(NombreOpcion);
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 4 : {
-			cout << "A continuacion ingrese la nueva edad";
+			cout << "NUEVA EDAD:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setEdad(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 5 : {
-			cout << "A continuacion ingrese la nueva cedula";
+			cout << "NUEVO # DE CEDULA:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setCedula(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 6 : {
-			cout << "A continuacion ingrese su nuevo numero de telefono";
+			cout << "NUEVO # TELEFONICO:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setTelefono(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 7 : {
-			cout << "A continuacion ingrese la nueva carrera";
+			cout << "NUEVA CARRERA:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setCarrera(NombreOpcion);
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 8 : {
-			cout << "A continuacion ingrese su nuevo codigo";
+			cout << "NUEVO CODIGO:		";
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setCodigo(atof(NombreOpcion));
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 9 :{
-			cout << " A continuacion ingrese su nuevo semestre" ;
+			cout << "NUEVO SEMESTRE:	" ;
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setSemestre(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 10 : {
-			cout << "A continuacion ingrese el valor de la multa a modificar";
+			cout << "VALOR DE MULTA A VERIFICAR" ;
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].CorrerValorMulta(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 11 : {
-			cout << " A continuacion modifique el estado de multa del estudiante" ;
+			cout << "ESTADO DE  MULTA:		" ;
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setEstadoDeMulta(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}
 		case 12 : {
-			cout << "A continuacion modifique el estado del estudiante" ;
+			cout << "NUEVO ESTADO DE ESTUDIANTE:		" ;
 			cin>>NombreOpcion;
 			this->Estudiantes[Posicion-1].setEstadoDeEstudiante(atof(NombreOpcion));
-			cout << "\nACTUALIZACION EXITOSA \n\n" ;
+			cout << "\nMODIFICACION EXITOSA... \n\n" ;
 			break;
 		}	
 		default : { // Opcion Incorrecta
-			cout << "\nHas elegido una campo incorrecto \n\n" ;
+			cout << "\nCAMPO INCORRECTO, OPCION INCORRECTA. \n\n" ;
 			system("pause") ;
 			break;
 	
@@ -875,120 +897,120 @@ void Laboratorio::ModificarDatosDelVectorComputo() {
 	
 	getComputo() ; 
 		
-	PosicionACambiar = common::ValidarEntero("Elija el articulo que desea modificar \n") ;
+	PosicionACambiar = common::ValidarEntero("SELECIONE UN ARTICULO A MODIFICAR:	") ;
 	
 	cout << PosicionACambiar << endl ;
 	for(int i=0 ; i<this->ArticulosComp.size() ; i++) {
 		if (PosicionACambiar == i+1) {
-			cout << "\n\tLos datos existentes del articulo son los siguientes \n" ;
+			cout << "\n\tDATOS VIGENTES DEL ARTICULO:\n" ;
 			system("pause") ;
 				
 			AccederAComputo(PosicionACambiar) ;
 			
-			cout << "\nQue Campo de la informacion del articulo desea modificar \n\n" ;
+			cout << "\nSELECCIONE UN CAMPO A MODIFICAR \n\n" ;
 				
-			PosicionACambiar = common::ValidarEntero("Elija el campo que desea modificar \n") ;
+			PosicionACambiar = common::ValidarEntero("CAMPO A MODIFICAR:	") ;
 				
 			switch(PosicionACambiar) {
 				case 1 : { // IDNombre
-					cout << "\nIngrese el nuevo nombre del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO NOMBRE:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setIDNombre(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 											
 					break;
 				}
 					
 				case 2 : { // Marca
-					cout << "\nIngrese la nueva marca del articulo: \n" ;
+					cout << "\nINGRESE UNA NUEVA MARCA:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setIDMarca(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ; 
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ; 
 					break;
 				}
 					
 				case 3 : { // Cantidad de articulos
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nINGRESE UNA NUEVA CANTIDAD:	" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setCantidad(atof (Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 4 : { // Codigo
-					cout << "\nIngrese el nuevo codigo del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO CODIGO:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setCodigoArticulo(atof (Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 				
 				case 5 : { // Valor de Inicial Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO VALOR INICIAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setValorArticuloInicial(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				case 6 : { // Valor Actual del Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO VALOR ACTUAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setValorActualArticulo(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 7 : { // Estado del Articulo
-					cout << "\nIngrese el estado del articulo: \n" ;
+					cout << "\nINGRESE ESTADO DE ARTICULO:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setEstadoArticuloDeActivo(atof(Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 8 : { // Estado de Disponibilidad
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nINGRESE ESTADO DE DISPONIBILIDAD:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setEstadoDeLimiteDeArticulos(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				case 9 : { // Estado de Asignacion
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nINGRESE ESTADO DE ASIGNACION:		" ;
 					cin  >> Campo ;
 					this->ArticulosComp[i].setEstadoDeAsignadoAProfesor(atof(Campo)) ;
 					
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nSE HA ELIMINADO LA INFORMACION DE ASIGNACION \n" ; 
+					cout << "POR FAVOR ASIGNAR UNO NUEVO. \n" ; 
 					system("pause") ;
 					
 					AsignarProfesorArticulo(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 10 : { // Valor de Despreciacion
 					
-					cout << "\n\nNo puedes modificar este campo \n" ;
-					cout << "Esta opcion es manejada de acuerdo al tipo de articulo \n" ;
+					cout << "\n\n<NO PUEDES MODIFICAR ESTE CAMPO> \n" ;
+					cout << "ESTA OPCION SE MANEJA A DEPENDENCIA DEL ARTICULO \n" ;
 					system("pause") ; 
 					
 					break;
@@ -996,22 +1018,22 @@ void Laboratorio::ModificarDatosDelVectorComputo() {
 					
 				case 11 : { // Asignado
 				
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO ASIGNADO:		" ;
 					cin  >> Campo ;
 									
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nSE HA ELIMINADO LA INFORMACION DE ASIGNACION \n" ;  
+					cout << "POR FAVOR ASIGNAR UNO NUEVO. \n" ; 
 					system("pause") ;
 					
 					AsignarProfesorArticulo(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				default : { // Opcion Incorrecta
-					cout << "\nHas elegido una campo incorrecto \n\n" ;
+					cout << "\nESTA OPCION ES INCORRECTA \n\n" ;
 					system("pause") ;
 	
 					ModificarDatosDelVectorComputo() ; 
@@ -1020,7 +1042,7 @@ void Laboratorio::ModificarDatosDelVectorComputo() {
 				}
 			}
 		}else {
-			cout << "\n\n\tNo existe ese articulo por favor ingrese un valor valido \n\n" ;
+			cout << "\n\n\tARTICULO ELIMINADO O NO EXISTENTE, SELECCIONE UNA OPCION VALIDA \n\n" ;
 			system("pause") ;
 			
 			ModificarDatosDelVectorComputo() ; 
@@ -1043,115 +1065,115 @@ void Laboratorio::ModificarDatosMueble(int Posicion) {
 	
 	for(int i=0 ; i<this->ArticulosMuebles.size() ; i++) {
 		if (Posicion == i+1) {
-			cout << "\n\tLos datos existentes del articulo son los siguientes \n" ;
+			cout << "\n\tDATOS VIGENTES DEL ARTICULO:\n" ;
 			system("pause") ;
 				
 			AccederAMueble(Posicion) ;
 			
-			cout << "\nQue Campo de la informacion del articulo desea modificar \n\n" ;
+			cout << "\nSELECCIONE UN CAMPO A MODIFICAR \n\n" ;
 				
-			Posicion = common::ValidarEntero("Elija el campo que desea modificar \n") ;
+			Posicion = common::ValidarEntero("CAMPO A MODIFICAR:	") ;
 				
 			switch(Posicion) {
 				case 1 : { // IDNombre
-					cout << "\nIngrese el nuevo nombre del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO NOMBRE:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setIDNombre(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 											
 					break;
 				}
 					
 				case 2 : { // Material
-					cout << "\nIngrese el nuevo nombre del material del articulo: \n" ;
+					cout << "\nINGRESE NUEVO NOMBRE DE MATERIAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setMaterial(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ; 
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ; 
 					break;
 				}
 					
 				case 3 : { // Cantidad de articulos
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nINGRESE CANTIDAD DE ARTICULOS DISPONIBLES:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setCantidad(atof (Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 4 : { // Codigo
-					cout << "\nIngrese el nuevo codigo del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO CODIGO:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setCodigoArticulo(atof (Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 				
 				case 5 : { // Valor de Inicial Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nNUEVO VALOR INICIAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setValorArticuloInicial(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				case 6 : { // Valor Actual del Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nNUEVO VALOR ACTUAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setValorActualArticulo(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 7 : { // Estado del Articulo
-					cout << "\nIngrese el estado del articulo: \n" ;
+					cout << "\nNUEVO ESTADO DE ARTICULO:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setEstadoArticuloDeActivo(atof(Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 8 : { // Estado de Disponibilidad
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nESTADO DE DISPONIBILIDAD:" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setEstadoDeLimiteDeArticulos(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				case 9 : { // Estado de Asignacion
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nESTADO DE ASIGNACION:		" ;
 					cin  >> Campo ;
 					this->ArticulosMuebles[i].setEstadoDeAsignadoAProfesor(atof(Campo)) ;
 					
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nINFORMACION ELIMINDADA \n" ; 
+					cout << "<POR FAVOR ASIGNE UNO NUEVO> \n" ; 
 					system("pause") ;
 					
 					AsignarProfeMueble(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 10 : { // Valor de Despreciacion
 					
-					cout << "\n\nNo puedes modificar este campo \n" ;
-					cout << "Esta opcion es manejada de acuerdo al tipo de articulo \n" ;
+					cout << "\n\n<NO PUEDES MODIFICAR ESTE CAMPO> \n" ;
+					cout << "ESTA OPCION SE MANEJA A DEPENDENCIA DEL ARTICULO \n" ;
 					system("pause") ; 
 					
 					break;
@@ -1162,19 +1184,19 @@ void Laboratorio::ModificarDatosMueble(int Posicion) {
 					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
 					cin  >> Campo ;
 									
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nSE HA ELIMINADO LA INFORMACION DE ASIGNACION \n" ; 
+					cout << "POR FAVOR ASIGNAR UNO NUEVO. \n" ;   
 					system("pause") ;
 					
 					AsignarProfeMueble(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				default : { // Opcion Incorrecta
-					cout << "\nHas elegido una campo incorrecto \n\n" ;
+					cout << "\nESTA OPCION ES INCORRECTA \n\n" ;
 					system("pause") ;
 	
 					ModificarDatosMueble(Posicion) ; 
@@ -1182,8 +1204,9 @@ void Laboratorio::ModificarDatosMueble(int Posicion) {
 					break;
 				}
 			}
+			
 		}else {
-			cout << "\n\n\tNo existe ese articulo por favor ingrese un valor valido \n\n" ;
+			cout << "\n\n\tARTICULO ELIMINADO O NO EXISTENTE, SELECCIONE UNA OPCION VALIDA \n\n" ;
 			system("pause") ;
 			
 			ModificarDatosMueble(Posicion) ; 
@@ -1209,47 +1232,47 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 	for(int i=0 ; i<this->ArticulosDisponibles.size() ; i++) {
 		if (Posicion == i+1) {
 			Encontrado = true ;
-			cout << "\n\tLos datos existentes del articulo son los siguientes \n" ;
+			cout << "\n\tDATOS VIGENTES DEL ARTICULO:\n" ;
 			system("pause") ;
 				
 			AccederArticulosPrestamo(Posicion) ;
 			
-			cout << "\nQue Campo de la informacion del articulo desea modificar \n\n" ;
+			cout << "\nSELECCIONE UN CAMPO A MODIFICAR \n\n" ;
 				
-			Posicion = common::ValidarEntero("Elija el campo que desea modificar \n") ;
+			Posicion = common::ValidarEntero("CAMPO A MODIFICAR:	") ;
 				
 			switch(Posicion) {
 				case 1 : { // IDNombre
-					cout << "\nIngrese el nuevo nombre del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO NOMBRE:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setIDNombre(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 											
 					break;
 				}
 					
 				case 2 : { // Marca
-					cout << "\nIngrese el nuevo nombre del material del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO MATERIAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setIDMarca(Campo) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ; 
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ; 
 					break;
 				}
 					
 				case 3 : { // Cantidad de articulos
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nINGRESE CANTIDAD DE ARTICULOS DISPONIBLES:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setCantidadDeTipoDeArticulo(atof (Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 4 : { // Codigo
-					cout << "\nIngrese el nuevo codigo del articulo: \n" ;
+					cout << "\nINGRESE UN NUEVO CODIGO:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setCodigoArticulo(atof (Campo)) ;
 						
@@ -1259,65 +1282,65 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 				}
 				
 				case 5 : { // Valor de Inicial Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nNUEVO VALOR INICIAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setValorArticuloInicial(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				case 6 : { // Valor Actual del Articulo
-					cout << "\nIngrese la nueva cantidad disponible del articulo: \n" ;
+					cout << "\nNUEVO VALOR ACTUAL:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setValorActualArticulo(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA...\n\n" ;
 						
 					break;
 				}
 					
 				case 7 : { // Estado del Articulo
-					cout << "\nIngrese el estado del articulo: \n" ;
+					cout << "\nNUEVO ESTADO DE ARTICULO:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setEstadoArticuloDeActivo(atof(Campo)) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA...\n\n" ;
 						
 					break;
 				}
 					
 				case 8 : { // Estado de Disponibilidad
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nESTADO DE DISPONIBILIDAD:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setEstadoDeLimiteDeArticulos(atof(Campo)) ;
 					
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA...\n\n" ;
 					
 					break;
 				}
 					
 				case 9 : { // Estado de Asignacion
-					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
+					cout << "\nESTADO DE ASIGNACION:		" ;
 					cin  >> Campo ;
 					this->ArticulosDisponibles[i].setEstadoDeAsignadoAProfesor(atof(Campo)) ;
 					
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nSE HA ELIMININADO LA INFORMACION \n" ; 
+					cout << "POR FAVOR ASIGNE UNO NUEVO \n" ; 
 					system("pause") ;
 					
 					AsignarProfePrestamo(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 						
 					break;
 				}
 					
 				case 10 : { // Valor de Despreciacion
 					
-					cout << "\n\nNo puedes modificar este campo \n" ;
-					cout << "Esta opcion es manejada de acuerdo al tipo de articulo \n" ;
+					cout << "\n\n<NO PUEDES MODIFICAR ESTE CAMPO> \n" ;
+					cout << "ESTA OPCION SE MANEJA A DEPENDENCIA DEL ARTICULO \n" ;
 					system("pause") ; 
 					
 					break;
@@ -1328,19 +1351,19 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
 					cin  >> Campo ;
 									
-					cout << "\nSe ha eliminado tambien la informacion de la asignacion \n" ; 
-					cout << "Por favor asigne otro por favor \n" ; 
+					cout << "\nSE HA ELIMINADO LA INFORMACION DE ASIGNACION \n" ; 
+					cout << "POR FAVOR ASIGNAR UNO NUEVO. \n" ;   
 					system("pause") ;
 					
 					AsignarProfePrestamo(i) ;
 						
-					cout << "\n\nSe ha modificado con exito !!! \n\n" ;
+					cout << "\n\nMODIFICACION EXITOSA... \n\n" ;
 					
 					break;
 				}
 					
 				default : { // Opcion Incorrecta
-					cout << "\nHas elegido una campo incorrecto \n\n" ;
+					cout << "\nESTA OPCION ES INCORRECTA \n\n" ;
 					system("pause") ;
 	
 					ModificarDatosArticulosPrestamos(Posicion) ; 
@@ -1348,16 +1371,13 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 					break;
 				}
 			}
-		}
-	}
-	
-	if (Encontrado == false) {
-		cout << "\n\n\tNo existe ese articulo por favor ingrese un valor valido \n\n" ;
-		system("pause") ;
-	}
+		}else {
+			cout << "\n\n\tARTICULO ELIMINADO O NO EXISTENTE, SELECCIONE UNA OPCION VALIDA \n\n" ;
+			system("pause") ;
 	
 	ManejoDeArchivo ActualizarArticuloPrestamo ;
 	ActualizarArticuloPrestamo.ActualizarArchivoArticuloDePrestamoCSV(this->ArticulosDisponibles) ;	
+}
 }
 
 
@@ -1365,31 +1385,33 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 // ELiminar datos de informacion
-void Laboratorio::EliminarDatosDelVectorInformaciones() {
-	int Opcion, Confirmar ;
+void Laboratorio::EliminarDatosDelVectorInformaciones (){
+	
+	int Opcion ;
+	int Confirmar ;
 	
 	system("cls") ;
 	
 	getInformaciones() ;
 	
-	cout << "\n00. Atras \n" ;
-	cout << "\nQue informacion desea eliminar ? \n" ;
-	cout << "Solo puedes eliminar los puntos que existan del 3 en adelante \n\n" ;
+	cout << "\n00. ATRAS \n" ;
+	cout << "\n¿QUE INFORMACION DESEA ELIMINAR? \n" ;
+	cout << "NOTA: DEL PUNTO 3 EN ADELANTE SON LOS UNICOS POSIBLES A ELIMINAR \n\n" ;
 	
-	Opcion = common::ValidarEntero("Elije una opcion \n") ;
+	Opcion = common::ValidarEntero("SELECCIONA UNA OPCION:		") ;
 	
 	if (Opcion > 2) {
 		system("cls") ;
-		cout << "\nLa Inforacion que desea eliminar es la siguiente \n" ;
+		cout << "\nLA INFORMACION A ELIMINAR ES: \n" ;
 		cout << Informaciones[Opcion].getNombreDeInfo() << ":" ;
 		cout << Informaciones[Opcion].getContenidoDeInfo() << "\n\n" ; 
 		
-		Confirmar = common::ValidarEntero("Confirmar (0=no y 1=si)\n") ;
+		Confirmar = common::ValidarEntero("CONFIRMAR (0=no y 1=si)\n") ;
 		
 		if (Confirmar == 1) {
 			system("cls") ;
 			Informaciones.erase(Informaciones.begin()+Opcion, Informaciones.begin()+(Opcion+1)) ;
-			cout << "\nInformacion Eliminada \n\n" ;
+			cout << "\nINFORMACION ELIMINADA... \n\n" ;
 			system("pause") ;
 			
 		}else if (Confirmar == 0) {
@@ -1397,18 +1419,18 @@ void Laboratorio::EliminarDatosDelVectorInformaciones() {
 			EliminarDatosDelVectorInformaciones() ;
 			
 		}else {
-			cout << "\n\nOpcion incorrecta \n\n" ;
+			cout << "\n\nOPCION INCORRECTA, VERIFIQUE... \n\n" ;
 			system("pause") ;
 		}
 		
 	}else if (Opcion == 00) {
 		system("cls") ;
-		cout << "Ya te estamos dirigiendo \n\n" ;
+		cout << "<PRESIONA CUALQUIER TECLA Y SERAS REDIRIGIDO> \n\n" ;
 		system("pause") ;
 		
 	}else { // Opcion incorrecta
-		cout << "\nRecuerda que no puedes eliminar esta informacion \n" ;
-		cout << "Requiere mas autorizacion \n\n" ;
+		cout << "\n\tACCION IMPOSIBLE \n" ;
+		cout << "\n\t<REQUIERE AUTORIZACION> \n\n" ;
 		system("pause") ;
 	}
 	
@@ -1427,33 +1449,33 @@ void Laboratorio::EliminarDatosDelVectorProfesor(int Opcion){
 	
 	bool* Salir = new bool (false) ;
 	
-	cout << "1. Continuar Proceso \n" ;
+	cout << "1. CONTINUAR  \n" ;
 	cout << "00. Atras \n\n" ;
 	
-	Confirmacion = common::ValidarEntero("Elije una opcion \n") ;
+	Confirmacion = common::ValidarEntero("SELECCIONA UNA OPCION:		") ;
 	
 	
 	do{
 		switch(Confirmacion){
-			case 1 :{ //Continuar Proceso..
+			case 1 :{ 		//Continuar Proceso..
 				for(int i=0 ; i<this->Profesores.size() ; i++){
 					if(Opcion == i+1){
 						system("cls") ;
 						Profesores.erase(Profesores.begin()+Opcion , Profesores.begin()+(Opcion+1)) ;
-						cout <<"\nAccion Exitosa\n" ;
+						cout <<"\nACCION REALIZADA CON EXITO...\n" ;
 						*Salir = true ;
 					}
 				}
 				break ;	
 			}
 			
-			case 00 : {//Atras
+			case 00 : {		//Atras
 				*Salir = true ;
 				break;
 			}
 			
-			default : {//Opcion incorrecta
-				cout << "\n\nOPCION INCORRECTA \n\n" ;
+			default : {		//Opcion incorrecta
+				cout << "\n\nOPCION INCORRECTA, VERIFIQUE. \n\n" ;
 				system("pause") ;
 				break;
 			}
@@ -1475,33 +1497,33 @@ void Laboratorio::EliminarDatosDelVectorEstudiante(int Opcion){
 	
 	bool* Salir = new bool (false) ;
 	
-	cout << "1. Continuar Proceso \n" ;
-	cout << "00. Atras \n\n" ;
+	cout << "1. CONTINUAR \n" ;
+	cout << "00. ATRAS \n\n" ;
 	
-	Confirmacion = common::ValidarEntero("Elije una opcion \n") ;
+	Confirmacion = common::ValidarEntero("SELECCIONA UNA OPCION:		") ;
 	
 	
 	do{
 		switch(Confirmacion){
-			case 1 :{ //Continuar Proceso..
+			case 1 :{ 		//Continuar Proceso..
 				for(int i=0 ; i<this->Estudiantes.size() ; i++){
 					if(Opcion == i+1){
 						system("cls") ;
 						Estudiantes.erase(Estudiantes.begin()+Opcion , Estudiantes.begin()+(Opcion+1)) ;
-						cout <<"\nAccion Exitosa\n" ;
+						cout <<"\nACCION REALIZADA CON EXITO\n" ;
 						*Salir = true ;
 					}
 				}
 				break ;	
 			}
 			
-			case 00 : {//Atras
+			case 00 : {		//Atras
 				*Salir = true ;
 				break;
 			}
-			
-			default : {//Opcion incorrecta
-				cout << "\n\nOPCION INCORRECTA \n\n" ;
+				
+			default : {		//Opcion incorrecta
+				cout << "\n\nOPCION INCORRECTA, VERIFIQUE. \n\n" ;
 				system("pause") ;
 				break;
 			}
@@ -1523,27 +1545,27 @@ void Laboratorio::EliminarDatosDelVectorComputo() {
 	
 	getComputo() ;
 	
-	cout << "\n00. Atras \n" ;
-	cout << "\nQue informacion desea eliminar ? \n" ;
+	cout << "\n00. ATRAS \n" ;
+	cout << "\n¿QUE INFORMACION DESEA ELIMINAR? \n" ;
 	
 	Opcion = common::ValidarEntero("Elije una opcion \n") ;
 	
 	for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
 		if (Opcion == i+1) {
-			cout << "\nEl articulo que desea eliminar se le mostrara a continuacion \n\n" ;
+			cout << "\nARTICULO DESEADO A ELIMINAR ES EL SIGUIENTE: \n\n" ;
 			system("pause") ;
 			
 			AccederAComputo(Opcion) ;
 			
 			this->ArticulosComp.erase(this->ArticulosComp.begin()+Opcion, this->ArticulosComp.begin()+(Opcion+1)) ;
 			
-			cout << "\n\nEsta informacion se ha elimando correctamente \n" ;
-			cout << "Proceso Exitoso !!! \n\n" ;
+			cout << "\n\nELIMINACION CON EXITO, LA INFORACION HA SIDO ELIMINADA...\n" ;
+			cout << "PROCESO EXITOSO! \n\n" ;
 		}
 	}
 	
 	if (Opcion == 00) {
-		cout << "\nEn este momento sera transladado al menu anterior \n\n" ;
+		cout << "\nPRESIONE CULQUIER TECLA PARA SER REDIRIGIDO AL MENU PRINCIPAL \n\n" ;
 	}
 	
 //	ManejoDeArchivo ActualizarComputo ;
@@ -1560,28 +1582,27 @@ void Laboratorio::EliminarDatosDelVectorMueble(){
 	
 	getMuebles() ;
 	
-	cout << "\n00. Atras \n" ;
-	cout << "\nQue informacion desea eliminar ? \n" ;
+	cout << "\n00. ATRAS \n" ;
+	cout << "\n¿QUE INFORMACION DESEA ELIMINAR? \n" ;
 	
-	Opcion = common::ValidarEntero("Elije una opcion \n") ;
+	Opcion = common::ValidarEntero("SELECCIONE UNA OPCION:		") ;
 	
 	for (int i=0 ; i<this->ArticulosMuebles.size() ; i++) {
 		if (Opcion == i+1) {
-			cout << "\nEl articulo que desea eliminar se le mostrara a continuacion \n\n" ;
+			cout << "\nEL ARTICULO DESEADO A ELIMINAR ES EL SIGUIENTE: \n\n" ;
 			system("pause") ;
 			
 			AccederAMueble(Opcion) ;
 			
 			this->ArticulosMuebles.erase(this->ArticulosMuebles.begin()+Opcion, this->ArticulosMuebles.begin()+(Opcion+1)) ;
 			
-			cout << "\n\nEsta informacion se ha elimando correctamente \n" ;
-			cout << "Proceso Exitoso !!! \n\n" ;
+		cout << "\n\nELIMINACION CON EXITO, LA INFORACION HA SIDO ELIMINADA...\n" ;
+			cout << "PROCESO EXITOSO! \n\n" ;
 		}
 	}
 	
 	if (Opcion == 00) {
-		cout << "\nEn este momento sera transladado al menu anterior \n\n" ;
-	}
+		cout << "\nPRESIONE CULQUIER TECLA PARA SER REDIRIGIDO AL MENU PRINCIPAL \n\n" ;	}
 	
 	ManejoDeArchivo ActualizarMueble ;
 	ActualizarMueble.ActualizarMuebleCSV(this->ArticulosMuebles) ;
@@ -1643,15 +1664,15 @@ void Laboratorio::AccederProfesorPosicion(int Posicion) {
 	for (int i=0 ; i<this->Profesores.size() ; i++) {
 		if (i == Posicion) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-			cout << "\n\tSus datos Actuales: " << "\n\n" ;
-			cout << "1. Nombre :" << Profesores[i].getNombre() << "\n" ;
-			cout << "2. Apellido :" << Profesores[i].getApellido() << "\n" ;
-			cout << "3. Email: " << Profesores[i].getEmail() << "\n" ;
-			cout << "4. Edad: " << Profesores[i].getEdad() << "\n" ;
-			cout << "5. Cedula: " << Profesores[i].getCedula() << "\n" ;
-			cout << "6. Telefono: " << Profesores[i].getTelefono() << "\n" ;
-			cout << "7. Codigo: " << Profesores[i].getCodigo() << "\n" ;
-			cout << "8. Titulo Profesional: " << Profesores[i].getTituloProfesional() << "\n" ;
+			cout << "\n\tDATOS PERSONALES PROFESOR: " << "\n\n" ;
+			cout << "1. Nombre:		" << Profesores[i].getNombre() << "\n" ;
+			cout << "2. Apellido:		" << Profesores[i].getApellido() << "\n" ;
+			cout << "3. Email:		" << Profesores[i].getEmail() << "\n" ;
+			cout << "4. Edad:		" << Profesores[i].getEdad() << "\n" ;
+			cout << "5. Cedula:		" << Profesores[i].getCedula() << "\n" ;
+			cout << "6. Telefono:		" << Profesores[i].getTelefono() << "\n" ;
+			cout << "7. Codigo:		" << Profesores[i].getCodigo() << "\n" ;
+			cout << "8. Titulo Profesional:	" << Profesores[i].getTituloProfesional() << "\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1668,19 +1689,19 @@ void Laboratorio::AccederArticulosProfe(int Posicion) {
 	for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
 		if ((this->Profesores[Posicion].getCodigo())== (this->ArticulosComp[i].getProfesor()->getCodigo())) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-			cout << "Articulo #" << i+1 << "\n\n" ;
-			cout << "Nombre: " << ArticulosComp[i].getIDNombre() << "\n" ;
-			cout << "Marca: " << ArticulosComp[i].getIDMarca() << "\n" ;
-			cout << "Cantidad: " << ArticulosComp[i].getCantidad() << "\n" ;
-			cout << "Codigo: " << ArticulosComp[i].getCodigoArticulo() << "\n" ;
-			cout << "Valor del Articulo: " << ArticulosComp[i].getValorArticuloInicial() << "\n" ; 
-			cout << "Valor Actual: " << ArticulosComp[i].getValorActualArticulo() << "\n" ;
-			cout << "Estado del Articulo: " << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
-			cout << "Disponibilidad: " << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
-			cout << "Estado de Asigancion: " << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-			cout << "Valor de despreciacion: " << ArticulosComp[i].getDespreciacion() << "\n" ;
-			cout << "Asignado al Profesor: " << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
-			cout << "Codigo del Profesor: " << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
+			cout << "-Articulo #" << i+1 << "\n\n" ;
+			cout << "-Nombre:				" << ArticulosComp[i].getIDNombre() << "\n" ;
+			cout << "-Marca:				" << ArticulosComp[i].getIDMarca() << "\n" ;
+			cout << "-Cantidad:			" << ArticulosComp[i].getCantidad() << "\n" ;
+			cout << "-Codigo:				" << ArticulosComp[i].getCodigoArticulo() << "\n" ;
+			cout << "-Valor del Articulo:		" << ArticulosComp[i].getValorArticuloInicial() << "\n" ; 
+			cout << "-Valor Actual: 			" << ArticulosComp[i].getValorActualArticulo() << "\n" ;
+			cout << "-Estado del Articulo:		" << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
+			cout << "-Disponibilidad: 		" << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
+			cout << "-Estado de Asigancion:		" << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+			cout << "-Valor de despreciacion:		" << ArticulosComp[i].getDespreciacion() << "\n" ;
+			cout << "-Asignado al Profesor:		" << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
+			cout << "-Codigo del Profesor:		" << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1744,20 +1765,20 @@ void Laboratorio::AccederAUnEstudiante(int Posicion) {
 	Posicion-- ;
 	for (int i=0 ; i<this->Estudiantes.size() ; i++) {
 		if (i == Posicion) {
-			cout << "\n\tSus datos Actuales: " << "\n\n" ;
+			cout << "\n\tDATOS PERSONALES DEL ESTUDIANTE: " << "\n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-			cout << "1. Nombre :" << Estudiantes[i].getNombre() << "\n" ;
-			cout << "2. Apellido :" << Estudiantes[i].getApellido() << "\n" ;
-			cout << "3. Email: " << Estudiantes[i].getEmail() << "\n" ;
-			cout << "4. Edad: " << Estudiantes[i].getEdad() << "\n" ;
-			cout << "5. Cedula: " << Estudiantes[i].getCedula() << "\n" ;
-			cout << "6. Telefono: " << Estudiantes[i].getTelefono() << "\n" ;
-			cout << "7. Carrera: " << Estudiantes[i].getCarrera() << "\n" ;
-			cout << "8. Codigo: " << Estudiantes[i].getCodigo() << "\n" ;
-			cout << "9. Semestre: " << Estudiantes[i].getSemestre() << "\n" ;
-			cout << "10. Valor la multa acomulada: " << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
-			cout << "11. Estado de multa :" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
-			cout << "12. Estado de estudiante: " << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
+			cout << "-Nombre:			" << Estudiantes[i].getNombre() << "\n" ;
+			cout << "-Apellido:			" << Estudiantes[i].getApellido() << "\n" ;
+			cout << "-Email:				" << Estudiantes[i].getEmail() << "\n" ;
+			cout << "-Edad:				" << Estudiantes[i].getEdad() << "\n" ;
+			cout << "-Cedula:			" << Estudiantes[i].getCedula() << "\n" ;
+			cout << "-Telefono:			" << Estudiantes[i].getTelefono() << "\n" ;
+			cout << "-Carrera:			" << Estudiantes[i].getCarrera() << "\n" ;
+			cout << "-Codigo:			" << Estudiantes[i].getCodigo() << "\n" ;
+			cout << "-Semestre:			" << Estudiantes[i].getSemestre() << "\n" ;
+			cout << "-Valor la multa acomulada:	" << Estudiantes[i].getValorMultaAcomulada() << "\n" ;
+			cout << "-Estado de multa:		" << Estudiantes[i].getEstadoDeMulta()<< "\n" ;
+			cout << "-Estado de estudiante:		" << Estudiantes[i].getEstadoDeEstudiante() << "\n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1774,13 +1795,13 @@ void Laboratorio::AccederPersonalAdmi(int Posicion) {
 	for (int i=0 ; i<this->PersonalAdmin.size() ; i++) {
 		if (i == Posicion) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-			cout << "\n\tSus datos Actuales: " << "\n\n" ;
-			cout << "Nombre :" << PersonalAdmin[i].getNombre() << "\n" ;
-			cout << "Apellido :" << PersonalAdmin[i].getApellido() << "\n" ;
-			cout << "Email: " << PersonalAdmin[i].getEmail() << "\n" ;
-			cout << "Edad: " << PersonalAdmin[i].getEdad() << "\n" ;
-			cout << "Cedula: " << PersonalAdmin[i].getCedula() << "\n" ;
-			cout << "Telefono: " << PersonalAdmin[i].getTelefono() << "\n\n" ;
+			cout << "\n\tDATOS PERSONALES PERSONAL ADMINISTRATIVO: " << "\n\n" ;
+			cout << "-Nombre:		" << PersonalAdmin[i].getNombre() << "\n" ;
+			cout << "-Apellido:	" << PersonalAdmin[i].getApellido() << "\n" ;
+			cout << "-Email:		" << PersonalAdmin[i].getEmail() << "\n" ;
+			cout << "-Edad:		" << PersonalAdmin[i].getEdad() << "\n" ;
+			cout << "-Cedula:	" << PersonalAdmin[i].getCedula() << "\n" ;
+			cout << "-Telefono:	" << PersonalAdmin[i].getTelefono() << "\n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1798,18 +1819,18 @@ void Laboratorio::AccederAComputo(int Posicion) {
 		if (Posicion == i) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "Articulo #" << i+1 << "\n\n" ;
-			cout << "1. Nombre: " << ArticulosComp[i].getIDNombre() << "\n" ;
-			cout << "2. Marca: " << ArticulosComp[i].getIDMarca() << "\n" ;
-			cout << "3. Cantidad: " << ArticulosComp[i].getCantidad() << "\n" ;
-			cout << "4. Codigo: " << ArticulosComp[i].getCodigoArticulo() << "\n" ;
-			cout << "5. Valor del Articulo: " << ArticulosComp[i].getValorArticuloInicial() << "\n" ; 
-			cout << "6. Valor Actual: " << ArticulosComp[i].getValorActualArticulo() << "\n" ;
-			cout << "7. Estado del Articulo: " << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
-			cout << "8. Disponibilidad: " << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
-			cout << "9. Estado de Asigancion: " << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-			cout << "10. Valor de despreciacion: " << ArticulosComp[i].getDespreciacion() << "\n" ;
-			cout << "11. Asignado al Profesor: " << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
-			cout << "----Codigo del Profesor: " << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
+			cout << "-Nombre:		" << ArticulosComp[i].getIDNombre() << "\n" ;
+			cout << "-Marca:	" << ArticulosComp[i].getIDMarca() << "\n" ;
+			cout << "-Cantidad:		" << ArticulosComp[i].getCantidad() << "\n" ;
+			cout << "-Codigo:		" << ArticulosComp[i].getCodigoArticulo() << "\n" ;
+			cout << "-Valor del Articulo:	" << ArticulosComp[i].getValorArticuloInicial() << "\n" ; 
+			cout << "-Valor Actual:		" << ArticulosComp[i].getValorActualArticulo() << "\n" ;
+			cout << "-Estado del Articulo:		" << ArticulosComp[i].getEstadoArticuloDeActivo() << "\n" ;
+			cout << "-Disponibilidad:	" << ArticulosComp[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
+			cout << "-Estado de Asigancion:		" << ArticulosComp[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+			cout << "-Valor de despreciacion:	" << ArticulosComp[i].getDespreciacion() << "\n" ;
+			cout << "-Asignado al Profesor:		" << ArticulosComp[i].getProfesor()->getNombre() << "\n" ;  
+			cout << "-Codigo del Profesor:		" << ArticulosComp[i].getProfesor()->getCodigo() << "\n" ;  
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1828,18 +1849,18 @@ void Laboratorio::AccederAMueble(int Posicion) {
 		if (Posicion == i) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "Articulo #" << i+1 << "\n\n" ;
-			cout << "1. Nombre: " << ArticulosMuebles[i].getIDNombre() << "\n" ;
-			cout << "2. Material: " << ArticulosMuebles[i].getMaterial() << "\n" ;
-			cout << "3. Cantidad: " << ArticulosMuebles[i].getCantidad() << "\n" ;
-			cout << "4. Codigo: " << ArticulosMuebles[i].getCodigoArticulo() << "\n" ;
-			cout << "5. Valor del Articulo: " << ArticulosMuebles[i].getValorArticuloInicial() << "\n" ; 
-			cout << "6. Valor Actual: " << ArticulosMuebles[i].getValorActualArticulo() << "\n" ;
-			cout << "7. Estado del Articulo: " << ArticulosMuebles[i].getEstadoArticuloDeActivo() << "\n" ;
-			cout << "8. Disponibilidad: " << ArticulosMuebles[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
-			cout << "9. Estado de Asigancion: " << ArticulosMuebles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-			cout << "10. Valor de despreciacion: " << ArticulosMuebles[i].getDespreciacion() << "\n" ;
-			cout << "11. Asignado al Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getNombre() << "\n" ;  
-			cout << "----Codigo del Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getCodigo() << "\n" ;  
+			cout << "-Nombre: " << ArticulosMuebles[i].getIDNombre() << "\n" ;
+			cout << "-Material: " << ArticulosMuebles[i].getMaterial() << "\n" ;
+			cout << "-Cantidad: " << ArticulosMuebles[i].getCantidad() << "\n" ;
+			cout << "-Codigo: " << ArticulosMuebles[i].getCodigoArticulo() << "\n" ;
+			cout << "-Valor del Articulo: " << ArticulosMuebles[i].getValorArticuloInicial() << "\n" ; 
+			cout << "-Valor Actual: " << ArticulosMuebles[i].getValorActualArticulo() << "\n" ;
+			cout << "-Estado del Articulo: " << ArticulosMuebles[i].getEstadoArticuloDeActivo() << "\n" ;
+			cout << "-Disponibilidad: " << ArticulosMuebles[i].getEstadoDeLimiteDeArticulos() << "\n" ; // Este es para saber si aun hay articulos de este tipo
+			cout << "-Estado de Asigancion: " << ArticulosMuebles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+			cout << "-Valor de despreciacion: " << ArticulosMuebles[i].getDespreciacion() << "\n" ;
+			cout << "-Asignado al Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getNombre() << "\n" ;  
+			cout << "-Codigo del Profesor: " << ArticulosMuebles[i].getProfesorAsignado()->getCodigo() << "\n" ;  
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1881,23 +1902,23 @@ void Laboratorio::AccederAMueble(int Posicion) {
 void Laboratorio::AccederArticulosPrestamo(int Posicion){
 	system("cls") ;
 	Posicion-- ;
-	cout << "\n\t\tLos datos existentes del articulo son los siguientes \n\n" ;
+	
+	cout << "LOS DATOS DEL ARTICULO SON \n\n" ;
+	
 	for(int i=0 ; i<this->ArticulosDisponibles.size() ; i++) {
 		if (Posicion == i) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 			cout << "\n\t Articulo #" << i+1 << "\n\n" ;
-			cout << "1. Nombre: " << ArticulosDisponibles[i].getIDNombre() << "\n" ;
-		 	cout << "2. Marca: "  << ArticulosDisponibles[i].getIDMarca() << "\n" ;
-		 	cout << "3. Cantidad: " << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
-		 	cout << "4. Codigo: " << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
-		 	cout << "5. Valor Articulo: " << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
-		 	cout << "6. Valor Actual: " << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
-		 	cout << "7. Estado: " << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
-		 	cout << "8. Estado Limite: " << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos() << "\n" ;
-		 	cout << "9. Asignado al profesor: " << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-		 	cout << "10.Valor de despreciacion: " << ArticulosDisponibles[i].getDespreciacion() << "\n" ;
-		 	cout << "11. Asignado al Profesor: " << ArticulosDisponibles[i].getProfesor()->getNombre() << "\n" ;  
-			cout << "    Codigo del Profesor: " << ArticulosDisponibles[i].getProfesor()->getCodigo() << "\n" ;  
+			cout << "-Nombre: " << ArticulosDisponibles[i].getIDNombre() << "\n" ;
+		 	cout << "-Codigo: " << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
+		 	cout << "-Marca: "  << ArticulosDisponibles[i].getIDMarca() << "\n" ;
+		 	cout << "-Cantidad: " << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
+		 	cout << "-Valor Articulo: " << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
+		 	cout << "-Valor Actual: " << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
+		 	cout << "-Estado: " << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
+		 	cout << "-Estado Limite: " << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos() << "\n" ;
+		 	cout << "-Asignado al profesor: " << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+		 	cout << "-Valor de despreciacion: " << ArticulosDisponibles[i].getDespreciacion() << "\n" ;
 	 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n" ;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
 		}
@@ -1910,7 +1931,7 @@ void Laboratorio::AccederArticulosPrestamo(int Posicion){
 void Laboratorio::AccederEStadoMultaEstudiante(int Posicion) {
 	system ("cls") ;
 	
-	cout << "Su estado de multa es : " << this->Estudiantes[Posicion].getEstadoDeMulta() << "\n" ;
+	cout << "SU ESTADO DE MULTA ES: " << this->Estudiantes[Posicion].getEstadoDeMulta() << "\n" ;
 	
 	
 	
@@ -1926,7 +1947,7 @@ void Laboratorio::AsignarProfesorArticulo(int Posicion) {//ArticuloComputo* Arti
 		// Mostrar todos los profesores para asignar
 		getProfesores() ;
 		
-		Asignar = common::ValidarEntero("\nAsignele un profesor \n\n") ;
+		Asignar = common::ValidarEntero("\nASIGNELE UN PROFESOR RESPONSABLE \n\n") ;
 		
 		// Asignarle el Articulo
 		for (int i=0 ; i<this->ArticulosComp.size() ; i++) {
@@ -1935,13 +1956,13 @@ void Laboratorio::AsignarProfesorArticulo(int Posicion) {//ArticuloComputo* Arti
 			
 			//	cout << this->ArticulosComp[Posicion-1].getProfesor()->getNombre() << endl ;
 	
-				cout << "\nSe asigno correctamente \n\n" ;
+				cout << "\nEXITO, SE ASIGNO CORRECTAMENTE \n\n" ;
 				system("pause") ;
 	
 			}
 		}
 	}else {
-		cout << "No existen datos \n\n" ;
+		cout << "DATOS NO EXISTENTES \n\n" ;
 		system("pause") ;
 	}
 	
@@ -1956,7 +1977,7 @@ void Laboratorio::AsignarProfeMueble(int Posicion) {
 	// Mostrar todos los profesores para asignar
 	getProfesores() ;
 	
-	Asignar = common::ValidarEntero("\nAsignele un profesor \n\n") ;
+	Asignar = common::ValidarEntero("\nASIGNELE UN PROFESOR RESPONSABLE \n\n") ;
 	
 	// Asignarle el Articulo
 	for (int i=0 ; i<this->ArticulosMuebles.size() ; i++) {
@@ -1965,7 +1986,7 @@ void Laboratorio::AsignarProfeMueble(int Posicion) {
 		
 		//	cout << this->ArticulosComp[Posicion-1].getProfesor()->getNombre() << endl ;
 
-			cout << "\nSe asigno correctamente \n\n" ;
+			cout << "\nEXITO, SE ASIGNO CORRECTAMENTE \n\n" ;
 			system("pause") ;
 
 		}
@@ -2005,13 +2026,13 @@ void Laboratorio::AsignarProfePrestamo(int Posicion){
 	
 	getProfesores();
 	
-	Asignar = common::ValidarEntero("\nAsignele un profesor al articulo \n\n") ;
+	Asignar = common::ValidarEntero("\nASIGNELE UN PROFRESOR RESPONSABLE \n\n") ;
 	
 	for(int i=0; i<this->ArticulosDisponibles.size(); i++) {
 		if (Asignar == i+1){
 			this->ArticulosDisponibles[Posicion-1].AsignarAProfesor(&this->Profesores[Asignar-1]) ;
 			
-			cout << " \nSe asigno correctamente \n\n" ;
+			cout << " \nEXITO, SE ASIGNO CORRECTAMENTE\n\n" ;
 		}
 	}
 }
@@ -2085,5 +2106,6 @@ bool Laboratorio::VerificarArticulosPrestamo() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 // DESTRUCTOR
-Laboratorio::~Laboratorio(){
+Laboratorio::~Laboratorio() {
+	return 0 ;
 }

@@ -17,13 +17,17 @@ class Estudiante : public Persona {
 		bool EstadoDeMulta ;
 		bool EstadoDeEstudiante ;
 		
+		//Vector de articulos prestados
 		vector <ArticuloDePrestamo*> ArticulosPrestados ; 	// Articulos prestamos Por estudiante 
 
 	public :
+		//Constructores
 		Estudiante () ;
 		Estudiante (string Nombre, string Apellido, string Email, int Edad, long Cedula, int Telefono,
 					string Carrera, int Codigo, int Semestre, int ValorMultaAcomulada, bool EstadoDeMulta, bool EstadoDeEstudiante) ;					
-		void setCarrera (string Carrera) ;
+		
+		//Otros metodos
+		void setCarrera (string Carrera) ;		
 		void setCodigo (int Codigo) ;
 		void setSemestre (int Semestre) ;
 		void CorrerValorMulta (int ValorMultaAcomulada) ;
@@ -39,6 +43,8 @@ class Estudiante : public Persona {
 		void CrearDatosDeObjetoEstudiante (Estudiante* EstudianteParaCrear, int Cantidad) ;
 		void AsignarAlVector (ArticuloDePrestamo* ArticuloParaPrestar) ; 
 		void Devolucion (ArticuloDePrestamo* ArticuloDeDevolucion) ;
+		
+		//Destructor
 		~Estudiante () ;
 };
 #endif

@@ -1,14 +1,13 @@
-
 #include "ArticuloComputo.h"
 
-// CONSTRUCTOR
+// Constructor
 ArticuloComputo::ArticuloComputo() {
 }
 
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-// SETTERS
+// Setters
 void ArticuloComputo::setIDMarca(string IDMarca) {
 	this->IDMarca = IDMarca ;
 }
@@ -17,12 +16,16 @@ void ArticuloComputo::setDespreciacion(float Despreciacion) {
 	this->ValorDespreciacionAnual = Despreciacion ;
 }
 
-void ArticuloComputo::AsignarAlArticulo(Profesor* Profesor) {
-	this->ProfesorAsignado = Profesor ;
-}
-
 void ArticuloComputo::setCantidad(int Cantidad) {
 	this->CantidadDisponibles = Cantidad ;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+//Metodo de asignacion
+void ArticuloComputo::AsignarAlArticulo(Profesor* Profesor) {
+	this->ProfesorAsignado = Profesor ;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -45,9 +48,10 @@ float ArticuloComputo::getDespreciacion() {
 	return this->ValorDespreciacionAnual ; 
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
+//Otros metodos...
 
 float ArticuloComputo::Despreciacion () {
 //	int Hoy = 2019 ; 
@@ -65,7 +69,6 @@ float ArticuloComputo::Despreciacion () {
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-
 void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 
 	time_t FechaActual ; 
@@ -80,19 +83,19 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 
 	system("cls") ;
 
-	cout << "\n\tA Continuacion digite la informacion correspondiente \n\n" ;
+	cout << "\n\tINGRESE LOS SIGUIENTES DATOS PARA CREACION DE COMPUTO \n\n" ;
 
-	cout << "\nIngrese el nombre del articulo: \n" ;
+	cout << "-INGRESE NOMBRE DEL ARTICULO:		" ;
 	cin  >> Nombre ;
 	
-	cout << "\nIngrese la Marca del articulo: \n" ;
+	cout << "-INGRESE MARCA DEL ARTICULO:		" ;
 	cin  >> Marca ;
 	
-	Codigo = common::ValidarEntero("\nIngrese el codigo del articulo \n") ;
+	Codigo = common::ValidarEntero("-INGRESE CODIGO DEL ARTICULO:		") ;
 
-	ValorArticulo = common::ValidarEntero("\nIngrese el valor del articulo \n") ;
+	ValorArticulo = common::ValidarEntero("-INGRESE UN VALOR AL ARTICULO:		") ;
 	
-	Cantidad = common::ValidarEntero("\nIngrese la cantidad del articulo que van a estar disponibles \n") ;
+	Cantidad = common::ValidarEntero("-INGRESE UNA CANTIDAD DE DISPONIBLES:	") ;
 	
 	ComputoACrear->setIDNombre(Nombre) ;
 	ComputoACrear->setIDMarca(Marca) ; 
@@ -107,15 +110,14 @@ void ArticuloComputo::CrearComputo(ArticuloComputo* ComputoACrear) {
 	MiFecha->tm_year += 1900 ;
 	ComputoACrear->AsignarFecha(MiFecha) ; 
 	
-	cout << "\nRegistro Exitoso !!! \n\n" ;
+	cout << "\n\n\tSU ARTICULO SE REGISTRO CON EXITO ...\n\n" ;
 	system("pause") ;
 
 }
 
-
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-// DESTRUCTOR
+// Destructor
 ArticuloComputo::~ArticuloComputo() {
 }

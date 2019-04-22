@@ -12,11 +12,17 @@ class ArticuloComputo : public Articulo {
 		int CantidadDisponibles ;
 		float ValorDespreciacionAnual ;
 		
+		//Puntero
 		Profesor* ProfesorAsignado ;		
 
 	public :
+		// Constructor
 		ArticuloComputo () ;
+		
+		//Puntero
 		Profesor* getProfesor () ;
+		
+		//Otros metodos
 		void AsignarAlArticulo (Profesor* Profesor) ;
 		void setIDMarca (string IDMarca) ;
 		void setDespreciacion (float Despreciacion) ;
@@ -24,9 +30,13 @@ class ArticuloComputo : public Articulo {
 		string getIDMarca () ;
 		float getDespreciacion() ;
 		int getCantidad () ; 
-		float Despreciacion ()  ; // Polimorfismo
+		
+		// Polimorfismo
+		float Despreciacion ()  ; 
 		void CrearComputo (ArticuloComputo* ComputoACrear) ; 
 		void CrearArchivoInventario () ;
+		
+		//Destructor
 		~ArticuloComputo () ;
 };
 #endif
