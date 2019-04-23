@@ -84,7 +84,7 @@ class Laboratorio {
 		// Eliminar datos de los vectores 
 		void EliminarDatosDelVectorInformaciones() ;
 		void EliminarDatosDelVectorComputo() ;
-		void EliminarDatosDelVectorProfesor() ;
+		void EliminarDatosDelVectorProfesor(int Opcion) ;
 		void EliminarDatosDelVectorEstudiante(int Opcion) ;
 		void EliminarDatosDelVectorMueble() ;
 		void EliminarDatosDelVectorArticuloPrestamos() ;

@@ -120,28 +120,28 @@ void Laboratorio::getComputo() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
-//void Laboratorio::getArticulosPrestamo() {
-//	
-//	system("cls") ; 
-//	cout << "\n\tARTICULOS DE PRESTAMO \n\n\n";
-//	for(int i=0 ; i<this->ArticulosDisponibles.size() ; i++){
-//		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-//		cout << "1.ID NOMBRE:			" << ArticulosDisponibles[i].getIDNombre() << "\n" ;
-//		cout << "2.CODIGO:			" << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
-//		cout << "3.PRECIO:			" << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
-//		cout << "4.PRECIO ACTUAL:		" << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
-//		cout << "5.ESTADO:			" << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
-//		cout << "6.ESTADO DE LIMITE:		" << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos () << "\n" ;
-//		cout << "7.Estado DE ASIGNACION:		" << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
-//		cout << "8.ID MARCA:			" << ArticulosDisponibles[i].getIDMarca() << "\n" ;
-//		cout << "9.CANTIDAD DEL MISMO TIPO:	" << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
-//		cout << "10.DEPRECIACION ANUAL:		" << ArticulosDisponibles[i].getDespreciacion () << "\n" ;
-//	    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
-//
-//	}
-//	
-//	
-//}
+void Laboratorio::getPrestamos() {
+	
+	system("cls") ; 
+	cout << "\n\tARTICULOS DE PRESTAMO \n\n\n";
+	for(int i=0 ; i<this->ArticulosDisponibles.size() ; i++){
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+		cout << "1.ID NOMBRE:			" << ArticulosDisponibles[i].getIDNombre() << "\n" ;
+		cout << "2.CODIGO:			" << ArticulosDisponibles[i].getCodigoArticulo() << "\n" ;
+		cout << "3.PRECIO:			" << ArticulosDisponibles[i].getValorArticuloInicial() << "\n" ;
+		cout << "4.PRECIO ACTUAL:		" << ArticulosDisponibles[i].getValorActualArticulo() << "\n" ;
+		cout << "5.ESTADO:			" << ArticulosDisponibles[i].getEstadoArticuloDeActivo() << "\n" ;
+		cout << "6.ESTADO DE LIMITE:		" << ArticulosDisponibles[i].getEstadoDeLimiteDeArticulos () << "\n" ;
+		cout << "7.Estado DE ASIGNACION:		" << ArticulosDisponibles[i].getEstadoDeAsignadoAProfesor() << "\n" ;
+		cout << "8.ID MARCA:			" << ArticulosDisponibles[i].getIDMarca() << "\n" ;
+		cout << "9.CANTIDAD DEL MISMO TIPO:	" << ArticulosDisponibles[i].getCantidadDeTipoDeArticulo() << "\n" ;
+		cout << "10.DEPRECIACION ANUAL:		" << ArticulosDisponibles[i].getDespreciacion () << "\n" ;
+	    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n" ;
+
+	}
+	
+	
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -1345,7 +1345,7 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 					
 					break;
 				}
-					
+						
 				case 11 : { // Asignado
 				
 					cout << "\nIngrese el estado de disponibilidad articulo: \n" ;
@@ -1374,10 +1374,10 @@ void Laboratorio::ModificarDatosArticulosPrestamos(int Posicion) {
 		}else {
 			cout << "\n\n\tARTICULO ELIMINADO O NO EXISTENTE, SELECCIONE UNA OPCION VALIDA \n\n" ;
 			system("pause") ;
-	
+		}
+	}
 	ManejoDeArchivo ActualizarArticuloPrestamo ;
 	ActualizarArticuloPrestamo.ActualizarArchivoArticuloDePrestamoCSV(this->ArticulosDisponibles) ;	
-}
 }
 
 
@@ -2107,5 +2107,4 @@ bool Laboratorio::VerificarArticulosPrestamo() {
 
 // DESTRUCTOR
 Laboratorio::~Laboratorio() {
-	return 0 ;
 }
