@@ -39,20 +39,26 @@ void ManejoDeArchivo::CargarArchivoInformacionCSV(vector <Informacion>* Informac
 	string Nombre, Contenido ;
 
 	if (Archivo.is_open()) {
-		while (!Archivo.eof()) {
-			// Copiar todo a variables temporales
-			getline(Archivo, Nombre, ';') ;
-			getline(Archivo, Contenido, '\n') ;
-
-			// Guardar lo que hay en las variables en vectores
-			InformacionAuxiliar->setNombreDeInfo(Nombre) ;
-			InformacionAuxiliar->setContenidoDeInfo(Contenido) ;
-
-			// Agregar  al vector
-			Informaciones->push_back(*InformacionAuxiliar) ;
-		}
-		// Eliminar un ultimo elemento que me crea
-		Informaciones->pop_back() ;
+		if (!Archivo.fail()) {
+			while (!Archivo.eof()) {
+				// Copiar todo a variables temporales
+				getline(Archivo, Nombre, ';') ;
+				getline(Archivo, Contenido, '\n') ;
+	
+				// Guardar lo que hay en las variables en vectores
+				InformacionAuxiliar->setNombreDeInfo(Nombre) ;
+				InformacionAuxiliar->setContenidoDeInfo(Contenido) ;
+	
+				// Agregar  al vector
+				Informaciones->push_back(*InformacionAuxiliar) ;
+			}
+			// Eliminar un ultimo elemento que me crea
+			Informaciones->pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de informacion, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 }
 
@@ -124,43 +130,50 @@ void ManejoDeArchivo::CargarArchivoEstudianteCSV(vector <Estudiante>& Estudiante
 
 
 	if (Archivo.is_open()) {
-		char texto[512]  ;
-		Archivo.getline(texto,512, '\n') ; // Cabeceras
-		while (!Archivo.eof()) {
-			// Copiar todo a variables temporales
-			getline(Archivo, Nombre, ';') ;
-			getline(Archivo, Apellido, ';') ;
-			getline(Archivo, Email, ';') ;
-			getline(Archivo, Carrera, ';') ;
-			getline(Archivo, Edad, ';') ;
-			getline(Archivo, Cedula, ';') ;
-			getline(Archivo, Telefono, ';') ;
-			getline(Archivo, Codigo, ';') ;
-			getline(Archivo, Semestre, ';') ;
-			getline(Archivo, ValorMultaAcomulada, ';') ;
-			getline(Archivo, EstadoDeMulta, ';') ;
-			getline(Archivo, EstadoDeEstudiante, '\n') ;
-
-			// Guardar lo que hay en las variables en vectores
-			EstudianteAuxiliar->setNombre (Nombre) ;
-			EstudianteAuxiliar->setApellido(Apellido) ;
-			EstudianteAuxiliar->setEmail(Email) ;
-			EstudianteAuxiliar->setCarrera(Carrera) ;
-			// Variable con paso de strin a entero
-			EstudianteAuxiliar->setEdad(CambioStringALong (Edad)) ;
-			EstudianteAuxiliar->setCedula(CambioStringALong (Cedula)) ;
-			EstudianteAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
-			EstudianteAuxiliar->setCodigo(CambioStringALong (Codigo)) ;
-			EstudianteAuxiliar->setSemestre(CambioStringALong (Semestre)) ;
-			EstudianteAuxiliar->CorrerValorMulta(CambioStringALong (ValorMultaAcomulada)) ;
-			EstudianteAuxiliar->setEstadoDeMulta(CambioStringALong (EstadoDeMulta)) ;
-			EstudianteAuxiliar->setEstadoDeEstudiante(CambioStringALong (EstadoDeEstudiante)) ;
-
-			// Agregar  al vector
-			Estudiantes.push_back(*EstudianteAuxiliar) ;
-		}
-		// Eliminar un ultimo elemento que me crea
-		Estudiantes.pop_back() ;
+		if (!Archivo.fail()) {
+			char texto[512]  ;
+			Archivo.getline(texto,512, '\n') ; // Cabeceras
+			while (!Archivo.eof()) {
+				// Copiar todo a variables temporales
+				getline(Archivo, Nombre, ';') ;
+				getline(Archivo, Apellido, ';') ;
+				getline(Archivo, Email, ';') ;
+				getline(Archivo, Carrera, ';') ;
+				getline(Archivo, Edad, ';') ;
+				getline(Archivo, Cedula, ';') ;
+				getline(Archivo, Telefono, ';') ;
+				getline(Archivo, Codigo, ';') ;
+				getline(Archivo, Semestre, ';') ;
+				getline(Archivo, ValorMultaAcomulada, ';') ;
+				getline(Archivo, EstadoDeMulta, ';') ;
+				getline(Archivo, EstadoDeEstudiante, '\n') ;
+	
+				// Guardar lo que hay en las variables en vectores
+				EstudianteAuxiliar->setNombre (Nombre) ;
+				EstudianteAuxiliar->setApellido(Apellido) ;
+				EstudianteAuxiliar->setEmail(Email) ;
+				EstudianteAuxiliar->setCarrera(Carrera) ;
+				// Variable con paso de strin a entero
+				EstudianteAuxiliar->setEdad(CambioStringALong (Edad)) ;
+				EstudianteAuxiliar->setCedula(CambioStringALong (Cedula)) ;
+				EstudianteAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
+				EstudianteAuxiliar->setCodigo(CambioStringALong (Codigo)) ;
+				EstudianteAuxiliar->setSemestre(CambioStringALong (Semestre)) ;
+				EstudianteAuxiliar->CorrerValorMulta(CambioStringALong (ValorMultaAcomulada)) ;
+				EstudianteAuxiliar->setEstadoDeMulta(CambioStringALong (EstadoDeMulta)) ;
+				EstudianteAuxiliar->setEstadoDeEstudiante(CambioStringALong (EstadoDeEstudiante)) ;
+	
+				// Agregar  al vector
+				Estudiantes.push_back(*EstudianteAuxiliar) ;
+			}
+			// Eliminar un ultimo elemento que me crea
+			Estudiantes.pop_back() ;
+			
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Estudiantes, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 
 	delete EstudianteAuxiliar ;
@@ -219,27 +232,33 @@ void ManejoDeArchivo::CargarPrestados(vector <Estudiante*> Prestamos, vector <Ar
 	int CodigoEstAux, CodigoArtAux ;
 
 	if (Archivo.is_open()) {
-		char texto[512]  ;
-		// Copiar todo a variables temporales
-		Archivo.getline(texto,512, '\n') ; // Cabeceras
-		while (!Archivo.eof()) {
-			
-			for (int i=0 ; i<Prestamos.size() ; i++) {
-				getline(Archivo, CodigoEstudiante, ';') ;
-				CodigoEstAux = CambioStringALong (CodigoEstudiante) ;
+		if(!Archivo.fail()) {
+			char texto[512]  ;
+			// Copiar todo a variables temporales
+			Archivo.getline(texto,512, '\n') ; // Cabeceras
+			while (!Archivo.eof()) {
 				
-				getline(Archivo, CodigoArticulo, '\n') ;
-				CodigoArtAux = CambioStringALong (CodigoArticulo) ;
-				
-				if (CodigoEstAux == Prestamos[i]->getCodigo()) {
-					for (int j=0 ; j<Articulos.size() ; j++) {
-						if (CodigoArtAux == Articulos[j]->getCodigoArticulo()) {							
-							Prestamos[i]->ArticuloParaPrestar(Articulos[j]) ; 
-						}
-					} 
- 				}
+				for (int i=0 ; i<Prestamos.size() ; i++) {
+					getline(Archivo, CodigoEstudiante, ';') ;
+					CodigoEstAux = CambioStringALong (CodigoEstudiante) ;
+					
+					getline(Archivo, CodigoArticulo, '\n') ;
+					CodigoArtAux = CambioStringALong (CodigoArticulo) ;
+					
+					if (CodigoEstAux == Prestamos[i]->getCodigo()) {
+						for (int j=0 ; j<Articulos.size() ; j++) {
+							if (CodigoArtAux == Articulos[j]->getCodigoArticulo()) {							
+								Prestamos[i]->ArticuloParaPrestar(Articulos[j]) ; 
+							}
+						} 
+	 				}
+				}
 			}
-		}
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Estudiantes, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 }
 
@@ -305,36 +324,42 @@ void ManejoDeArchivo::CargarArchivoProfesorCSV(vector <Profesor>* Profesores) {
 	string Nombre, Apellido, Email, Carrera, Edad, Cedula, Telefono, Codigo, TituloProfesional ;
 
 	if (Archivo.is_open()) {
-		char texto[512]  ;
-		// Copiar todo a variables temporales
-		Archivo.getline(texto,512, '\n') ; // Cabeceras
-		while (!Archivo.eof()) {
-			getline(Archivo, Nombre, ';') ;
-			getline(Archivo, Apellido, ';') ;
-			getline(Archivo, Email, ';') ;
-			getline(Archivo, Edad, ';') ;
-			getline(Archivo, Cedula, ';') ;
-			getline(Archivo, Telefono, ';') ;
-			getline(Archivo, Codigo, ';') ;
-			getline(Archivo, TituloProfesional, '\n') ;
-
-			// Guardar lo que hay en las variables en vectores
-			ProfesoreAuxiliar->setNombre (Nombre) ;
-			ProfesoreAuxiliar->setApellido(Apellido) ;
-			ProfesoreAuxiliar->setEmail(Email) ;
-			ProfesoreAuxiliar->setTituloProfesional(TituloProfesional) ;
-
-			// Variable con paso de strin a entero
-			ProfesoreAuxiliar->setEdad(CambioStringALong (Edad)) ;
-			ProfesoreAuxiliar->setCedula(CambioStringALong (Cedula)) ;
-			ProfesoreAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
-			ProfesoreAuxiliar->setCodigo(CambioStringALong (Codigo)) ;
-
-			// Agregar  al vector
-			Profesores->push_back(*ProfesoreAuxiliar) ;
-		}
-		// Eliminar un ultimo elemento que me crea
-		Profesores->pop_back() ;
+		if(!Archivo.fail()) {
+			char texto[512]  ;
+			// Copiar todo a variables temporales
+			Archivo.getline(texto,512, '\n') ; // Cabeceras
+			while (!Archivo.eof()) {
+				getline(Archivo, Nombre, ';') ;
+				getline(Archivo, Apellido, ';') ;
+				getline(Archivo, Email, ';') ;
+				getline(Archivo, Edad, ';') ;
+				getline(Archivo, Cedula, ';') ;
+				getline(Archivo, Telefono, ';') ;
+				getline(Archivo, Codigo, ';') ;
+				getline(Archivo, TituloProfesional, '\n') ;
+	
+				// Guardar lo que hay en las variables en vectores
+				ProfesoreAuxiliar->setNombre (Nombre) ;
+				ProfesoreAuxiliar->setApellido(Apellido) ;
+				ProfesoreAuxiliar->setEmail(Email) ;
+				ProfesoreAuxiliar->setTituloProfesional(TituloProfesional) ;
+	
+				// Variable con paso de strin a entero
+				ProfesoreAuxiliar->setEdad(CambioStringALong (Edad)) ;
+				ProfesoreAuxiliar->setCedula(CambioStringALong (Cedula)) ;
+				ProfesoreAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
+				ProfesoreAuxiliar->setCodigo(CambioStringALong (Codigo)) ;
+	
+				// Agregar  al vector
+				Profesores->push_back(*ProfesoreAuxiliar) ;
+			}
+			// Eliminar un ultimo elemento que me crea
+			Profesores->pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Profesores, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 
 	delete ProfesoreAuxiliar ;
@@ -396,32 +421,38 @@ void ManejoDeArchivo::CargarArchivoAdminisCSV(vector <PersonalAdmi>* PersonalAdm
 	string Nombre, Apellido, Email, Carrera, Edad, Cedula, Telefono ;
 
 	if (Archivo.is_open()) {
-		char texto[512]  ;
-		// Copiar todo a variables temporales
-		Archivo.getline(texto,512, '\n') ; // Cabeceras
-		while (!Archivo.eof()) {
-			getline(Archivo, Nombre, ';') ;
-			getline(Archivo, Apellido, ';') ;
-			getline(Archivo, Email, ';') ;
-			getline(Archivo, Edad, ';') ;
-			getline(Archivo, Cedula, ';') ;
-			getline(Archivo, Telefono, '\n') ;
-
-			// Guardar lo que hay en las variables en vectores
-			PersonalAuxiliar->setNombre (Nombre) ;
-			PersonalAuxiliar->setApellido(Apellido) ;
-			PersonalAuxiliar->setEmail(Email) ;
-
-			// Variable con paso de strin a entero
-			PersonalAuxiliar->setEdad(CambioStringALong (Edad)) ;
-			PersonalAuxiliar->setCedula(CambioStringALong (Cedula)) ;
-			PersonalAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
-
-			// Agregar  al vector
-			PersonalAdm->push_back(*PersonalAuxiliar) ;
-		}
-		// Eliminar un ultimo elemento que me crea
-		PersonalAdm->pop_back() ;
+		if(!Archivo.fail()) {
+			char texto[512]  ;
+			// Copiar todo a variables temporales
+			Archivo.getline(texto,512, '\n') ; // Cabeceras
+			while (!Archivo.eof()) {
+				getline(Archivo, Nombre, ';') ;
+				getline(Archivo, Apellido, ';') ;
+				getline(Archivo, Email, ';') ;
+				getline(Archivo, Edad, ';') ;
+				getline(Archivo, Cedula, ';') ;
+				getline(Archivo, Telefono, '\n') ;
+	
+				// Guardar lo que hay en las variables en vectores
+				PersonalAuxiliar->setNombre (Nombre) ;
+				PersonalAuxiliar->setApellido(Apellido) ;
+				PersonalAuxiliar->setEmail(Email) ;
+	
+				// Variable con paso de strin a entero
+				PersonalAuxiliar->setEdad(CambioStringALong (Edad)) ;
+				PersonalAuxiliar->setCedula(CambioStringALong (Cedula)) ;
+				PersonalAuxiliar->setTelefono(CambioStringALong (Telefono)) ;
+	
+				// Agregar  al vector
+				PersonalAdm->push_back(*PersonalAuxiliar) ;
+			}
+			// Eliminar un ultimo elemento que me crea
+			PersonalAdm->pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Personales de Administrativas, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 
 	delete PersonalAuxiliar ;
@@ -496,54 +527,60 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloComputoCSV(vector <ArticuloCo
 	string Datos, CodigoProfe, Codigo ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setIDNombre(Datos) ;
-
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setIDMarca(Datos) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setCantidad (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Codigo, ';') ;
-			ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, CodigoProfe, ';') ;
-
-			getline(Archivo, Datos, ';') ; 			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, '\n') ;
-			
-			
-			Codigos.push_back(CambioStringALong (CodigoProfe)) ; 
-			Codigos.push_back(CambioStringALong (Codigo)) ;
-			
-			ArticulosComputo->push_back(*ArticuloAux) ;   			 
-		}  
-		ArticulosComputo->pop_back() ; 
-		Codigos.pop_back() ;
-		Codigos.pop_back() ;
+		if (!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setIDNombre(Datos) ;
+	
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setIDMarca(Datos) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setCantidad (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Codigo, ';') ;
+				ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, CodigoProfe, ';') ;
+	
+				getline(Archivo, Datos, ';') ; 			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, '\n') ;
+				
+				
+				Codigos.push_back(CambioStringALong (CodigoProfe)) ; 
+				Codigos.push_back(CambioStringALong (Codigo)) ;
+				
+				ArticulosComputo->push_back(*ArticuloAux) ;   			 
+			}  
+			ArticulosComputo->pop_back() ; 
+			Codigos.pop_back() ;
+			Codigos.pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Computo, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}
 	}
 	delete ArticuloAux ;
 	return Codigos ;
@@ -564,33 +601,39 @@ void ManejoDeArchivo::CargarArticuloComputoCSV(vector <Fecha>* FechasRegistradas
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setAnio(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setMes(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, '\n') ;
-			Fechas->setDia(CambioStringALong (Datos)) ;
-			
-			FechasRegistradas->push_back(*Fechas) ;
-		} 		
-		FechasRegistradas->pop_back() ; 
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setAnio(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setMes(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, '\n') ;
+				Fechas->setDia(CambioStringALong (Datos)) ;
+				
+				FechasRegistradas->push_back(*Fechas) ;
+			} 		
+			FechasRegistradas->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Computo, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	
 	delete Fechas ; 
@@ -667,56 +710,62 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloDePrestamoCSV(vector <Articul
 	string Datos, CodigoProfe, Codigo ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setIDNombre(Datos) ;
-
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setIDMarca(Datos) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setCantidadDeTipoDeArticulo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Codigo, ';') ;
-			ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, CodigoProfe, ';') ;
-			
-			getline(Archivo, Datos, ';') ; 			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, '\n') ;
-			
-			
-			Codigos.push_back(CambioStringALong (CodigoProfe)) ;
-			Codigos.push_back(CambioStringALong (Codigo)) ;
-			
-			// Agregat al Vector
-			ArticulosParaPrestar->push_back(*ArticuloAux) ;   			
-		}
-		ArticulosParaPrestar->pop_back() ;  
-		Codigos.pop_back() ;
-		Codigos.pop_back() ;
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setIDNombre(Datos) ;
+	
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setIDMarca(Datos) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setCantidadDeTipoDeArticulo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Codigo, ';') ;
+				ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, CodigoProfe, ';') ;
+				
+				getline(Archivo, Datos, ';') ; 			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, '\n') ;
+				
+				
+				Codigos.push_back(CambioStringALong (CodigoProfe)) ;
+				Codigos.push_back(CambioStringALong (Codigo)) ;
+				
+				// Agregat al Vector
+				ArticulosParaPrestar->push_back(*ArticuloAux) ;   			
+			}
+			ArticulosParaPrestar->pop_back() ;  
+			Codigos.pop_back() ;
+			Codigos.pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Prestamos, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete ArticuloAux ;
 	return Codigos ;	
@@ -735,33 +784,39 @@ void ManejoDeArchivo::CargarArticuloDePrestamoCSV(vector <Fecha>* FechasRegistra
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setAnio(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setMes(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, '\n') ;
-			Fechas->setDia(CambioStringALong (Datos)) ;
-			
-			FechasRegistradas->push_back(*Fechas) ;
-		} 		
-		FechasRegistradas->pop_back() ; 
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setAnio(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setMes(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, '\n') ;
+				Fechas->setDia(CambioStringALong (Datos)) ;
+				
+				FechasRegistradas->push_back(*Fechas) ;
+			} 		
+			FechasRegistradas->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Prestamos, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete Fechas ; 
 }
@@ -833,55 +888,61 @@ vector <int> ManejoDeArchivo::CargarArchivoArticuloMuebleCSV(vector <ArticuloMue
 	string Datos, CodigoProfe, Codigo ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setIDNombre(Datos) ;
-
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setMaterial(Datos) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setCantidad (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Codigo, ';') ;
-			ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
-			
-			getline(Archivo, CodigoProfe, ';') ;
-			
-			getline(Archivo, Datos, ';') ; 			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, '\n') ;
-			
-			Codigos.push_back(CambioStringALong (CodigoProfe)) ;
-			Codigos.push_back(CambioStringALong (Codigo)) ;
-			
-			// Agregat al Vector
-			ArticulosParaMueble->push_back(*ArticuloAux) ;   			
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setIDNombre(Datos) ;
+	
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setMaterial(Datos) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setCantidad (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Codigo, ';') ;
+				ArticuloAux->setCodigoArticulo (CambioStringALong (Codigo)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorArticuloInicial (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setValorActualArticulo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoArticuloDeActivo (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeLimiteDeArticulos (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setEstadoDeAsignadoAProfesor (CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				ArticuloAux->setDespreciacion (CambioStringALong (Datos)) ; 
+				
+				getline(Archivo, CodigoProfe, ';') ;
+				
+				getline(Archivo, Datos, ';') ; 			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, '\n') ;
+				
+				Codigos.push_back(CambioStringALong (CodigoProfe)) ;
+				Codigos.push_back(CambioStringALong (Codigo)) ;
+				
+				// Agregat al Vector
+				ArticulosParaMueble->push_back(*ArticuloAux) ;   			
+			}		
+			ArticulosParaMueble->pop_back() ;  
+			Codigos.pop_back() ;
+			Codigos.pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Muebles, REVISALAS !! \n\n" ;
+			system("pause") ;
 		}		
-		ArticulosParaMueble->pop_back() ;  
-		Codigos.pop_back() ;
-		Codigos.pop_back() ;
 	}
 	delete ArticuloAux ;
 	return Codigos ;
@@ -901,33 +962,39 @@ void ManejoDeArchivo::CargarArticuloMuebleCSV(vector <Fecha>* FechasRegistradas)
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setAnio(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setMes(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, '\n') ;
-			Fechas->setDia(CambioStringALong (Datos)) ;
-			
-			FechasRegistradas->push_back(*Fechas) ;
-		} 		
-		FechasRegistradas->pop_back() ; 
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setAnio(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setMes(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, '\n') ;
+				Fechas->setDia(CambioStringALong (Datos)) ;
+				
+				FechasRegistradas->push_back(*Fechas) ;
+			} 		
+			FechasRegistradas->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Articulos de Muebles, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete Fechas ;
 }
@@ -1001,24 +1068,30 @@ void ManejoDeArchivo::CargarHistorialPrestamo(vector <Estudiante>* Estudiantes) 
 	ifstream Archivo("Historial-Articulos-Prestados.csv") ;
 	
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, NroCodigos, ';') ;
-			Auxiliar->setCodigo(CambioStringALong (NroCodigos)) ;
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, NroCodigos, ';') ;
+				Auxiliar->setCodigo(CambioStringALong (NroCodigos)) ;
+				
+				getline(Archivo, IDNombres, ';') ;
+				Auxiliar->setNombre(IDNombres) ;
+				
+				getline(Archivo, IDNombres, ';') ; 						
+				getline(Archivo, NroCodigos, ';') ;
+				getline(Archivo, DatosFecha, ';') ;
+				getline(Archivo, DatosFecha, ';') ;
+				getline(Archivo, DatosFecha, '\n') ;
 			
-			getline(Archivo, IDNombres, ';') ;
-			Auxiliar->setNombre(IDNombres) ;
-			
-			getline(Archivo, IDNombres, ';') ; 						
-			getline(Archivo, NroCodigos, ';') ;
-			getline(Archivo, DatosFecha, ';') ;
-			getline(Archivo, DatosFecha, ';') ;
-			getline(Archivo, DatosFecha, '\n') ;
-		
-			Estudiantes->push_back(*Auxiliar) ; 
-		}	
-		Estudiantes->pop_back() ;
+				Estudiantes->push_back(*Auxiliar) ; 
+			}	
+			Estudiantes->pop_back() ;
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Historiales, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	Archivo.close() ; 
 	
@@ -1038,25 +1111,31 @@ void ManejoDeArchivo::CargarHistorialPrestamo(vector <ArticuloDePrestamo>* Prest
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;
-						
-			getline(Archivo, Datos, ';') ;			
-			Auxiliar->setIDNombre(Datos) ;
-			
-			getline(Archivo, Datos, ';') ;
-			Auxiliar->setCodigoArticulo(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;	
-			getline(Archivo, Datos, ';') ;					
-			getline(Archivo, Datos, '\n') ;
-			
-			Prestamos->push_back(*Auxiliar) ;
-		} 		
-		Prestamos->pop_back() ; 
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;
+							
+				getline(Archivo, Datos, ';') ;			
+				Auxiliar->setIDNombre(Datos) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Auxiliar->setCodigoArticulo(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;	
+				getline(Archivo, Datos, ';') ;					
+				getline(Archivo, Datos, '\n') ;
+				
+				Prestamos->push_back(*Auxiliar) ;
+			} 		
+			Prestamos->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Historiales, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete Auxiliar ;
 }
@@ -1075,26 +1154,32 @@ void ManejoDeArchivo::CargarHistorialPrestamo(vector <Fecha>* FechaHistorial) {
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;			
-			getline(Archivo, Datos, ';') ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setAnio(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setMes(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, '\n') ;
-			Fechas->setDia(CambioStringALong (Datos)) ;
-			
-			FechaHistorial->push_back(*Fechas) ;
-		} 		
-		FechaHistorial->pop_back() ; 
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;			
+				getline(Archivo, Datos, ';') ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setAnio(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setMes(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, '\n') ;
+				Fechas->setDia(CambioStringALong (Datos)) ;
+				
+				FechaHistorial->push_back(*Fechas) ;
+			} 		
+			FechaHistorial->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Historiales, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete Fechas ;
 }
@@ -1161,37 +1246,43 @@ void ManejoDeArchivo::CargarPlazos(vector <Estudiante>* EstudianteAux) {
 	ifstream Archivo ("Plazo-De-Prestamos.csv") ; 
 	
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, NroCodigos, ';') ;
-			Auxiliar->setCodigo(CambioStringALong (NroCodigos)) ;
-		
-			getline(Archivo, NroCodigos, ';') ;
-			Prestamos->setCodigoArticulo(CambioStringALong (NroCodigos)) ;
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, NroCodigos, ';') ;
+				Auxiliar->setCodigo(CambioStringALong (NroCodigos)) ;
 			
-			getline(Archivo, DatosFecha, ';') ;
-			FechaGuardar->setAnio(CambioStringALong (DatosFecha)) ;
+				getline(Archivo, NroCodigos, ';') ;
+				Prestamos->setCodigoArticulo(CambioStringALong (NroCodigos)) ;
+				
+				getline(Archivo, DatosFecha, ';') ;
+				FechaGuardar->setAnio(CambioStringALong (DatosFecha)) ;
+				
+				getline(Archivo, DatosFecha, ';') ;
+				FechaGuardar->setMes(CambioStringALong (DatosFecha)) ;
+				
+				getline(Archivo, DatosFecha, '\n') ;
+				FechaGuardar->setDia(CambioStringALong (DatosFecha)) ;
+				
+				PrestaAux.push_back(*Prestamos) ; 
+				FechaAux.push_back(*FechaGuardar) ;
+				EstuAuxiliar.push_back(*Auxiliar) ; ;
+			}
+			PrestaAux.pop_back() ;
+			FechaAux.pop_back() ;	
+			EstuAuxiliar.pop_back() ;
 			
-			getline(Archivo, DatosFecha, ';') ;
-			FechaGuardar->setMes(CambioStringALong (DatosFecha)) ;
-			
-			getline(Archivo, DatosFecha, '\n') ;
-			FechaGuardar->setDia(CambioStringALong (DatosFecha)) ;
-			
-			PrestaAux.push_back(*Prestamos) ; 
-			FechaAux.push_back(*FechaGuardar) ;
-			EstuAuxiliar.push_back(*Auxiliar) ; ;
-		}
-		PrestaAux.pop_back() ;
-		FechaAux.pop_back() ;	
-		EstuAuxiliar.pop_back() ;
-		
-		for (int i=0 ; i<PrestaAux.size() ; i++) {
-			PrestaAux[i].AgregarFechaLim(&FechaAux[i]) ;
-			EstuAuxiliar[i].ArticuloParaPrestar(&PrestaAux[i]) ;
-			EstudianteAux->push_back(EstuAuxiliar[i]) ;
-		}
+			for (int i=0 ; i<PrestaAux.size() ; i++) {
+				PrestaAux[i].AgregarFechaLim(&FechaAux[i]) ;
+				EstuAuxiliar[i].ArticuloParaPrestar(&PrestaAux[i]) ;
+				EstudianteAux->push_back(EstuAuxiliar[i]) ;
+			}
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Plazo de Articulos, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	
 	delete FechaGuardar ; 
@@ -1210,24 +1301,30 @@ void ManejoDeArchivo::CargarPlazos(vector <Fecha>* FechasRegistradas) {
 	string Datos ;
 	 
 	if (Archivo.is_open()) {
-		char Cabezeras[512] ; // Esto es Para cabezeras
-		Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
-		while(!Archivo.eof()) {
-			getline(Archivo, Datos, ';') ;
-			getline(Archivo, Datos, ';') ;			
-		
-			getline(Archivo, Datos, ';') ;
-			Fechas->setAnio(CambioStringALong (Datos)) ;
+		if(!Archivo.fail()) {
+			char Cabezeras[512] ; // Esto es Para cabezeras
+			Archivo.getline(Cabezeras,512, '\n') ; // Para copiar cabezeras y desacerlas
+			while(!Archivo.eof()) {
+				getline(Archivo, Datos, ';') ;
+				getline(Archivo, Datos, ';') ;			
 			
-			getline(Archivo, Datos, ';') ;
-			Fechas->setMes(CambioStringALong (Datos)) ;
-			
-			getline(Archivo, Datos, '\n') ;
-			Fechas->setDia(CambioStringALong (Datos)) ;
-			
-			FechasRegistradas->push_back(*Fechas) ;
-		} 		
-		FechasRegistradas->pop_back() ; 
+				getline(Archivo, Datos, ';') ;
+				Fechas->setAnio(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, ';') ;
+				Fechas->setMes(CambioStringALong (Datos)) ;
+				
+				getline(Archivo, Datos, '\n') ;
+				Fechas->setDia(CambioStringALong (Datos)) ;
+				
+				FechasRegistradas->push_back(*Fechas) ;
+			} 		
+			FechasRegistradas->pop_back() ; 
+		}else {
+			system("cls") ;
+			cout << "\nExiste un fallo en los archivos de Plazo de Articulos, REVISALAS !! \n\n" ;
+			system("pause") ;
+		}		
 	}
 	delete Fechas ;
 }

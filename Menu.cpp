@@ -1341,7 +1341,7 @@ void Menu::MenuConsultas() {
 		cout << "6. Consultar prestamos realizados en fechas determinadas. \n" ;
 		cout << "7. Consultar valor , despreciacion y estado de un articulo. \n" ; 
 		cout << "8. Consultar los articulos activos e inactivos. \n" ;
-		cout << "9. Eliminar histrial completo del Laboratorio \" ; 
+		cout << "9. Eliminar histrial completo del Laboratorio \n" ; 
 		cout << "10. Atras. \n" ;
 		cout << "11. Salir \n\n" ;
 		

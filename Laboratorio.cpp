@@ -2319,6 +2319,9 @@ void Laboratorio::EliminarHistorial() {
 	
 	ParaHistoriales.clear() ; 
 	
+	ManejoDeArchivo ActualizarHistorial ; 
+	ActualizarHistorial.ActualizarHistorial(ParaHistoriales) ;
+	
 	cout << "\n\tSe ha eliminado todo el historial del Laborato6+rio \n\n" ; 
 }
 
