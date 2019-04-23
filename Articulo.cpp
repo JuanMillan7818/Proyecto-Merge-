@@ -4,7 +4,6 @@
 Articulo::Articulo(){
 }
 
-
 Articulo::Articulo(string IDNombre, int CodigoArticulo, int ValorArticuloInicial, int ValorActualArticulo, 
 				  bool EstadoArticulo, bool EstadoDeLimiteDeArticulos, bool EstadoDeAsignadoAProfesor) {
 				  	
